@@ -37,7 +37,7 @@ body{
 
 .empty-thumbnail, .pic-thumbnail {
   height: 400px;
-  width: 250px;
+  // width: 250px !important;
   // border-radius: 3px;
   background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
 }

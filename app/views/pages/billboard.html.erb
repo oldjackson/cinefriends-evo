@@ -21,39 +21,23 @@
 
 
 <div class="container-map">
-  <div class="cards-container">
-    <div class="row">
-      <% unless @movies.nil? || @movies.empty? %>
-        <% @movies.each do |movie| %>
-          <div class="col-xs-12 col-sm-6 full-padded">
-            <%= link_to movie_path(movie) do %>
-              <div class="card">
-                <div class="thumb-wrapper">
-                  <% if movie.poster.file.nil? %>
-                  <div class="empty-thumbnail">
-                    <p>-- No poster --</p>
-                  </div>
-                  <% else %>
-                  <div class="pic-thumbnail" style="background-image: url(<%= movie.poster.url(:mid_thumbnail) %>);">
-                  </div>
-                  <% end %>
-                </div>
-                <div class="movie-label">
-                  <p><%= "#{movie.title} by #{movie.director}" %></p>
-                </div>
-                <div class="theater-details">
-                  <!-- fill up -->
-                </div>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      <% else %>
-        <h1>Near you</h1>
-        <h1>Your favorite films</h1>
-        <h1>Your favorite directors</h1>
+  <div>
+    <% unless @movies.nil? || @movies.empty? %>
+      <%= render 'film_grid', movies: @movies %>
+    <% else %>
+      <% unless @local_movies .nil? || @local_movies .empty? %>
+        <div><h1>Near you</h1></div>
+        <%= render 'film_grid', movies: @local_movies  %>
       <% end %>
-    </div>
+      <% unless @fav_movies .nil? || @fav_movies .empty? %>
+        <div><h1>Favorite films</h1></div>
+        <%= render 'film_grid', movies: @fav_movies  %>
+      <% end %>
+      <% unless @fav_dir_movies .nil? || @fav_dir_movies .empty? %>
+        <div><h1>From favorite directors</h1></div>
+        <%= render 'film_grid', movies: @fav_dir_movies  %>
+      <% end %>
+    <% end %>
   </div>
   <div id="map"></div>
 </div>
