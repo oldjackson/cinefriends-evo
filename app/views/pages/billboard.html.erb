@@ -23,18 +23,18 @@
 <div class="container-map">
   <div class="cards-container">
     <div class="row">
-      <% unless @movies.nil? || @movies.empty %>
+      <% unless @movies.nil? || @movies.empty? %>
         <% @movies.each do |movie| %>
           <div class="col-xs-12 col-sm-6 full-padded">
-            <%= link_to movie_path(@movie) do %>
+            <%= link_to movie_path(movie) do %>
               <div class="card">
                 <div class="thumb-wrapper">
-                  <% if movie.photo.nil? %>
+                  <% if movie.poster.file.nil? %>
                   <div class="empty-thumbnail">
                     <p>-- No poster --</p>
                   </div>
                   <% else %>
-                  <div class="pic-thumbnail" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),url(<%= movie.photo.url(:car_thumbnail) %>);">
+                  <div class="pic-thumbnail" style="background-image: url(<%= movie.poster.url(:mid_thumbnail) %>);">
                   </div>
                   <% end %>
                 </div>

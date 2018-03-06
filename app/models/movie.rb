@@ -10,7 +10,7 @@ class Movie < ApplicationRecord
   pg_search_scope :search,
     against: [ :title, :director ],
     associated_against: {
-      theater: [ :name, :location ]
+      theaters: [ :name, :location ]
     },
     using: {
       tsearch: { prefix: true }
