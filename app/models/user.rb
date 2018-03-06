@@ -4,10 +4,14 @@ class User < ApplicationRecord
 
   has_many :genre_users
   has_many :genres, through: :genre_users
+  has_many :favdirector_users
+  has_many :favdirectors, through: :favdirector_users
+  has_many :favmovie_users
+  has_many :favmovies, through: :favmovie_users
   has_many :messages
   has_many :postings, dependent: :destroy
   has_many :pairings
-  has_many :genres, through: :genre_users
+
   validates :first_name, presence: true
   validates :last_name, presence: true
 

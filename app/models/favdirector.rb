@@ -1,0 +1,2 @@
+class Favdirector < ApplicationRecord
+end
