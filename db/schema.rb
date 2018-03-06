@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305191905) do
+ActiveRecord::Schema.define(version: 20180306003458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,12 +30,49 @@ ActiveRecord::Schema.define(version: 20180305191905) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "pairing_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pairing_id"], name: "index_messages_on_pairing_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "movies", force: :cascade do |t|
     t.string "title"
     t.string "director"
     t.string "poster"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "pairings", force: :cascade do |t|
+    t.bigint "posting_id"
+    t.bigint "show_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["posting_id"], name: "index_pairings_on_posting_id"
+    t.index ["show_id"], name: "index_pairings_on_show_id"
+    t.index ["user_id"], name: "index_pairings_on_user_id"
+  end
+
+  create_table "postings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "status", default: "pending"
+    t.bigint "movie_id"
+    t.bigint "theater_id"
+    t.time "first_time"
+    t.time "last_time"
+    t.date "first_date"
+    t.date "last_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_postings_on_movie_id"
+    t.index ["theater_id"], name: "index_postings_on_theater_id"
+    t.index ["user_id"], name: "index_postings_on_user_id"
   end
 
   create_table "shows", force: :cascade do |t|
@@ -70,6 +107,9 @@ ActiveRecord::Schema.define(version: 20180305191905) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "favorite_movies"
+    t.string "city"
+    t.string "favorite_seating"
     t.string "photo"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -77,6 +117,14 @@ ActiveRecord::Schema.define(version: 20180305191905) do
 
   add_foreign_key "genre_users", "genres"
   add_foreign_key "genre_users", "users"
+  add_foreign_key "messages", "pairings"
+  add_foreign_key "messages", "users"
+  add_foreign_key "pairings", "postings"
+  add_foreign_key "pairings", "shows"
+  add_foreign_key "pairings", "users"
+  add_foreign_key "postings", "movies"
+  add_foreign_key "postings", "theaters"
+  add_foreign_key "postings", "users"
   add_foreign_key "shows", "movies"
   add_foreign_key "shows", "theaters"
 end
