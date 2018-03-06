@@ -10,6 +10,8 @@
   justify-content: space-between;
   color: white;
   justify-content: space-between;
+  position: absolute;
+  width: 100vw;
 }
 
 /* Logo */
@@ -26,7 +28,7 @@
 
 /* Right section */
 .navbar-wagon-right {
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: space-between;
 }
@@ -35,6 +37,7 @@
 .navbar-wagon-item {
   cursor: pointer;
   padding: 0 20px;
+  display: inline-block !important;
 }
 
 /* Navbar link */
