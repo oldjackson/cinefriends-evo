@@ -15,6 +15,36 @@ ActiveRecord::Schema.define(version: 20180306163305) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "favdirector_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "favdirector_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["favdirector_id"], name: "index_favdirector_users_on_favdirector_id"
+    t.index ["user_id"], name: "index_favdirector_users_on_user_id"
+  end
+
+  create_table "favdirectors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favmovie_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "favmovie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["favmovie_id"], name: "index_favmovie_users_on_favmovie_id"
+    t.index ["user_id"], name: "index_favmovie_users_on_user_id"
+  end
+
+  create_table "favmovies", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "genre_users", force: :cascade do |t|
     t.bigint "genre_id"
     t.bigint "user_id"
@@ -108,16 +138,26 @@ ActiveRecord::Schema.define(version: 20180306163305) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "favorite_movies"
     t.string "city"
     t.string "favorite_seating"
     t.string "photo"
     t.string "first_name"
     t.string "last_name"
+    t.string "provider"
+    t.string "uid"
+    t.string "facebook_picture_url"
+    t.string "first_name_fb"
+    t.string "last_name_fb"
+    t.string "token"
+    t.datetime "token_expiry"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favdirector_users", "favdirectors"
+  add_foreign_key "favdirector_users", "users"
+  add_foreign_key "favmovie_users", "favmovies"
+  add_foreign_key "favmovie_users", "users"
   add_foreign_key "genre_users", "genres"
   add_foreign_key "genre_users", "users"
   add_foreign_key "messages", "pairings"

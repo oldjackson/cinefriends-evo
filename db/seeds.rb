@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
 users = []
 
 10.times do
@@ -17,6 +18,7 @@ users = []
     password: "xxxxxx",
     city: "Lisbon"
     )
+
   users << user
   user.save!
 end
@@ -64,3 +66,4 @@ shows = []
   shows << show
   show.save!
 end
+

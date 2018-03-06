@@ -1,0 +1,30 @@
+
+  <div class="cards-container">
+    <div class="row">
+        <% movies.each do |movie| %>
+          <div class="col-xs-12 col-sm-6 full-padded">
+            <%= link_to movie_path(movie) do %>
+              <div class="card">
+                <div class="thumb-wrapper">
+                  <% if movie.poster.file.nil? %>
+                  <div class="empty-thumbnail">
+                    <p>-- No poster --</p>
+                  </div>
+                  <% else %>
+                  <div class="pic-thumbnail" style="background-image: url(<%= movie.poster.url(:mid_thumbnail) %>);">
+                  </div>
+                  <% end %>
+                </div>
+                <div class="movie-label">
+                  <p><%= "#{movie.title} by #{movie.director}" %></p>
+                </div>
+                <div class="theater-details">
+                  <!-- fill up -->
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+
