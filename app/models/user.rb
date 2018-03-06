@@ -1,7 +1,11 @@
 class User < ApplicationRecord
 
-  has_many :messages, dependent: :destroy
-  has_many :postings
+  mount_uploader :photo, PhotoUploader
+
+  has_many :genre_users
+  has_many :genres, through: :genre_users
+  has_many :messages
+  has_many :postings, dependent: :destroy
   has_many :pairings
   has_many :genres, through: :genre_users
   validates :first_name, presence: true
