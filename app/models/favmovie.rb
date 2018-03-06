@@ -1,0 +1,2 @@
+class Favmovie < ApplicationRecord
+end
