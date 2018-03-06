@@ -1,10 +1,15 @@
 // Specific CSS for your home-page
-.cards-container {
+
+.container {
   display: flex;
-  flex-grow: 1;
+  justify-content: space-between;
+  margin-top: 50px;
 }
 
-.card {
+.card-container {
+  display: flex;
+}
+.card1 {
   height: 300px;
   width: 200px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
@@ -13,6 +18,26 @@
   color: white;
   position: relative;
   background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(image_path("sample_film.jpeg"));
+}
+.card2 {
+  height: 300px;
+  width: 200px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(image_path("poster_sunshine.jpg"));
+}
+.card3 {
+  height: 300px;
+  width: 200px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(image_path("sideways.jpg"));
 }
 .card-user {
   position: absolute;
@@ -41,4 +66,9 @@
 }
 .card-link:hover {
   opacity: 0.1;
+}
+.fas {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
 }
