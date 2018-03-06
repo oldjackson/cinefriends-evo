@@ -1,7 +1,7 @@
 class Posting < ApplicationRecord
-  belongs_to :user_id
-  belongs_to :movie_id
-  belongs_to :theater_id
+  belongs_to :user
+  belongs_to :movie
+  belongs_to :theater
   validates :first_time, presence: true
   validates :last_time, presence: true
   validates :first_date, presence: true

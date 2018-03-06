@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  mount_uploader :photo_url, PhotoUploader
+  mount_uploader :photo, PhotoUploader
 
   has_many :genre_users
   has_many :genres, through: :genre_users
