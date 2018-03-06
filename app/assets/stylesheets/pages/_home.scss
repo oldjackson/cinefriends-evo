@@ -1,21 +1,23 @@
 // Specific CSS for your home-page
-body {
-  background-color: black;
+.cards-container {
+  display: flex;
+  flex-grow: 1;
 }
 
 .card {
-  height: 175px;
+  height: 300px;
+  width: 200px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
   color: white;
   position: relative;
-  background-image: url(image_path("sample_film.jpeg"));
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(image_path("sample_film.jpeg"));
 }
 .card-user {
   position: absolute;
   right: 10px;
-  top: 10px;
+  bottom: 10px;
   width: 40px;
   border-radius: 50%;
 }

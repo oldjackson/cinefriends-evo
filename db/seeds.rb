@@ -23,5 +23,5 @@ end
 Movie.create(title: "Fahrenheit 451", director: "François Truffaut", poster: "https://www.cinematerial.com/movies/fahrenheit-451-i60390/p/4khj0jhn")
 Movie.create(title: "Psycho", director: "Alfred Hitchcock", poster: "https://www.cinematerial.com/movies/psycho-i54215/p/0gxhwkwp")
 
-
+Theater.create(name: "Nimas")
 
