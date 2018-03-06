@@ -38,15 +38,14 @@ end
 theaters = []
 
 names = ["Sao Jorge", "Monumental", "Cinemateca", "Cinema Ideal"]
-adresses =["Av. da Liberdade 175","Av. Praia da Vitória, 72","R. Barata Salgueiro 39","Rua do Loreto 15"]
-cities = ["Lisbon","Lisbon","Lisbon","Lisbon"]
+locations =["Av. da Liberdade 175, Lisbon","Av. Praia da Vitória, 72, Lisbon","R. Barata Salgueiro 39, Lisbon","Rua do Loreto 15, Lisbon"]
 
 (0...4).each do |i|
 
   theater = Theater.new(
     name: names[i],
-    adress: adresses[i],
-    city: cities[i]
+    location: locations[i],
+
     )
   theaters << theater
   theater.save!
