@@ -32,7 +32,21 @@
       <li><%=favdirector.name %></li>
     <% end %>
   </div>
-
-
 </div>
 
+<div class="container">
+  <h3>Previous Pairings (for now is postings)</h3>
+
+  <div class="posting-info">
+    <% @user.postings.each do |posting| %>
+      <div class="movie-poster">
+        <%= cl_image_tag posting.movie.poster, height: 220, width: 140, crop: :fill, :gravity=>"auto" %>
+      </div>
+      <li><%=posting.movie.title %></li>
+      <li><%=posting.theater.name %></li>
+      <li><%=posting.theater.location %></li>
+      <li><%=posting.first_date %></li>
+    <% end %>
+  </div>
+
+</div>
