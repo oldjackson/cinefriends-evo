@@ -1,0 +1,26 @@
+<div class="container">
+  <div>
+    <% if @user.facebook_picture_url %>
+      <div class="user-photo text-center">
+        <%= cl_image_tag @user.facebook_picture_url, height: 150, width: 150, crop: :fill, :radius=>10 %>
+      </div>
+    <% elsif %>
+      <div class="user-photo text-center">
+        <%= cl_image_tag @user.photo, height: 150, width: 150, crop: :fill, :radius=>10 %>
+      </div>
+    <% else %>
+      <div class="empty-picture"">
+        <p>-- No picture --</p>
+      </div>
+    <% end %>
+  </div>
+  <li><%= @user.first_name %></li>
+  <li><%= @user.city %></li>
+  <li><%= @user.favmovies %></li>
+  <li><%= @user.favdirectors %></li>
+  <li><%= @user.favorite_seating %></li>
+
+
+
+</div>
+
