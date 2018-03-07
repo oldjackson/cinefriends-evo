@@ -24,6 +24,7 @@ gem 'devise-bootstrap-views'
 gem 'omniauth-facebook'
 
 gem 'faker'
+gem 'factory-helper'
 gem 'pg_search'
 gem "geocoder"
 gem 'cocoon'

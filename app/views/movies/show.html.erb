@@ -29,19 +29,19 @@
                               <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
                               <div class="cardimageuser", style="background-image: url(<%= posting.user.photo.url %>);">
                                 <!-- <div class="card-category">Showing Near You</div> -->
-                                <div class="card-info1">
+                              </div>
+                                <div class="card-info1user">
                                   <%= posting.user.first_name %>
                                 </div>
                                 <div class="card-info2user">
                                   <%= posting.first_date.strftime("%d %B") + (posting.first_date == posting.last_date ? "" : " - " + posting.last_date.strftime("%d %B"))  %>
                                 </div>
-                                <div class="card-info3">
+                                <div class="card-info3user">
                                   <%= posting.theater.name %>
                                 </div>
                                 <%= link_to posting_pairings_path(posting), method: :post do %>
                                 <div class="btnadduser"></div>
                                 <% end %>
-                              </div>
                             </div></div>
             </div>
                 <% end %>
