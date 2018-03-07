@@ -101,7 +101,6 @@ a:hover {
 .btn{
   color: white;
   // background-color: rgb(125, 30, 27);
-  // font-family: 'Cabin', sans-serif;
   // font-size: 20px !important;
   padding: 12px !important;
 }
@@ -114,7 +113,6 @@ a:hover {
 .btn-back{
   // color: white;
   // background-color: rgb(160, 160, 160);
-  // font-family: 'Cabin', sans-serif;
   // font-size: 15px;
   // padding: 10px;
   // margin: 5px;
@@ -129,18 +127,24 @@ a:hover {
 .btn-search{
   color: white;
   background-color: rgb(125, 30, 27);
-  font-family: 'Cabin', sans-serif;
   font-size: 15px !important;
   padding: 5px !important;
 }
 
 .search {
-  font-family: 'Cabin', sans-serif;
   color: rgb(100, 100, 100);
   font-size: 15px ;
 }
 
-
+.pic-price {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
 
 // #map {
 //   flex: 0 0 450px;
