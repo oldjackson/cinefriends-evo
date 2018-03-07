@@ -15,4 +15,21 @@ class Movie < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+  pg_search_scope :search_by_title,
+    against: [ :title ],
+    using: {
+      tsearch: { prefix: true }
+    }
+  pg_search_scope :search_by_director,
+    against: [ :director ],
+    using: {
+      tsearch: { prefix: true }
+    }
+  pg_search_scope :search_by_location,
+    associated_against: {
+      theaters: [ :location ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 end

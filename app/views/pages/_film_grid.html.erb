@@ -2,7 +2,7 @@
   <div class="cards-container">
     <div class="row">
         <% movies.each do |movie| %>
-          <div class="col-xs-12 col-sm-6 full-padded">
+          <div class="col-xs-6 col-sm-4 col-lg-3 col-xl-2 full-padded">
             <%= link_to movie_path(movie) do %>
               <div class="card">
                 <div class="thumb-wrapper">
@@ -11,12 +11,14 @@
                     <p>-- No poster --</p>
                   </div>
                   <% else %>
-                  <div class="pic-thumbnail" style="background-image: url(<%= movie.poster.url(:mid_thumbnail) %>);">
-                  </div>
+                  <!-- <div class="pic-thumbnail"> -->
+                    <%= cl_image_tag movie.poster, height: 300, width: 200 %>
+                  <!-- </div> -->
                   <% end %>
                 </div>
                 <div class="movie-label">
-                  <p><%= "#{movie.title} by #{movie.director}" %></p>
+                  <p><%= movie.title %></p>
+                  <p><%= "by #{movie.director}" %></p>
                 </div>
                 <div class="theater-details">
                   <!-- fill up -->
