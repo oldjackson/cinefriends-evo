@@ -5,7 +5,12 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   get '/billboard', to: 'pages#billboard', as: 'billboard'
+  get '/request', to: 'postings#request', as: 'request'
   resources :users
   resources :postings
+  resources :messages
+  resources :pairings, only: [:show] do
+    resources :messages, only: [:create]
+  end
 
 end

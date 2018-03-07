@@ -58,3 +58,29 @@ genres = ["Classic French", "Bollywood horror", "Hopping Vampire films"]
     theater: Theater.all.sample
     )
 end
+
+5.times do
+  first_date = Faker::Date.forward((0..20).to_a.sample)
+  first_time = Faker::Time.between(Date.today, Date.today, :evening)
+  Posting.create(
+    first_date: first_date,
+    last_date: first_date + (0..3).to_a.sample,
+    first_time: first_time,
+    last_time: first_time + (0..5).to_a.sample,
+    user: User.all.sample,
+    movie: Movie.all.sample,
+    theater: Theater.all.sample,
+    )
+end
+
+
+5.times do
+  Pairing.create(
+    user: User.all.sample,
+    show: Show.all.sample,
+    posting: Posting.all.sample,
+    )
+end
+
+
+

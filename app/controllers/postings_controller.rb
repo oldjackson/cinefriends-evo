@@ -1,27 +1,23 @@
 class PostingsController < ApplicationController
-    before_action :user
+    before_action :set_posting_params, :user, only: [:show, :request]
 
-  def new
-    @posting = Posting.new
-  end
+  # def new
+  #   @posting = Posting.new
+  # end
 
-  def create
-    @posting = Posting.new(posting_params)
-    @posting.save
-  end
+  # def create
+  #   @posting = Posting.new(posting_params)
+  #   @posting.save
+  # end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
+  def request
+    @request = Posting.new(set_posting_params)
   end
 
   private
 
-  def posting_params
+  def set_posting_params
+    @posting = Posting.find(params[:id])
   end
 
   def user
