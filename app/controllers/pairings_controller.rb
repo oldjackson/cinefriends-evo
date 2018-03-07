@@ -1,7 +1,13 @@
 class PairingsController < ApplicationController
   before_action :user
   before_action :set_posting, only: [:create, :edit]
-  before_action :set_pairing, only: [:decline, :accept]
+  before_action :set_pairing, only: [:show, :decline, :accept]
+
+  def show
+    @message = Message.new
+    @sent_messages = @pairing.messages.where(user: current_user)
+    @received_messages = @pairing.messages.where.not(user: current_user)
+  end
 
   def new
     @pairing = Pairing.new
@@ -9,8 +15,13 @@ class PairingsController < ApplicationController
 
   def create
     @pairing = Pairing.new(posting: @posting, user: @user)
-    @pairing.save
+    if @pairing.save
+      redirect_to pairing_path(@pairing)
+    else
+      redirect_to movie_path(@posting.movie)
+    end
   end
+
 
   private
 

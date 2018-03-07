@@ -6,11 +6,15 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/billboard', to: 'pages#billboard', as: 'billboard'
 
-  resources :movies
-  # get '/movies/:id/postings', to: 'movies#postings', as: 'show_postings'
-
+  resources :users
   resources :postings do
     resources :pairings, only: [:create]
   end
+  resources :pairings, only: [:show] do
+    resources :messages, only: [:create]
+  end
+
+  resources :movies
+  # get '/movies/:id/postings', to: 'movies#postings', as: 'show_postings'
 
 end

@@ -7,7 +7,8 @@ class MoviesController < ApplicationController
 
   def show
     # needed to show the posting form along with the existing movie data in the view
-    @postings = @movie.postings
+    @postings = @movie.postings.reject { |p| p.user == current_user}
+
   end
 
   def new
