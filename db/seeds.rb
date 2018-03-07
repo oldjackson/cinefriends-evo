@@ -59,7 +59,7 @@ genres = ["Classic French", "Bollywood horror", "Hopping Vampire films"]
     )
 end
 
-5.times do
+150.times do
  first_date = Faker::Date.forward((0..20).to_a.sample)
  first_time = Faker::Time.between(Date.today, Date.today, :evening)
  Posting.create(

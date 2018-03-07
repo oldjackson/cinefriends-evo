@@ -1,52 +1,50 @@
 <div class="container">
-  <div>
-    <% if @user.facebook_picture_url %>
-      <div class="user-photo text-center">
-        <%= cl_image_tag @user.facebook_picture_url, height: 150, width: 150, crop: :fill, :radius=>10 %>
-      </div>
-    <% elsif %>
-      <div class="user-photo text-center">
-        <%= cl_image_tag @user.photo, height: 150, width: 150, crop: :fill, :radius=>10 %>
-      </div>
-    <% else %>
-      <div class="empty-picture"">
-        <p>-- No picture --</p>
-      </div>
-    <% end %>
+    <div class="col-left">
+      <h3>Profile</h3>
+      <% if @user.facebook_picture_url %>
+        <div class="user-photo">
+          <%= cl_image_tag @user.facebook_picture_url, height: 150, width: 150, crop: :fill, :radius=>10 %>
+        </div>
+      <% elsif %>
+        <div class="user-photo">
+          <%= cl_image_tag @user.photo, height: 150, width: 150, crop: :fill, :radius=>10 %>
+        </div>
+      <% else %>
+        <div class="empty-picture"">
+          <p>-- No picture --</p>
+        </div>
+      <% end %>
+    <div class="personal-info">
+      <li>Name: <%= @user.first_name %></li>
+      <li>City: <%= @user.city %></li>
+    </div>
+    <br>
+    <div class="movie-info">
+      <p><strong>Favorite Films</strong></p>
+      <% @user.favmovies.each do |favmovie| %>
+        <li><%=favmovie.title %></li>
+      <% end %>
+    </div>
+    <br>
+    <div class="director-info">
+      <p><strong>Favorite Directors</strong></p>
+      <% @user.favdirectors.each do |favdirector| %>
+        <li><%=favdirector.name %></li>
+      <% end %>
+    </div>
   </div>
-  <div class="personal-info">
-    <li>Name: <%= @user.first_name %></li>
-    <li>City: <%= @user.city %></li>
-  </div>
-  <br>
-  <div class="movie-info">
-    <p>Favorite Films</p>
-    <% @user.favmovies.each do |favmovie| %>
-      <li><%=favmovie.title %></li>
-    <% end %>
-  </div>
-  <br>
-  <div class="director-info">
-    <p>Favorite Directors</p>
-    <% @user.favdirectors.each do |favdirector| %>
-      <li><%=favdirector.name %></li>
-    <% end %>
-  </div>
-</div>
+  <div class="col-right">
+    <h3>Previous Pairings (for now is postings)</h3>
 
-<div class="container">
-  <h3>Previous Pairings (for now is postings)</h3>
-
-  <div class="posting-info">
+    <div class="posting-info">
     <% @user.postings.each do |posting| %>
       <div class="movie-poster">
         <%= cl_image_tag posting.movie.poster, height: 220, width: 140, crop: :fill, :gravity=>"auto" %>
-      </div>
       <li><%=posting.movie.title %></li>
       <li><%=posting.theater.name %></li>
-      <li><%=posting.theater.location %></li>
       <li><%=posting.first_date %></li>
+      </div>
     <% end %>
   </div>
-
 </div>
+

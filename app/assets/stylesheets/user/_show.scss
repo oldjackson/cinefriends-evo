@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+}
+
+.user-photo {
+}
+
+
+.col-left{
+  margin-top: 100px;
+  float: left;
+  width: 20vw;
+  text-align: left;
+  margin-right: 20px;
+  // border: 1px solid brown;
+}
+
+.col-right {
+    margin-top: 100px;
+    // width: 60vw;
+}
+
+.posting-info {
+  display: flex;
+}
+.movie-poster {
+  margin-right: 100px;
+}
+
+li {
+  list-style-type: none;
+}
