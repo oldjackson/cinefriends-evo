@@ -14,12 +14,24 @@
       </div>
     <% end %>
   </div>
-  <li><%= @user.first_name %></li>
-  <li><%= @user.city %></li>
-  <li><%= @user.favmovies %></li>
-  <li><%= @user.favdirectors %></li>
-  <li><%= @user.favorite_seating %></li>
-
+  <div class="personal-info">
+    <li>Name: <%= @user.first_name %></li>
+    <li>City: <%= @user.city %></li>
+  </div>
+  <br>
+  <div class="movie-info">
+    <p>Favorite Films</p>
+    <% @user.favmovies.each do |favmovie| %>
+      <li><%=favmovie.title %></li>
+    <% end %>
+  </div>
+  <br>
+  <div class="director-info">
+    <p>Favorite Directors</p>
+    <% @user.favdirectors.each do |favdirector| %>
+      <li><%=favdirector.name %></li>
+    <% end %>
+  </div>
 
 
 </div>
