@@ -1,3 +1,10 @@
+ // nececessary to have cards centered in the Bootstrap columns
+ // (probably the position: relative messes up a little)
+.card-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
 .carduser {
   height: 400px;
   width: 200px;
@@ -15,8 +22,6 @@
   background-position: center;
   background-size: cover !important;
   border-radius:5px 5px 0px 0px;
-
-
 }
 
 .card-info1user {
