@@ -74,13 +74,3 @@ end
 end
 
 
-5.times do
-  Pairing.create(
-    user: User.all.sample,
-    show: Show.all.sample,
-    posting: Posting.all.sample,
-    )
-end
-
-
-

@@ -1,0 +1,61 @@
+.cardfilm {
+  height: 400px;
+  width: 200px;
+  background-size: cover !important;
+  background-position: center;
+  position: relative;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.cardimage {
+  height: 300px;
+  width: 200px;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(image_path("sample_film.jpeg"),);
+  background-size: cover !important;
+  border-radius:5px 5px 0px 0px;
+
+
+}
+
+.card-info1 {
+  position: absolute;
+  bottom: 70px;
+  left: 5px;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-decoration-color: black;
+  padding: 5px;
+}
+
+.card-info2 {
+  position: absolute;
+  bottom: 40px;
+  left: 5px;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-decoration-color: black;
+  padding: 5px;
+}
+
+.card-info3 {
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-decoration-color: black;
+  padding: 5px;
+}
+
+.btnadd {
+  position: absolute;
+  right: 2px;
+  bottom: 5px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-size: cover !important;
+  background-position: center;
+  background-image: url(image_path("addme.png"),);
+}
