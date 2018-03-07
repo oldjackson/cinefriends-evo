@@ -13,6 +13,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
+    params.require(:message).permit(:content, :pairing_id)
   end
 
   def user
