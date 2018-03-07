@@ -23,17 +23,24 @@
 
         <div class="cards-container">
           <div class="row">
-            <% @postings.each do |movie| %>
+            <% @postings.each do |posting| %>
             <div class="col-xs-12 col-sm-6 col-lg-4 col-xl-3 full-padded">
-              <div class="card">
-
-
+              <div class="cardfilm">
+                <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+                <div class="cardimage">
+                  <!-- <div class="card-category">Showing Near You</div> -->
+                  <!-- <div class="card-info1">Schedule</div> -->
+                  <div class="card-info2"><%= posting.user.first_name %></div>
+                  <!-- <div class="card-info3"></div> -->
+                  <%= link_to posting_pairings_path(posting), method: :post do %>
+                  <div class="btnadd"></div>
+                  <% end %>
+                </div>
+                <% end %>
               </div>
-              <% end %>
             </div>
+
+
           </div>
-
-
         </div>
       </div>
-    </div>
