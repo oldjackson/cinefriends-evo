@@ -30,6 +30,8 @@ gem 'cocoon'
 gem 'simple_calendar'
 gem 'bootstrap-datepicker-rails'
 
+gem 'ui_faces'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

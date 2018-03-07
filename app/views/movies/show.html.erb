@@ -1,8 +1,8 @@
 <div class="container">
   <h1>CineFriends for <%= @movie.title %></h1>
 
-  <div class="main-container full-padded" style="border: solid red 2px;">
-    <div class="poster-container full-padded" style="border: solid blue 2px;">
+  <div class="main-container full-padded" style="border: solid black 2px;">
+    <div class="poster-container full-padded" style="border: solid black 2px;">
       <% if @movie.poster.file.nil? %>
       <div class="empty-poster">
         <p>-- No picture --</p>
@@ -19,28 +19,35 @@
           <!-- </ul> -->
         </div>
       </div>
-      <div class="postings" style="border: solid blue 2px;">
+      <div id="postings" class="container" style="border: solid black 2px;">
 
         <div class="cards-container">
           <div class="row">
             <% @postings.each do |posting| %>
             <div class="col-xs-12 col-sm-6 col-lg-4 col-xl-3 full-padded">
-              <div class="carduser">
-                <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
-                <div class="cardimageuser", style="background-image: url(<%= posting.user.photo.url(:button_thumb) %>);">
-                  <!-- <div class="card-category">Showing Near You</div> -->
-                  <!-- <div class="card-info1">Schedule</div> -->
-                  <div class="card-info2user"><%= posting.user.first_name %></div>
-                  <!-- <div class="card-info3"></div> -->
-                  <%= link_to posting_pairings_path(posting), method: :post do %>
-                  <div class="btnadduser"></div>
-                  <% end %>
-                </div>
-                <% end %>
-              </div>
+              <div class="card-wrapper"><div class="carduser">
+                              <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
+                              <div class="cardimageuser", style="background-image: url(<%= posting.user.photo.url %>);">
+                                <!-- <div class="card-category">Showing Near You</div> -->
+                                <div class="card-info1">
+                                  <%= posting.user.first_name %>
+                                </div>
+                                <div class="card-info2user">
+                                  <%= posting.first_date.strftime("%d %B") + (posting.first_date == posting.last_date ? "" : " - " + posting.last_date.strftime("%d %B"))  %>
+                                </div>
+                                <div class="card-info3">
+                                  <%= posting.theater.name %>
+                                </div>
+                                <%= link_to posting_pairings_path(posting), method: :post do %>
+                                <div class="btnadduser"></div>
+                                <% end %>
+                              </div>
+                            </div></div>
             </div>
+                <% end %>
 
 
           </div>
         </div>
       </div>
+    </div>

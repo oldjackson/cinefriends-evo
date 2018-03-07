@@ -14,6 +14,7 @@ class PairingsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @pairing = Pairing.new(posting: @posting, user: @user)
     if @pairing.save
       redirect_to pairing_path(@pairing)
