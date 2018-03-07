@@ -4,50 +4,47 @@
   <div class="main-container full-padded" style="border: solid black 2px;">
     <div class="poster-container full-padded" style="border: solid black 2px;">
       <% if @movie.poster.file.nil? %>
-      <div class="empty-poster">
-        <p>-- No picture --</p>
-      </div>
+        <div class="empty-poster">
+          <p>-- No picture --</p>
+        </div>
       <% else %>
-      <div class="poster text-center">
-        <%= cl_image_tag @movie.poster, height: 450, width: 300 %>
-      </div>
+        <div class="poster text-center">
+          <%= cl_image_tag @movie.poster, height: 450, width: 300 %>
+        </div>
       <% end %>
       <div id="info" class="full-padded">
-        <!-- <ul> -->
-          <p id="movie-title"><%= @movie.title %></p>
-          <p id="movie-director">by <%= @movie.director  %></p>
-          <!-- </ul> -->
-        </div>
+        <p id="movie-title"><%= @movie.title %></p>
+        <p id="movie-director">by <%= @movie.director  %></p>
       </div>
-      <div id="postings" class="container" style="border: solid black 2px;">
+    </div>
+    <div id="postings" class="container" style="border: solid black 2px;">
 
-        <div class="cards-container">
-          <div class="row">
-            <% @postings.each do |posting| %>
+      <div class="cards-container">
+        <div class="row">
+          <% @postings.each do |posting| %>
             <div class="col-xs-12 col-sm-6 col-lg-4 col-xl-3 full-padded">
-              <div class="card-wrapper"><div class="carduser">
-                              <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
-                              <div class="cardimageuser", style="background-image: url(<%= posting.user.photo.url %>);">
-                                <!-- <div class="card-category">Showing Near You</div> -->
-                              </div>
-                                <div class="card-info1user">
-                                  <%= posting.user.first_name %>
-                                </div>
-                                <div class="card-info2user">
-                                  <%= posting.first_date.strftime("%d %B") + (posting.first_date == posting.last_date ? "" : " - " + posting.last_date.strftime("%d %B"))  %>
-                                </div>
-                                <div class="card-info3user">
-                                  <%= posting.theater.name %>
-                                </div>
-                                <%= link_to posting_pairings_path(posting), method: :post do %>
-                                <div class="btnadduser"></div>
-                                <% end %>
-                            </div></div>
+              <div class="card-wrapper">
+                <div class="carduser">
+                  <div class="cardimageuser", style="background-image: url(<%= posting.user.photo.url %>);">
+                  </div>
+                    <div class="card-info1user">
+                      <%= posting.user.first_name %>
+                    </div>
+                    <div class="card-info2user">
+                      <%= posting.first_date.strftime("%d %b") + (posting.first_date == posting.last_date ? "" : " ➜ " + posting.last_date.strftime("%d %b"))  %>
+                    </div>
+                    <div class="card-info3user">
+                      <%= posting.theater.name %>
+                    </div>
+                    <%= link_to posting_pairings_path(posting), method: :post do %>
+                      <div class="btnadduser"></div>
+                    <% end %>
+                </div>
+              </div>
             </div>
-                <% end %>
-
-
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
+  </div>
+</div>
