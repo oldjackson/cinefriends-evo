@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>CineFriends for <%= @movie.title %></h1>
+
+  <div class="main-container full-padded" style="border: solid red 2px;">
+    <div class="poster-container full-padded" style="border: solid blue 2px;">
+      <% if @movie.poster.file.nil? %>
+      <div class="empty-poster">
+        <p>-- No picture --</p>
+      </div>
+      <% else %>
+      <div class="poster text-center">
+        <%= cl_image_tag @movie.poster, height: 450, width: 300 %>
+      </div>
+      <% end %>
+      <div id="info" class="full-padded">
+        <!-- <ul> -->
+          <p id="movie-title"><%= @movie.title %></p>
+          <p id="movie-director">by <%= @movie.director  %></p>
+          <!-- </ul> -->
+        </div>
+      </div>
+      <div class="postings" style="border: solid blue 2px;">
+
+        <div class="cards-container">
+          <div class="row">
+            <% @postings.each do |movie| %>
+            <div class="col-xs-12 col-sm-6 col-lg-4 col-xl-3 full-padded">
+              <div class="card">
+
+
+              </div>
+              <% end %>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>

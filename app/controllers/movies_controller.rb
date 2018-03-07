@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
 
   def show
     # needed to show the posting form along with the existing movie data in the view
-    @posting = Posting.new
+    @postings = @movie.postings
   end
 
   def new
