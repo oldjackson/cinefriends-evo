@@ -1,23 +1,20 @@
-.container {
+.container-all {
   display: flex;
 }
-
-.user-photo {
-}
-
 
 .col-left{
   margin-top: 100px;
   float: left;
   width: 20vw;
   text-align: left;
-  margin-right: 20px;
+  margin-right: 100px;
+  margin-left: 100px;
   // border: 1px solid brown;
 }
 
 .col-right {
-    margin-top: 100px;
-    // width: 60vw;
+  margin-top: 100px;
+    width: 60vw;
 }
 
 .posting-info {
@@ -29,4 +26,20 @@
 
 li {
   list-style-type: none;
+}
+
+.btn-back{
+  color: white;
+  background-color: rgb(160, 160, 160);
+  // font-family: 'Cabin', sans-serif;
+  font-size: 15px;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 3px;
+  margin-left: 100px;
+}
+
+.btn-back:hover {
+  color: black;
+  background-color: rgba(125, 30, 27, 0.9);
 }

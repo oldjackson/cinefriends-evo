@@ -1,4 +1,6 @@
 <div class="container">
+  <div class="container-all">
+
     <div class="col-left">
       <h3>Profile</h3>
       <% if @user.facebook_picture_url %>
@@ -14,37 +16,45 @@
           <p>-- No picture --</p>
         </div>
       <% end %>
-    <div class="personal-info">
-      <li>Name: <%= @user.first_name %></li>
-      <li>City: <%= @user.city %></li>
-    </div>
-    <br>
-    <div class="movie-info">
-      <p><strong>Favorite Films</strong></p>
-      <% @user.favmovies.each do |favmovie| %>
-        <li><%=favmovie.title %></li>
-      <% end %>
-    </div>
-    <br>
-    <div class="director-info">
-      <p><strong>Favorite Directors</strong></p>
-      <% @user.favdirectors.each do |favdirector| %>
-        <li><%=favdirector.name %></li>
-      <% end %>
-    </div>
-  </div>
-  <div class="col-right">
-    <h3>Previous Pairings (for now is postings)</h3>
 
-    <div class="posting-info">
-    <% @user.postings.each do |posting| %>
-      <div class="movie-poster">
-        <%= cl_image_tag posting.movie.poster, height: 220, width: 140, crop: :fill, :gravity=>"auto" %>
-      <li><%=posting.movie.title %></li>
-      <li><%=posting.theater.name %></li>
-      <li><%=posting.first_date %></li>
+      <br>
+
+      <div class="personal-info">
+        <li>Name: <%= @user.first_name %></li>
+        <li>City: <%= @user.city %></li>
       </div>
-    <% end %>
-  </div>
-</div>
+      <br>
+      <div class="movie-info">
+        <p><strong>Favorite Films</strong></p>
+        <% @user.favmovies.each do |favmovie| %>
+          <li><%=favmovie.title %></li>
+        <% end %>
+      </div>
+      <br>
+      <div class="director-info">
+        <p><strong>Favorite Directors</strong></p>
+        <% @user.favdirectors.each do |favdirector| %>
+          <li><%=favdirector.name %></li>
+        <% end %>
+      </div>
 
+    </div>
+
+    <div class="col-right">
+
+      <h3>Previous Movies (for now is postings)</h3>
+      <div class="posting-info">
+      <% @user.postings.each do |posting| %>
+        <div class="movie-poster">
+          <%= cl_image_tag posting.movie.poster, height: 220, width: 140, crop: :fill, :gravity=>"auto" %>
+        <li><%=posting.movie.title %></li>
+        <li><%=posting.theater.name %></li>
+        <li><%=posting.first_date %></li>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <br>
+    <%= link_to "Back to Search Results", :back, class: "btn-back" %>
+</div>
