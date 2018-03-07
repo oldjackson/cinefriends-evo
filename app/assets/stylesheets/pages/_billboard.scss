@@ -31,15 +31,20 @@ body{
 }
 
 .thumb-wrapper{
+  padding: 10px;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
 .empty-thumbnail, .pic-thumbnail {
-  height: 400px;
-  // width: 250px !important;
-  // border-radius: 3px;
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
+  height: 300px;
+  width: 200px;
+  border-radius: 3px;
+  // background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
 }
 
 a:hover {
@@ -66,7 +71,7 @@ a:hover {
 }
 
 .pic-thumbnail {
-  background-size: cover;
+  background-size: contain;
   background-position: center;
 }
 
@@ -155,16 +160,16 @@ a:hover {
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
 
-#map {
-  flex: 0 0 450px;
-  height: 70vh;
-  width: 25vw;
-  position: sticky !important;
-  top: 0 !important;
-  right: 0 !important;
-  margin-left: 20px;
-  z-index: 1; /* Stay on top */
-}
+// #map {
+//   flex: 0 0 450px;
+//   height: 70vh;
+//   width: 25vw;
+//   position: sticky !important;
+//   top: 0 !important;
+//   right: 0 !important;
+//   margin-left: 20px;
+//   z-index: 1; /* Stay on top */
+// }
 
 .cards-container {
   flex-grow: 1;
