@@ -13,9 +13,10 @@
   </head>
   <body>
     <%= render "layouts/navbar" %>
+    <div class="wrapper">
     <%= render "layouts/flashes" %>
-    <%= yield %>
-  </div>
+      <%= yield %>
+    </div>
     <%= render "layouts/footer" %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
