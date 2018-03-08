@@ -1,8 +1,8 @@
 <div class="container">
   <h1>CineFriends for <%= @movie.title %></h1>
 
-  <div class="main-container full-padded" style="border: solid black 2px;">
-    <div class="poster-container full-padded" style="border: solid black 2px;">
+  <div class="main-container full-padded">
+    <div class="poster-container full-padded">
       <% if @movie.poster.file.nil? %>
         <div class="empty-poster">
           <p>-- No picture --</p>
@@ -12,12 +12,12 @@
           <%= cl_image_tag @movie.poster, height: 450, width: 300 %>
         </div>
       <% end %>
-      <div id="info" class="full-padded">
-        <p id="movie-title"><%= @movie.title %></p>
+      <div id="movie-info" class="full-padded">
+        <p id="movie-title"> <%= @movie.title %></p>
         <p id="movie-director">by <%= @movie.director  %></p>
       </div>
     </div>
-    <div id="postings" class="container" style="border: solid black 2px;">
+    <div id="postings" class="container" >
 
       <div class="cards-container">
         <div class="row">
@@ -31,10 +31,10 @@
                       <%= posting.user.first_name %>
                     </div>
                     <div class="card-info2user">
-                      <%= posting.first_date.strftime("%d %b") + (posting.first_date == posting.last_date ? "" : " ➜ " + posting.last_date.strftime("%d %b"))  %>
+                      <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == posting.show.date.year ? posting.show.date.strftime("%-d %B") : posting.show.date.strftime("%-d %B %Y")%> <span class="glyphicon glyphicon-time "></span>   <%= posting.show.time.strftime("%-H:%M") %>
                     </div>
                     <div class="card-info3user">
-                      <%= posting.theater.name %>
+                      <%= posting.show.theater.name %>
                     </div>
                     <%= link_to posting_pairings_path(posting), method: :post do %>
                       <div class="btnadduser"></div>
