@@ -36,10 +36,10 @@
                       <%= posting.user.first_name %>
                     </div>
                     <div class="card-info2user">
-                      <%= posting.first_date.strftime("%d %b") + (posting.first_date == posting.last_date ? "" : " ➜ " + posting.last_date.strftime("%d %b"))  %>
+                      <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == posting.show.date.year ? posting.show.date.strftime("%-d %B") : posting.show.date.strftime("%-d %B %Y")%> <span class="glyphicon glyphicon-time "></span>   <%= posting.show.time.strftime("%-H:%M") %>
                     </div>
                     <div class="card-info3user">
-                      <%= posting.theater.name %>
+                      <%= posting.show.theater.name %>
                     </div>
                     <%= link_to posting_pairings_path(posting), method: :post do %>
                       <div class="btnadduser"></div>

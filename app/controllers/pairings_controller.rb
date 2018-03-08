@@ -5,6 +5,7 @@ class PairingsController < ApplicationController
 
   def show
     @message = Message.new
+    @messages = @pairing.messages
     @sent_messages = @pairing.messages.where(user: current_user)
     @received_messages = @pairing.messages.where.not(user: current_user)
   end
@@ -35,8 +36,9 @@ class PairingsController < ApplicationController
   end
 
   def set_pairing
+    # binding.pry
     @pairing = Pairing.find(params[:id])
-    if @pairing.posting.user != current_user
+    unless @pairing.posting.user == current_user || @pairing.user == current_user
       redirect_to dashboard_path, alert: "The pairing you are trying to alter is not about any of your posting."
     end
   end

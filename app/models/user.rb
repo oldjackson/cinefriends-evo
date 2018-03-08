@@ -2,11 +2,11 @@ class User < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
-  has_many :genre_users
+  has_many :genre_users, dependent: :destroy
   has_many :genres, through: :genre_users
-  has_many :favdirector_users
+  has_many :favdirector_users, dependent: :destroy
   has_many :favdirectors, through: :favdirector_users
-  has_many :favmovie_users
+  has_many :favmovie_users, dependent: :destroy
   has_many :favmovies, through: :favmovie_users
   has_many :messages
   has_many :postings, dependent: :destroy

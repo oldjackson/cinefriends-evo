@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307152224) do
+ActiveRecord::Schema.define(version: 20180308113925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,29 +80,21 @@ ActiveRecord::Schema.define(version: 20180307152224) do
 
   create_table "pairings", force: :cascade do |t|
     t.bigint "posting_id"
-    t.bigint "show_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "status", default: false
+    t.string "status", default: "pending"
     t.index ["posting_id"], name: "index_pairings_on_posting_id"
-    t.index ["show_id"], name: "index_pairings_on_show_id"
     t.index ["user_id"], name: "index_pairings_on_user_id"
   end
 
   create_table "postings", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "status", default: "pending"
-    t.bigint "movie_id"
-    t.bigint "theater_id"
-    t.time "first_time"
-    t.time "last_time"
-    t.date "first_date"
-    t.date "last_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_postings_on_movie_id"
-    t.index ["theater_id"], name: "index_postings_on_theater_id"
+    t.bigint "show_id"
+    t.boolean "active", default: true
+    t.index ["show_id"], name: "index_postings_on_show_id"
     t.index ["user_id"], name: "index_postings_on_user_id"
   end
 
@@ -119,10 +111,10 @@ ActiveRecord::Schema.define(version: 20180307152224) do
 
   create_table "theaters", force: :cascade do |t|
     t.string "name"
-    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
+    t.string "location"
   end
 
   create_table "users", force: :cascade do |t|
@@ -163,10 +155,8 @@ ActiveRecord::Schema.define(version: 20180307152224) do
   add_foreign_key "messages", "pairings"
   add_foreign_key "messages", "users"
   add_foreign_key "pairings", "postings"
-  add_foreign_key "pairings", "shows"
   add_foreign_key "pairings", "users"
-  add_foreign_key "postings", "movies"
-  add_foreign_key "postings", "theaters"
+  add_foreign_key "postings", "shows"
   add_foreign_key "postings", "users"
   add_foreign_key "shows", "movies"
   add_foreign_key "shows", "theaters"
