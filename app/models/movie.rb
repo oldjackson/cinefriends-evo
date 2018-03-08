@@ -1,8 +1,7 @@
 class Movie < ApplicationRecord
   has_many :shows, dependent: :destroy
   has_many :theaters, through: :shows
-  has_many :pairings, through: :shows
-  has_many :postings
+  has_many :postings, through: :shows, dependent: :destroy
 
   mount_uploader :poster, PhotoUploader
 

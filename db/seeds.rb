@@ -1,3 +1,9 @@
+def round_to_5_minutes(t)
+  rounded = Time.at((t.to_time.to_i / 300.0).round * 300)
+  t.is_a?(DateTime) ? rounded.to_datetime : rounded
+end
+
+
 movies = [{title:"The Seven Samurai",director:"Akira Kurosawa", remote_poster_url: "https://images-na.ssl-images-amazon.com/images/I/91OOTyd4ToL._SL1500_.jpg" },\
   {title: "Bonnie and Clyde", director: "Arthur Penn", remote_poster_url: "https://fffmoviepostermuseum.com/wp-content/uploads/2016/05/bonnie-clyde-french-movie-poster.jpg" },\
   {title: "Reservoir Dogs", director: "Quentin Tarantino", remote_poster_url: "https://sites.psu.edu/filmsforall/files/2016/11/poster-370-1dzsy8z.jpg" },\
@@ -24,22 +30,27 @@ movies.each do |mov|
   Movie.create(title: mov[:title], director: mov[:director], remote_poster_url: mov[:remote_poster_url] )
 end
 
+genres = ["French Nouvelle Vague", "Italian neorealism", "Soviet Avantgarde", "B-movies", "Horror classics"]
+
 100.times do
   favmovies_ind = (0...movies.size).to_a.sample((1..5).to_a.sample)
   favdir_ind = (0...movies.size).to_a.sample((1..5).to_a.sample)
+  favgenre_ind = (0...genres.size).to_a.sample((1..3).to_a.sample)
+
   gender = %w(m f).sample
   first_name = gender == 'f' ? FactoryHelper::Name.female_first_name : FactoryHelper::Name.male_first_name
   remote_photo_url = gender == 'f' ? UiFaces.woman : UiFaces.man
   user = User.new(
     first_name: first_name,
-    last_name: Faker::Name.last_name,
-    email: "#{first_name}@#{Faker::Internet.domain_name}",
+    last_name: FactoryHelper::Name.last_name,
+    email: "#{first_name}@#{FactoryHelper::Internet.domain_name}",
     password: "xxxxxx",
     city: "Lisbon",
     remote_photo_url: remote_photo_url
   )
   user.favmovies = favmovies_ind.map{ |i| Favmovie.new(title: movies[i][:title]) }
   user.favdirectors = favdir_ind.map{ |i| Favdirector.new(name: movies[i][:director]) }
+  user.genres = favgenre_ind.map{ |i| Genre.new(name: genres[i]) }
   user.save
 end
 
@@ -51,28 +62,17 @@ locations =["Av. da Liberdade 175, Lisbon","Av. Praia da Vitória, 72, Lisbon","
   Theater.create(name: names[i], location: locations[i])
 end
 
-genres = ["Classic French", "Bollywood horror", "Hopping Vampire films"]
-
-10.times do
-  Show.create(
-    date: Faker::Date.forward((0..20).to_a.sample),
-    time: Faker::Time.between(Date.today, Date.today, :evening) ,
-    movie: Movie.all.sample,
-    theater: Theater.all.sample
-    )
+Movie.all.each do |movie|
+  30.times do
+    Show.create(
+      date: FactoryHelper::Date.forward(30), # random dates in the next months
+      time: round_to_5_minutes(FactoryHelper::Time.between(Date.today, Date.today, :evening)) ,
+      movie: movie,
+      theater: Theater.all.sample
+      )
+  end
 end
 
-
 150.times do
- first_date = Faker::Date.forward((0..20).to_a.sample)
- first_time = Faker::Time.between(Date.today, Date.today, :evening)
- Posting.create(
-   first_date: first_date,
-   last_date: first_date + (0..3).to_a.sample,
-   first_time: first_time,
-   last_time: first_time + (0..5).to_a.sample,
-   user: User.all.sample,
-   movie: Movie.all.sample,
-   theater: Theater.all.sample,
-   )
+  Posting.create(user: User.all.sample,show: Show.all.sample)
 end
