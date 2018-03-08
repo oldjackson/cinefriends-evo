@@ -2,27 +2,32 @@
   <h1>CineFriends for <%= @movie.title %></h1>
 
   <div class="main-container full-padded">
-    <div class="poster-container full-padded">
-      <% if @movie.poster.file.nil? %>
-        <div class="empty-poster">
-          <p>-- No picture --</p>
+
+    <div class="poster-container full-padded" >
+      <div class="cardfilm-large">
+        <% if @movie.poster.file.nil? %>
+          <div class="empty-poster">
+            <p>-- No picture --</p>
+          </div>
+        <% else %>
+          <div class="poster">
+            <%= cl_image_tag @movie.poster, height: 450, width: 300 %>
+          </div>
+        <% end %>
+
+        <div class="movie-label">
+          <div class="film-name-large">
+            <h2><%= @movie.title %></h2>
+            </div>
+          <div class="film-director-large"><%= "#{@movie.director}" %></div>
         </div>
-      <% else %>
-        <div class="poster text-center">
-          <%= cl_image_tag @movie.poster, height: 450, width: 300 %>
-        </div>
-      <% end %>
-      <div id="movie-info" class="full-padded">
-        <p id="movie-title"> <%= @movie.title %></p>
-        <p id="movie-director">by <%= @movie.director  %></p>
       </div>
     </div>
-    <div id="postings" class="container" >
 
-      <div class="cards-container">
+    <div id="postings-container">
         <div class="row">
           <% @postings.each do |posting| %>
-            <div class="col-xs-12 col-sm-6 col-lg-4 col-xl-3 full-padded">
+            <div class="col-xs-12 col-sm-6 full-padded">
               <div class="card-wrapper">
                 <div class="carduser">
                   <div class="cardimageuser", style="background-image: url(<%= posting.user.photo.url %>);">
@@ -44,7 +49,7 @@
             </div>
           <% end %>
         </div>
-      </div>
     </div>
+
   </div>
 </div>
