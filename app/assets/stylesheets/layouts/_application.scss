@@ -1,0 +1,14 @@
+.wrapper {
+  min-height: calc(100vh - 70px);
+  padding-top: 150px;
+  color: white;
+}
+
+.container {
+  width: 850px !important;
+  h1 {
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+  }
+}
