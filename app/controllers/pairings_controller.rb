@@ -34,10 +34,14 @@ class PairingsController < ApplicationController
   end
 
   def set_pairing
-    @pairing = Pairing.find(params[:pairing_id])
+    @pairing = Pairing.find(params[:id])
     if @pairing.posting.user != current_user
       redirect_to dashboard_path, alert: "The pairing you are trying to alter is not about any of your posting."
     end
+  end
+
+  def set_show
+    @show = Show.find(params[:show_id])
   end
 
 end
