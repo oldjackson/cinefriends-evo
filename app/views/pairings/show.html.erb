@@ -1,10 +1,14 @@
-<% @messages.each do |message| %>
-<p><%= message.content %></p>
-<p><%= message.user.first_name %></p>
-<% end %>
 
 <div class="container">
-  <h1>Contact your CineFriend></h1>
+<h1>Your sent messages:</h1>
+  <% @messages.each do |message| %>
+<p><%= message.user.first_name %> says: </p>
+<p><%= message.content %></p>
+<% end %>
+</div>
+
+<div class="container">
+  <h1>Contact your CineFriend</h1>
 
 
   <%= simple_form_for [@pairing, @message] do |f| %>

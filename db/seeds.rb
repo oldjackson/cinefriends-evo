@@ -1,10 +1,8 @@
-<<<<<<< HEAD
+
 def round_to_5_minutes(t)
   rounded = Time.at((t.to_time.to_i / 300.0).round * 300)
   t.is_a?(DateTime) ? rounded.to_datetime : rounded
 end
-=======
->>>>>>> master
 
 
 movies = [{title:"The Seven Samurai",director:"Akira Kurosawa", remote_poster_url: "https://images-na.ssl-images-amazon.com/images/I/91OOTyd4ToL._SL1500_.jpg" },\
@@ -80,10 +78,4 @@ end
   Posting.create(user: User.all.sample,show: Show.all.sample)
 end
 
-5.times do
-  Pairing.create!(
-    user: User.all.sample,
-    show: Show.all.sample,
-    posting: Posting.all.sample
-    )
-end
+
