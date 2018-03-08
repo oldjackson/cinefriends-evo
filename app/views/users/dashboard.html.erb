@@ -1,8 +1,7 @@
-<div class="container">
+<div class="container"> <!-- 1 -->
   <h1><%= "Hi #{@user.first_name}!" %></h1>
-  <div class="main-container full-padded">
-    <div id="profile" class="full-padded">
-
+  <div class="main-container full-padded" style="border: solid red 2px;"> <!-- 2 -->
+    <div id="profile" class="full-padded" style="border: solid blue 2px;"> <!-- 3 -->
       <% if @user.photo.file.nil? %>
       <div class="empty-picture-small"">
         <p>-- No picture --</p>
@@ -13,131 +12,104 @@
       </div>
       <% end %>
       <div id="info" class="full-padded">
-        <!-- <ul> -->
           <p><%= "First name: #{@user.first_name}" %></p>
           <p><%= "Last name: #{@user.last_name}" %></p>
-          <!-- </ul> -->
           <%= link_to "Change credentials...", "\#", class: "btn-sm" %>
-        </div>
       </div>
-      <div style="flex: 1 0 auto;">
-        <div class="full-padded" style="display: flex; justify-content: space-between;align-items: center;">
-          <!-- <div class="full-padded"> -->
-            <h1 style="margin:0;">Movie postings</h1>
-            <div >
-              <%= link_to "Add new posting", "#", class: "btn btn-md" %>
-            </div>
-        </div>
-        <div id="postings">
-          <% if @user.postings.empty? %>
+    </div> <!-- 3 -->
+    <div style="flex: 1 0 auto; border: solid green 2px;"> <!-- 4 -->
+      <div class="full-padded" style="display: flex; justify-content: space-between;align-items: center;" style="border: solid orange 2px;"> <!-- 5 -->
+        <!-- <div class="full-padded"> -->
+          <h1 style="margin:0;">Movie postings</h1>
+          <div >
+            <%= link_to "Add new posting", "#", class: "btn btn-md" %>
+          </div>
+      </div> <!-- 5 -->
+      <div id="postings" style="border: solid pink 2px;"> <!-- 6 -->
+        <% if @user.postings.empty? %>
           No postings yet...
-          <% else %>
-          <% @user.shows.each do |show| %>
-          <div class="posting" style="display: flex; justify-content: space-around; padding: 15px; margin: 15px; position: relative; background-color: #e0e0e0;border-radius: 15px">
-            <div style="width: 250px;text-align: center">
-              <%# link_to posting_path(posting) do %>
-                <h4 style="font-family: $body-font !important"><%= show.movie.title %></h4>
-                <div class="thumb-wrapper">
-                  <% if show.movie.poster.nil? %>
-                    <div class="empty-thumbnail">
-                      <p>-- No picture --</p>
-                    </div>
-                  <% else %>
-                    <div class="pic-thumbnail" style="background-image: url(<%= posting.posting_photos[posting.cover_photo].photo.url(:thumbnail) %>);">
-                    </div>
-                  <% end %>
-                </div>
-              <% end %>
-              <%= link_to "Edit posting", "#", class: "btn-sm" %>
-              <%= link_to "Remove posting", posting_path(posting), class: "btn-sm btn-danger", method: :delete %>
-            </div>
-            <div class="simple-calendar ">
-              <%= month_calendar(attribute: :start_date, end_attribute: :end_date, events: posting.bookings) do |date, bookings| %>
-
-                <%= date.day %>
-
-                <% bookings.each do |booking| %>
-                  <% case booking.status %>
-                    <% when "pending" %>
-                        <i class="fas fa-square" style="color: orange;"></i>
-                    <% when "accepted" %>
-                      <i class="fas fa-square" style="color: green;"></i>
-                    <% when "declined" %>
-                      <i class="fas fa-square" style="color: gray;"></i>
-                    <% when "ongoing" %>
-                      <i class="fas fa-square" style="color: blue;"></i>
-                    <% when "completed" %>
-                      <i class="fas fa-square" style="color: black;"></i>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </div>
-            <div style="text-align: center">
-              <h3>Incoming booking</h3>
-              <% if !posting.next_booking.nil? %>
-                <%= link_to user_path(posting.next_booking.user) do %>
-                <div style="text-align:center;">
-                  <%= posting.next_booking.user.first_name%> <%= posting.next_booking.user.last_name%>
+        <% else %>
+          <% @user.postings.each do |posting| %>
+            <% show = posting.show  %>
+            <div class="posting" style="display: flex; justify-content: space-around; padding: 15px; margin: 15px; position: relative; background-color: #e0e0e0;border-radius: 15px;border: solid red 2px;">
+              <div style="width: 250px; text-align: center; border: solid red 2px;" >
+                <%# link_to posting_path(posting) do %>
+                  <h4 style="font-family: $body-font !important"><%= show.movie.title %></h4>
                   <div class="thumb-wrapper">
-                    <% if posting.next_booking.user.photo.file.nil? %>
-                      <div class="empty-thumbnail-small">
+                    <% if show.movie.poster.nil? %>
+                      <div class="empty-thumbnail">
                         <p>-- No picture --</p>
                       </div>
                     <% else %>
-                      <div class="pic-thumbnail-small" style="background-image: url(<%= posting.next_booking.user.photo.url(:thumbnail) %>);">
-                      </div>
+                      <%= cl_image_tag show.movie.poster, height: 200, width: 133 %>
                     <% end %>
                   </div>
+                <%# end %>
+                <div style="margin: 10px;">
+                  <%= link_to "Edit posting", "#", class: "btn-sm" %>
+                  <%= link_to "Remove posting", posting_path(posting), class: "btn-sm btn-danger", method: :delete %>
                 </div>
+              </div>
+
+              <div style="text-align: center">
+                <% if !(posting.pairings.nil? || posting.pairings.empty?) %>
+                <h3>Your CineFriend<%= "s" if posting.pairings.size > 1 %> for <%= show.movie.title %></h3>
+                  <%# link_to user_path(posting.next_booking.user) do %>
+                    <!-- <div class="row"> -->
+                      <% posting.pairings.each do |pairing| %>
+                        <!-- <div class="col-xs-12 col-sm-6 full-padded"> -->
+                          <div class="card-wrapper">
+                            <div class="carduser">
+                              <div class="cardimageuser", style="background-image: url(<%= pairing.user.photo.url %>);">
+                              </div>
+                                <div class="card-info1user">
+                                  <%= pairing.user.first_name %>
+                                </div>
+                            </div>
+                          </div>
+                          <div>
+                            <% case pairing.status #"#"%>
+                              <% when "pending" %>
+                                <div class="div-booking-status pending">
+                                <div>
+                                  <%= pairing.status.capitalize%></div>
+                                  <div style="margin: 10px;">
+                                    <%= link_to "Accept", "#", class: "btn-sm btn-success" %>
+                                    <%= link_to "Decline", "#", class: "btn-sm btn-danger" %>
+                                  </div>
+                                </div>
+                              <% when "accepted" %>
+                                <div class="div-booking-status accepted">
+                                <div>
+                                  <%= pairing.status.capitalize%></div>
+                                  <div style="margin: 10px;">
+                                    <%= link_to "Cancel", "#", class: "btn-sm btn-danger" %>
+                                  </div>
+                                </div>
+                              <% when "declined" %>
+                                <div class="div-booking-status declined">
+                                <div>
+                                  <%= pairing.status.capitalize%></div>
+                                  <div style="margin: 10px;">
+                                    <%= link_to "Accept", "#", class: "btn-sm btn-success" %>
+                                  </div>
+                                </div>
+                            <% end %>
+
+                          </div>
+
+
+                        <!-- </div> -->
+                      <% end %>
+                    <!-- </div> -->
+                <% else %>
+                  <p>No matches for <%= show.movie.title%> just yet.</p>
                 <% end %>
-
-                  <div>
-                    <p>
-                      <%= posting.next_booking.start_date.strftime("%d %B %Y") %> -
-                                  <%= posting.next_booking.end_date.strftime("%d %B %Y") %>
-                    </p>
-                    <% case posting.next_booking.status %>
-                      <% when "pending" %>
-                        <div class="div-booking-status pending">
-                        <div>
-                          <%= posting.next_booking.status.capitalize%></div>
-                          <%= link_to "Accept", accept_path(posting.next_booking), class: "btn-sm btn-success" %>
-                          <%= link_to "Decline", decline_path(posting.next_booking), class: "btn-sm btn-danger" %>
-                        </div>
-                      <% when "accepted" %>
-                        <div class="div-booking-status accepted">
-                        <div>
-                          <%= posting.next_booking.status.capitalize%></div>
-                          <%= link_to "Cancel", decline_path(posting.next_booking), class: "btn-sm btn-danger" %>
-                        </div>
-                      <% when "declined" %>
-                        <div class="div-booking-status declined">
-                        <div>
-                          <%= posting.next_booking.status.capitalize%></div>
-                          <%= link_to "Accept", accept_path(posting.next_booking), class: "btn-sm btn-success" %>
-                        </div>
-                      <% when "ongoing" %>
-                        <div class="div-booking-status ongoing">
-                        <div>
-                          <%= posting.next_booking.status.capitalize%></div>
-                        </div>
-                      <% when "completed" %>
-                        <div class="div-booking-status completed">
-                        <div>
-                          <%= posting.next_booking.status.capitalize%></div>
-                        </div>
-                    <% end %>
-
-                  </div>
-
-              <% else %>
-                <p>No bookings for your <%= "#{posting.make} #{posting.model}"%> just yet.</p>
-              <% end %>
+              </div>
             </div>
-          </div>
           <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+        <% end %>
+      </div>  <!-- 6 -->
+    </div> <!-- 4 -->
+  </div>  <!-- 2 -->
+</div>  <!-- 1 -->

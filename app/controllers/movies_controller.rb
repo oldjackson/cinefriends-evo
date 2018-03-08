@@ -6,15 +6,13 @@ class MoviesController < ApplicationController
   end
 
   def show
-
     postings = @movie.postings.reject { |p| p.user == current_user}
-    # @postings = postings.sort_by do |p|
-    #   d = p.show.date
-    #   t = p.show.time
-    #   binding.pry
-    #   DateTime.new(d.year, d.month, d.day, t.hour, t.min, 0, t.zone)
-    # end
-
+    @postings = postings.sort_by do |p|
+      d = p.show.date
+      t = p.show.time
+      # binding.pry
+      DateTime.new(d.year, d.month, d.day, t.hour, t.min, 0, t.zone)
+    end
   end
 
   def new

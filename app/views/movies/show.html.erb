@@ -1,9 +1,9 @@
 <div class="container">
   <h1>CineFriends for <%= @movie.title %></h1>
 
-  <div class="main-container full-padded">
+  <div class="main-container vert-padded">
 
-    <div class="poster-container full-padded" >
+    <div class="poster-container vert-padded" >
       <div class="cardfilm-large">
         <% if @movie.poster.file.nil? %>
           <div class="empty-poster">
@@ -33,7 +33,7 @@
       <% else %>
         <div class="row">
           <% @postings.each do |posting| %>
-            <div class="col-xs-12 col-sm-6 full-padded">
+            <div class="col-xs-12 col-sm-6 vert-padded">
               <div class="card-wrapper">
                 <div class="carduser">
                   <div class="cardimageuser", style="background-image: url(<%= posting.user.photo.url %>);">
