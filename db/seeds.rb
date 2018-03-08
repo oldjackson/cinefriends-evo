@@ -24,16 +24,19 @@ movies.each do |mov|
   Movie.create(title: mov[:title], director: mov[:director], remote_poster_url: mov[:remote_poster_url] )
 end
 
-10.times do
+100.times do
   favmovies_ind = (0...movies.size).to_a.sample((1..5).to_a.sample)
   favdir_ind = (0...movies.size).to_a.sample((1..5).to_a.sample)
-
+  gender = %w(m f).sample
+  first_name = gender == 'f' ? FactoryHelper::Name.female_first_name : FactoryHelper::Name.male_first_name
+  remote_photo_url = gender == 'f' ? UiFaces.woman : UiFaces.man
   user = User.new(
-    first_name: Faker::Name.first_name,
+    first_name: first_name,
     last_name: Faker::Name.last_name,
-    email: Faker::Internet.email(),
+    email: "#{first_name}@#{Faker::Internet.domain_name}",
     password: "xxxxxx",
-    city: "Lisbon"
+    city: "Lisbon",
+    remote_photo_url: remote_photo_url
   )
   user.favmovies = favmovies_ind.map{ |i| Favmovie.new(title: movies[i][:title]) }
   user.favdirectors = favdir_ind.map{ |i| Favdirector.new(name: movies[i][:director]) }

@@ -73,6 +73,8 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.7.0)
     execjs (2.7.0)
+    factory-helper (1.8.0)
+      i18n (~> 0.7)
     faker (1.8.7)
       i18n (>= 0.7)
     faraday (0.12.2)
@@ -220,6 +222,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.6)
       execjs (>= 0.3.0, < 3)
+    ui_faces (0.1.4)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
@@ -250,6 +253,7 @@ DEPENDENCIES
   cocoon
   devise
   devise-bootstrap-views
+  factory-helper
   faker
   figaro
   font-awesome-sass (~> 4.7)
@@ -270,6 +274,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier
+  ui_faces
   web-console (>= 3.3.0)
   webpacker
 

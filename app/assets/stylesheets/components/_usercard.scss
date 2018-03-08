@@ -1,3 +1,10 @@
+ // nececessary to have cards centered in the Bootstrap columns
+ // (probably the position: relative messes up a little)
+.card-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
 .carduser {
   height: 400px;
   width: 200px;
@@ -15,15 +22,14 @@
   background-position: center;
   background-size: cover !important;
   border-radius:5px 5px 0px 0px;
-
-
 }
 
 .card-info1user {
   position: absolute;
-  bottom: 70px;
+  bottom: 65px;
   left: 5px;
-  font-size: 15px;
+  font-size: 20px;
+  font-weight: bold;
   text-transform: uppercase;
   text-decoration-color: black;
   padding: 5px;
@@ -31,7 +37,7 @@
 
 .card-info2user {
   position: absolute;
-  bottom: 40px;
+  bottom: 35px;
   left: 5px;
   font-size: 15px;
   text-transform: uppercase;
@@ -41,7 +47,7 @@
 
 .card-info3user {
   position: absolute;
-  bottom: 10px;
+  bottom: 5px;
   left: 5px;
   font-size: 15px;
   text-transform: uppercase;

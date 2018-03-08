@@ -24,11 +24,14 @@ gem 'devise-bootstrap-views'
 gem 'omniauth-facebook'
 
 gem 'faker'
+gem 'factory-helper'
 gem 'pg_search'
 gem "geocoder"
 gem 'cocoon'
 gem 'simple_calendar'
 gem 'bootstrap-datepicker-rails'
+
+gem 'ui_faces'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
