@@ -25,6 +25,12 @@
     </div>
 
     <div id="postings-container">
+      <% if @postings.nil? || @postings.empty? %>
+        <div class="post-button-container">
+          <h1>Seems no one is going yet... </h1>
+          <%= link_to "Post me for this movie!", "#", class: "btn btn-md" %>
+        </div>
+      <% else %>
         <div class="row">
           <% @postings.each do |posting| %>
             <div class="col-xs-12 col-sm-6 full-padded">
@@ -49,6 +55,7 @@
             </div>
           <% end %>
         </div>
+      <% end %>
     </div>
 
   </div>
