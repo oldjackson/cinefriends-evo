@@ -8,16 +8,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: white;
-  justify-content: space-between;
+  color: white !important;
   position: absolute;
   top: 0;
   width: 100vw;
 }
 
 /* Logo */
-.navbar-wagon-brand img {
-  height: 50px;
+.navbar-wagon-brand  {
+
 }
 
 /* User Avatar */
