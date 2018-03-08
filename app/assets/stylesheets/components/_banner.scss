@@ -1,12 +1,12 @@
 .banner {
-  color: black;
-  text-align: center;
   height: 75vh;
   width: 100vw;
-  background-image: url(image_path("banner_photo.jpeg"));
   background-size: cover !important;
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: url(image_path("banner_photo.jpeg")), linear-gradient(90deg, rgba(0,0,0,.8), rgba(0,0,0,1) 10%);
 }
 .banner h4 {
   font-size: 30px;
