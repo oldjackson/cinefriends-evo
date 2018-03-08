@@ -13,7 +13,12 @@
   opacity: .90;
   margin-bottom: 50px;
   justify-content: space-around;
+}
 
+.grow:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 a:hover, a:focus {
