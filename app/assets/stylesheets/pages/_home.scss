@@ -1,5 +1,12 @@
 // Specific CSS for your home-page
-
+.welcome-content{
+  color: white;
+  text-align: center;
+  padding: 100px;
+  h1 {
+    color: white;
+  }
+}
 .container {
   // display: flex;
   justify-content: space-between;
