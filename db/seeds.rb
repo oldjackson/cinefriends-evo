@@ -33,7 +33,7 @@ end
   user = User.new(
     first_name: first_name,
     last_name: Faker::Name.last_name,
-    email: Faker::Internet.email(first_name),
+    email: "#{first_name}@#{Faker::Internet.domain_name}",
     password: "xxxxxx",
     city: "Lisbon",
     remote_photo_url: remote_photo_url
