@@ -24,6 +24,15 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
+  def dashboard
+    if user_signed_in?
+      @user = current_user
+    else
+      redirect_to root_path, notice: "Please sign in to see your dashboard :)"
+    end
+    @user = current_user
+  end
+
   private
 
   def set_user
