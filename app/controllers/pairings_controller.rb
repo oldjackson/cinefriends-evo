@@ -18,7 +18,7 @@ class PairingsController < ApplicationController
     # binding.pry
     @pairing = Pairing.new(posting: @posting, user: @user)
     if @pairing.save
-      redirect_to pairing_path(@posting)
+      redirect_to pairing_path(@pairing)
     else
       redirect_to movie_path(@posting.movie)
     end
@@ -36,6 +36,7 @@ class PairingsController < ApplicationController
   end
 
   def set_pairing
+    # binding.pry
     @pairing = Pairing.find(params[:id])
     unless @pairing.posting.user == current_user || @pairing.user == current_user
       redirect_to dashboard_path, alert: "The pairing you are trying to alter is not about any of your posting."

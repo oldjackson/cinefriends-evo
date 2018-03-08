@@ -1,8 +1,8 @@
 <div class="container">
   <h1>CineFriends for <%= @movie.title %></h1>
 
-  <div class="main-container full-padded" style="border: solid black 2px;">
-    <div class="poster-container full-padded" style="border: solid black 2px;">
+  <div class="main-container full-padded">
+    <div class="poster-container full-padded">
       <% if @movie.poster.file.nil? %>
         <div class="empty-poster">
           <p>-- No picture --</p>
@@ -17,7 +17,7 @@
         <p id="movie-director">by <%= @movie.director  %></p>
       </div>
     </div>
-    <div id="postings" class="container" style="border: solid black 2px;">
+    <div id="postings" class="container" >
 
       <div class="cards-container">
         <div class="row">
