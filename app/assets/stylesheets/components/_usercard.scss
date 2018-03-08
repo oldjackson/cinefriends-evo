@@ -66,3 +66,27 @@
   background-position: center;
   background-image: url(image_path("addme.png"),);
 }
+
+.carduserpairing{
+  height: 350px;
+  width: 450px;
+  background-size: cover !important;
+  background-position: center;
+  position: relative;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.cardimageuserpairing{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+   .style_image{
+    width: 200px; // how much you want
+    min-height: 200px;
+    float: left;
+    margin: 10px;
+    border-radius:5px 5px 0px 0px;
+  }
+}
