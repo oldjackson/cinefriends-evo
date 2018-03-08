@@ -30,35 +30,18 @@ body{
   padding-bottom: 15px;
 }
 
-.thumb-wrapper{
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.empty-thumbnail/*, .pic-thumbnail*/ {
-  height: 300px;
-  width: 200px;
-  border-radius: 3px;
-  // background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-}
-
-a:hover {
-  text-decoration: none;
-  // color: red;
-  .empty-thumbnail p
-  {
-    color: gray;
-  }
-  .card{
-    // box-shadow: 7px 7px 4px  rgba(0,0,0,0.2);
-    text-decoration: none !important;
-  }
-}
+// a:hover {
+//   text-decoration: none;
+//   // color: red;
+//   .empty-thumbnail p
+//   {
+//     color: gray;
+//   }
+//   .card{
+//     // box-shadow: 7px 7px 4px  rgba(0,0,0,0.2);
+//     text-decoration: none !important;
+//   }
+// }
 
 .empty-thumbnail, .empty-picture {
   border: 1px solid black;
