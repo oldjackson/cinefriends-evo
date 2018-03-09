@@ -13,7 +13,6 @@ class User < ApplicationRecord
   has_many :shows, through: :postings
   has_many :movies, through: :shows
   has_many :pairings
-  has_many :matched_postings, through: :pairings, source: :posting
 
   validates :first_name, presence: true
   validates :last_name, presence: true

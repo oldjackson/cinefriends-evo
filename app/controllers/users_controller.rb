@@ -27,6 +27,17 @@ class UsersController < ApplicationController
   def dashboard
     if user_signed_in?
       @user = current_user
+
+      @unmatched_postings = []
+      @pairings = @user.pairings # movies posted by other users accepted by current user
+
+      @user.postings.each do |posting|
+        if posting.pairings.nil? || posting.pairings.empty?
+          @unmatched_postings << posting
+        else
+          @pairings += posting.pairings # movies posted by current user accepted by other users
+        end
+      end
     else
       redirect_to root_path, notice: "Please sign in to see your dashboard :)"
     end

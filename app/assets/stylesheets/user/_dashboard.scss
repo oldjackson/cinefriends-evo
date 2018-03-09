@@ -1,0 +1,22 @@
+.dashboard-container, .show-container{
+  display: flex;
+  img{
+    border-radius: 10px;
+  }
+}
+
+#cal-container {
+  height: 100vh;
+  position: sticky !important; /* !important to override Gmaps inline CSS */
+  top: 0 !important;
+}
+
+#cal-background{
+  padding: 5px;
+  background-color: #c0c0c0;
+}
+
+.pairings, .unmatched-postings{
+  // width: 50%;
+  text-align: center;
+}

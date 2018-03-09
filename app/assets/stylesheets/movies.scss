@@ -2,7 +2,13 @@
   display: flex;
 }
 
-.poster-container, .post-button-container{
+#poster-container{
+  height: 100vh;
+  position: sticky !important; /* !important to override Gmaps inline CSS */
+  top: 0 !important;
+}
+
+#poster-container, .post-button-container{
   text-align: center;
 }
 

@@ -1,35 +1,87 @@
-<div class="container"> <!-- 1 -->
-  <h1><%= "Hi #{@user.first_name}!" %></h1>
-  <div class="main-container full-padded" style="border: solid red 2px;"> <!-- 2 -->
-    <div id="profile" class="full-padded" style="border: solid blue 2px;"> <!-- 3 -->
-      <% if @user.photo.file.nil? %>
-      <div class="empty-picture-small"">
-        <p>-- No picture --</p>
+<div class="dashboard-container"> <!-- 1 -->
+
+  <div id="cal-container" class="full-padded" style="border: solid blue 2px;"> <!-- 3 -->
+    <% if @user.photo.file.nil? %>
+    <div class="empty-picture-small"">
+      <p>-- No picture --</p>
+    </div>
+    <% else %>
+    <div class="user-photo text-center">
+      <%= cl_image_tag @user.photo, height: 100, width: 75, crop: :fill %>
+    </div>
+    <% end %>
+    <div id='cal-background'>
+      <div class="simple-calendar">
+        <%= month_calendar(attribute: :show_date, events: @pairings) do |date, pairings| %>
+
+          <%= date.day %>
+
+          <% pairings.each do |pairing| %>
+            <% case pairing.status %>
+              <% when "pending" %>
+              p
+                  <i class="fas fa-square" style="color: orange;"></i>
+              <% when "accepted" %>
+              a
+                <i class="fas fa-square" style="color: green;"></i>
+              <% when "declined" %>
+              d
+                <i class="fas fa-square" style="color: gray;"></i>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
-      <% else %>
-      <div class="user-photo text-center">
-        <%= cl_image_tag @user.photo, height: 200, width: 150, crop: :fill, :radius=>10 %>
-      </div>
-      <% end %>
-      <div id="info" class="full-padded">
-          <p><%= "First name: #{@user.first_name}" %></p>
-          <p><%= "Last name: #{@user.last_name}" %></p>
-          <%= link_to "Change credentials...", "\#", class: "btn-sm" %>
-      </div>
-    </div> <!-- 3 -->
-    <div style="flex: 1 0 auto; border: solid green 2px;"> <!-- 4 -->
-      <div class="full-padded" style="display: flex; justify-content: space-between;align-items: center;" style="border: solid orange 2px;"> <!-- 5 -->
-        <!-- <div class="full-padded"> -->
-          <h1 style="margin:0;">Movie postings</h1>
-          <div >
-            <%= link_to "Add new posting", "#", class: "btn btn-md" %>
+    </div>
+
+  </div> <!-- 3 -->
+  <!-- <div class="main-container full-padded" style="border: solid white 2px;"> --> <!-- 2 -->
+    <div class="show-container" style="flex: 1 0 auto; border: solid orange 2px;"> <!-- 4 -->
+      <div class="pairings" style="border: solid green 2px;">
+        <h1>Confirmed CineFriends</h1>
+        <% @pairings.each do |pairing| %>
+          <div class="card-wrapper">
+            <div class="carduser">
+              <div class="cardimageuser", style="background-image: url(<%= pairing.user.photo.url %>);">
+              </div>
+                <div class="card-info1user">
+                  <%= pairing.user.first_name %>
+                </div>
+            </div>
           </div>
-      </div> <!-- 5 -->
-      <div id="postings" style="border: solid pink 2px;"> <!-- 6 -->
-        <% if @user.postings.empty? %>
-          No postings yet...
-        <% else %>
-          <% @user.postings.each do |posting| %>
+          <div>
+            <% case pairing.status #"#"%>
+              <% when "pending" %>
+                <div class="div-booking-status pending">
+                <div>
+                  <%= pairing.status.capitalize%></div>
+                  <div style="margin: 10px;">
+                    <%= link_to "Accept", "#", class: "btn-sm btn-success" %>
+                    <%= link_to "Decline", "#", class: "btn-sm btn-danger" %>
+                  </div>
+                </div>
+              <% when "accepted" %>
+                <div class="div-booking-status accepted">
+                <div>
+                  <%= pairing.status.capitalize%></div>
+                  <div style="margin: 10px;">
+                    <%= link_to "Cancel", "#", class: "btn-sm btn-danger" %>
+                  </div>
+                </div>
+              <% when "declined" %>
+                <div class="div-booking-status declined">
+                <div>
+                  <%= pairing.status.capitalize%></div>
+                  <div style="margin: 10px;">
+                    <%= link_to "Accept", "#", class: "btn-sm btn-success" %>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="unmatched-postings" style="border: solid red 2px;">
+        <h1>Your postings</h1>
+        <% @unmatched_postings.each do |posting| %>
             <% show = posting.show  %>
             <div class="posting" style="display: flex; justify-content: space-around; padding: 15px; margin: 15px; position: relative; background-color: #e0e0e0;border-radius: 15px;border: solid red 2px;">
               <div style="width: 250px; text-align: center; border: solid red 2px;" >
@@ -51,65 +103,9 @@
                 </div>
               </div>
 
-              <div style="text-align: center">
-                <% if !(posting.pairings.nil? || posting.pairings.empty?) %>
-                <h3>Your CineFriend<%= "s" if posting.pairings.size > 1 %> for <%= show.movie.title %></h3>
-                  <%# link_to user_path(posting.next_booking.user) do %>
-                    <!-- <div class="row"> -->
-                      <% posting.pairings.each do |pairing| %>
-                        <!-- <div class="col-xs-12 col-sm-6 full-padded"> -->
-                          <div class="card-wrapper">
-                            <div class="carduser">
-                              <div class="cardimageuser", style="background-image: url(<%= pairing.user.photo.url %>);">
-                              </div>
-                                <div class="card-info1user">
-                                  <%= pairing.user.first_name %>
-                                </div>
-                            </div>
-                          </div>
-                          <div>
-                            <% case pairing.status #"#"%>
-                              <% when "pending" %>
-                                <div class="div-booking-status pending">
-                                <div>
-                                  <%= pairing.status.capitalize%></div>
-                                  <div style="margin: 10px;">
-                                    <%= link_to "Accept", "#", class: "btn-sm btn-success" %>
-                                    <%= link_to "Decline", "#", class: "btn-sm btn-danger" %>
-                                  </div>
-                                </div>
-                              <% when "accepted" %>
-                                <div class="div-booking-status accepted">
-                                <div>
-                                  <%= pairing.status.capitalize%></div>
-                                  <div style="margin: 10px;">
-                                    <%= link_to "Cancel", "#", class: "btn-sm btn-danger" %>
-                                  </div>
-                                </div>
-                              <% when "declined" %>
-                                <div class="div-booking-status declined">
-                                <div>
-                                  <%= pairing.status.capitalize%></div>
-                                  <div style="margin: 10px;">
-                                    <%= link_to "Accept", "#", class: "btn-sm btn-success" %>
-                                  </div>
-                                </div>
-                            <% end %>
 
-                          </div>
-
-
-                        <!-- </div> -->
-                      <% end %>
-                    <!-- </div> -->
-                <% else %>
-                  <p>No matches for <%= show.movie.title%> just yet.</p>
-                <% end %>
-              </div>
-            </div>
+      </div>
           <% end %>
-        <% end %>
-      </div>  <!-- 6 -->
     </div> <!-- 4 -->
-  </div>  <!-- 2 -->
+  <!-- </div> -->  <!-- 2 -->
 </div>  <!-- 1 -->
