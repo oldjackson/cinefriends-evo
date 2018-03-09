@@ -44,6 +44,10 @@
   border-radius: 15px;
 }
 
+.posting-info {
+  color: black; padding: 10px;
+}
+
 .movie-friend-container {
   display: flex;
   justify-content: space-around;
@@ -63,8 +67,6 @@
     border-right: black dotted 1px;
   }
   .past {}
-
-
 }
 
 .div-pairing-status{
@@ -86,14 +88,6 @@
   &.declined{
     background-color: #c0c0c0;
     color: gray;
-  }
-  &.ongoing{
-    background-color: #2F6BFEFF;
-    color: white;
-  }
-  &.completed{
-    background-color: black;
-    color: white;
   }
   // .btn-sm{
   //   margin: 5px;
