@@ -20,24 +20,24 @@
 </div>
 
 <div class="container">
-  <!-- <div> -->
+  <div class="display">
     <% unless @movies.nil? || @movies.empty? %>
+      <div><h1>Your Results</h1></div>
       <%= render 'film_grid', movies: @movies %>
     <% else %>
       <% unless @local_movies.nil? || @local_movies .empty? %>
         <div><h1>Near you</h1></div>
-        <%= render 'film_grid', movies: @local_movies[0..3]  %>
+        <%= render 'film_grid', movies: @local_movies[0..2]  %>
       <% end %>
       <% unless @fav_movies.nil? || @fav_movies .empty? %>
         <div><h1>Favorite films</h1></div>
-        <%= render 'film_grid', movies: @fav_movies[0..3]  %>
+        <%= render 'film_grid', movies: @fav_movies[0..2]  %>
       <% end %>
       <% unless @fav_dir_movies.nil? || @fav_dir_movies .empty? %>
         <div><h1>From favorite directors</h1></div>
-        <%= render 'film_grid', movies: @fav_dir_movies[0..3]  %>
+        <%= render 'film_grid', movies: @fav_dir_movies[0..2]  %>
       <% end %>
     <% end %>
-  <!-- </div>
-  <div id="map"></div> -->
+  </div>
 </div>
 

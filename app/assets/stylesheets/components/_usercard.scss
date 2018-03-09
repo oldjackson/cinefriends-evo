@@ -7,7 +7,7 @@
 }
 
 .carduser {
-  height: 400px;
+  height: 300px;
   width: 200px;
   background-size: cover !important;
   background-position: center;
@@ -17,7 +17,7 @@
 }
 
 .cardimageuser {
-  height: 300px;
+  height: 200px;
   width: 200px;
   background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
   background-position: center;
@@ -34,6 +34,8 @@
   text-transform: uppercase;
   text-decoration-color: black;
   padding: 5px;
+  color:black;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
 
 .card-info2user {
@@ -44,6 +46,7 @@
   text-transform: uppercase;
   text-decoration-color: black;
   padding: 5px;
+  color:black;
 }
 
 .card-info3user {
@@ -54,6 +57,7 @@
   text-transform: uppercase;
   text-decoration-color: black;
   padding: 5px;
+  color:black;
 }
 
 .btnadduser {
@@ -92,6 +96,11 @@
   }
 }
 
+.grow:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
 .messagebox{
   color: white;
   margin-left: 20px;
