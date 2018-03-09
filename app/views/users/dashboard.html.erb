@@ -38,42 +38,53 @@
       <div class="pairings" style="border: solid green 2px;">
         <h1>Confirmed CineFriends</h1>
         <% @pairings.each do |pairing| %>
+          <% posting =  pairing.posting %>
+          <% current_user_is_poster = (posting.user == @user) %>
+          <% other_user = current_user_is_poster ? pairing.user : posting.user %>
           <div class="card-wrapper">
             <div class="carduser">
-              <div class="cardimageuser", style="background-image: url(<%= pairing.user.photo.url %>);">
+              <div class="cardimageuser", style="background-image: url(<%= other_user.photo.url %>);">
               </div>
                 <div class="card-info1user">
-                  <%= pairing.user.first_name %>
+                  <%= other_user.first_name %>
+                </div>
+                <div class="card-info2user">
+                  <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == posting.show.date.year ? posting.show.date.strftime("%-d %B") : posting.show.date.strftime("%-d %B %Y")%> <span class="glyphicon glyphicon-time "></span>   <%= posting.show.time.strftime("%-H:%M") %>
+                </div>
+                <div class="card-info3user">
+                  <%= posting.show.theater.name %>
                 </div>
             </div>
           </div>
           <div>
-            <% case pairing.status #"#"%>
-              <% when "pending" %>
-                <div class="div-booking-status pending">
-                <div>
-                  <%= pairing.status.capitalize%></div>
-                  <div style="margin: 10px;">
-                    <%= link_to "Accept", "#", class: "btn-sm btn-success" %>
-                    <%= link_to "Decline", "#", class: "btn-sm btn-danger" %>
+            <% if current_user_is_poster %>
+              <% case pairing.status #"#"%>
+                <% when "pending" %>
+                  <div class="div-booking-status pending">
+                  <div>
+                    <%= pairing.status.capitalize%></div>
+                    <div style="margin: 10px;">
+                      <%= link_to "Accept", "#", class: "btn-sm btn-success" %>
+                      <%= link_to "Decline", "#", class: "btn-sm btn-danger" %>
+                    </div>
                   </div>
-                </div>
-              <% when "accepted" %>
-                <div class="div-booking-status accepted">
-                <div>
-                  <%= pairing.status.capitalize%></div>
-                  <div style="margin: 10px;">
-                    <%= link_to "Cancel", "#", class: "btn-sm btn-danger" %>
+                <% when "accepted" %>
+                  <div class="div-booking-status accepted">
+                  <div>
+                    <%= pairing.status.capitalize%></div>
+                    <div style="margin: 10px;">
+                      <%= link_to "Cancel", "#", class: "btn-sm btn-danger" %>
+                    </div>
                   </div>
-                </div>
-              <% when "declined" %>
-                <div class="div-booking-status declined">
-                <div>
-                  <%= pairing.status.capitalize%></div>
-                  <div style="margin: 10px;">
-                    <%= link_to "Accept", "#", class: "btn-sm btn-success" %>
+                <% when "declined" %>
+                  <div class="div-booking-status declined">
+                  <div>
+                    <%= pairing.status.capitalize%></div>
+                    <div style="margin: 10px;">
+                      <%= link_to "Accept", "#", class: "btn-sm btn-success" %>
+                    </div>
                   </div>
-                </div>
+              <% end %>
             <% end %>
           </div>
         <% end %>

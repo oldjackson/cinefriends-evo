@@ -8,4 +8,5 @@ class Pairing < ApplicationRecord
   def show_date
     posting.show.date
   end
+
 end
