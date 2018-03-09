@@ -6,6 +6,9 @@
   h1 {
     color: white;
   }
+  h2 {
+    margin-bottom: 40px;
+  }
 }
 .container {
   // display: flex;
@@ -15,6 +18,16 @@
 
 .card-container {
   display: flex;
+}
+
+.card-info1 {
+  color: black !important;
+}
+.card-info2 {
+  color: black !important;
+}
+.card-info3 {
+  color: black !important;
 }
 .card1 {
   height: 300px;
@@ -85,4 +98,71 @@
   color: white;
   margin-bottom: 200px;
 }
+.btn-start{
+  // color: rgb(97, 21, 33);
+  color: white;
+  background-color: black;
+  padding: 20px;
+  margin-top: 40px;
+  font-weight: bolder;
+  font-size: 20px;
+  border-radius: 5px;
+}
+.btn-start:hover {
+  color: black;
+  background-color: white;
+}
 
+
+.cardimage1 {
+  height: 300px;
+  width: 200px;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(image_path("sample_film.jpeg"),);
+  background-size: cover !important;
+  border-radius:5px 5px 0px 0px;
+}
+
+.cardimage2 {
+  height: 300px;
+  width: 200px;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(image_path("poster_sunshine.jpg"),);
+  background-size: cover !important;
+  border-radius:5px 5px 0px 0px;
+}
+
+.cardimage3 {
+  height: 300px;
+  width: 200px;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(image_path("sideways.jpg"),);
+  background-size: cover !important;
+  border-radius:5px 5px 0px 0px;
+}
+.card-info1 {
+  position: absolute;
+  bottom: 70px;
+  left: 5px;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-decoration-color: black;
+  padding: 5px;
+}
+
+.card-info2 {
+  position: absolute;
+  bottom: 40px;
+  left: 5px;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-decoration-color: black;
+  padding: 5px;
+}
+
+.card-info3 {
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-decoration-color: black;
+  padding: 5px;
+}
