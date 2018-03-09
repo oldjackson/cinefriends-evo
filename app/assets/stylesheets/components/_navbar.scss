@@ -9,9 +9,10 @@
   align-items: center;
   justify-content: space-between;
   color: white !important;
-  // position: absolute;
+  position: absolute;
   top: 0;
   width: 100vw;
+
 }
 
 /* Logo */
@@ -38,15 +39,19 @@
   cursor: pointer;
   padding: 0 20px;
   display: inline-block !important;
+  color: white;
 }
-
+.navbar-wagon-item:hover {
+  color: #616668;
+  text-decoration: none;
+}
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
+  color: white;
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: #616668;
   text-decoration: none;
 }
 
@@ -59,7 +64,7 @@
   // margin: 0;
   // padding: 0;
   // // position: relative;
-  left: -96;
+  left: -125px !important;
 }
 .navbar-wagon-dropdown-menu li > a {
   transition: color 0.3s ease;
