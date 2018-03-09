@@ -22,9 +22,13 @@
   text-decoration:none !important;
 }
 
-.full-padded {
+.vert-padded {
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+.full-padded {
+  padding: 15px;
 }
 
 // a:hover {

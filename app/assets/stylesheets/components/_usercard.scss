@@ -3,6 +3,7 @@
 .card-wrapper{
   display: flex;
   justify-content: center;
+  color: black;
 }
 
 .carduser {
@@ -99,4 +100,11 @@
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
+
+.messagebox{
+  color: white;
+  margin-left: 20px;
+   h1{
+    color: white;
+   }
 }

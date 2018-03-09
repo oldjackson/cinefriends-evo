@@ -46,10 +46,10 @@
       <div class="posting-info">
       <% @user.postings.each do |posting| %>
         <div class="movie-poster">
-          <%= cl_image_tag posting.movie.poster, height: 220, width: 140, crop: :fill, :gravity=>"auto" %>
-        <li><%=posting.movie.title %></li>
-        <li><%=posting.theater.name %></li>
-        <li><%=posting.first_date %></li>
+          <%= cl_image_tag posting.show.movie.poster, height: 220, width: 140, crop: :fill, :gravity=>"auto" %>
+        <li><%=posting.show.movie.title %></li>
+        <li><%=posting.show.theater.name %></li>
+        <li><%=posting.show.date %></li>
         </div>
       <% end %>
       </div>
