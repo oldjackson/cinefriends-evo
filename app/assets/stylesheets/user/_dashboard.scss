@@ -6,6 +6,7 @@
 }
 
 #cal-container {
+  // width: 200px;
   height: 100vh;
   position: sticky !important; /* !important to override Gmaps inline CSS */
   top: 0 !important;
@@ -19,4 +20,17 @@
 .pairings, .unmatched-postings{
   // width: 50%;
   text-align: center;
+}
+
+.simple-calendar {
+
+  .today {
+    font-weight: bold;
+    background-color: yellow !important;
+    border-left: black dotted 1px;
+    border-right: black dotted 1px;
+  }
+  .past {}
+
+
 }

@@ -19,14 +19,13 @@
           <% pairings.each do |pairing| %>
             <% case pairing.status %>
               <% when "pending" %>
-              p
-                  <i class="fas fa-square" style="color: orange;"></i>
+                <!-- <div style="position: relative;"> -->
+                  <i class="fas fa-square" style="color: orange; position: relative;bottom: 0; right: 0;"></i>
+                <!-- </div> -->
               <% when "accepted" %>
-              a
-                <i class="fas fa-square" style="color: green;"></i>
+                <i class="fas fa-square" style="color: green; position: relative;bottom: 0; right: 0;"></i>
               <% when "declined" %>
-              d
-                <i class="fas fa-square" style="color: gray;"></i>
+                <i class="fas fa-square" style="color: gray; position: relative;bottom: 0; right: 0;"></i>
             <% end %>
           <% end %>
         <% end %>
