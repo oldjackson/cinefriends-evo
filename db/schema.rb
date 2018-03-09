@@ -111,10 +111,10 @@ ActiveRecord::Schema.define(version: 20180308113925) do
 
   create_table "theaters", force: :cascade do |t|
     t.string "name"
-    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
+    t.string "location"
   end
 
   create_table "users", force: :cascade do |t|
