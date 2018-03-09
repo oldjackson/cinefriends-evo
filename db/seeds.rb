@@ -5,7 +5,6 @@ def round_to_5_minutes(t)
 end
 
 
-
 movies = [{title:"The Seven Samurai",director:"Akira Kurosawa", remote_poster_url: "https://images-na.ssl-images-amazon.com/images/I/91OOTyd4ToL._SL1500_.jpg" },\
   {title: "Bonnie and Clyde", director: "Arthur Penn", remote_poster_url: "https://fffmoviepostermuseum.com/wp-content/uploads/2016/05/bonnie-clyde-french-movie-poster.jpg" },\
   {title: "Reservoir Dogs", director: "Quentin Tarantino", remote_poster_url: "https://sites.psu.edu/filmsforall/files/2016/11/poster-370-1dzsy8z.jpg" },\
@@ -79,10 +78,4 @@ end
   Posting.create(user: User.all.sample,show: Show.all.sample)
 end
 
-5.times do
-  Pairing.create!(
-    user: User.all.sample,
-    show: Show.all.sample,
-    posting: Posting.all.sample
-    )
-end
+
