@@ -8,7 +8,8 @@
       <div class="carduserpairing">
        <div class = "cardimageuserpairing">
         <%= image_tag @pairing.posting.user.photo.url,:class => "style_image" %>
-        <%= image_tag @pairing.user.photo.url, :class => "style_image"%>
+        <% profile_url = @pairing.user.photo.url || @pairing.user.facebook_picture_url %>
+        <%= image_tag profile_url,:class => "style_image"%>
       </div>
 
       <div class="card-info1user">
