@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :movies
-  # get '/movies/:id/postings', to: 'movies#postings', as: 'show_postings'
+
+  get "/dashboard", to: 'users#dashboard'
 
 end
