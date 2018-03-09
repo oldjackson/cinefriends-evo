@@ -6,16 +6,22 @@
   margin: 0;
   text-align: center;
   color: white !important;
-  width:300px;
+  width:200px;
   height:50px;
   top: 5%;
-  left: 43%;
+  left: calc(50% - 100px);
   position: absolute;
-
+  border : none;
 }
 .alert-info {
   background: #4e5451 !important;
+    border : none;
+
 }
 .alert-warning {
   background: $red;
+    border : none;
+
 }
+
+
