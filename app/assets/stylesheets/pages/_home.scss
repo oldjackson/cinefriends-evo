@@ -2,7 +2,7 @@
 .welcome-content{
   color: white;
   text-align: center;
-  padding: 100px 0;
+  padding: 50px 0 100px 0;
   h1 {
     color: $dim-white;
   }
@@ -19,6 +19,41 @@
 .blurrer{
   -webkit-backdrop-filter: blur(1px);
   border-radius: 50px;
+}
+
+.big-logo-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.big-logo{
+  width: 360px;
+  height: 150px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    font-weight: bold;
+    color: white;
+    margin: 0;
+  }
+  img{
+    height: 60px;
+  }
+  .top-left, .bottom-right{
+    position: absolute;
+  }
+
+  .top-left {
+    top: 0;
+    left: 0;
+  }
+
+  .bottom-right {
+    bottom: 0;
+    right: 0;
+  }
 }
 
 .card-container {

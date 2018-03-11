@@ -103,24 +103,10 @@
 }
 
 .logo {
-  width: 130px;
-  height: 60px;
-  position: relative;
+  width: 150px;
+  // height: 60px;
+  // position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.top-left, .bottom-right{
-  position: absolute;
-}
-
-.top-left {
-  top: 0;
-  left: 0;
-}
-
-.bottom-right {
-  bottom: 0;
-  right: 0;
 }
