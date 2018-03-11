@@ -1,9 +1,10 @@
-<div class="high-banner"></div>
-<div class="container">
-  <h1>CineFriends for <%= @movie.title %></h1>
+<%= render 'layouts/banner', banner_type: 'high-banner', img: image_path("banner_photo.jpeg") %>
+<!-- <div class="wide-container"> -->
 
-  <div class="main-container vert-padded">
-
+  <div class="title-wrapper">
+    <h1>CineFriends for <%= @movie.title %></h1>
+  </div>
+  <div class="main-container">
     <div id="poster-container" class= "vert-padded" >
       <div class="cardfilm-large">
         <% if @movie.poster.file.nil? %>
@@ -59,5 +60,5 @@
       <% end %>
     </div>
 
-  </div>
+  <!-- </div> -->
 </div>
