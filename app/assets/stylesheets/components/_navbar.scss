@@ -31,13 +31,6 @@
   }
 }
 
-.logo-wrapper{
-
-  img:hover{
-  // filter: grayscale(100%) blur(0.5px);
-  }
-}
-
 /* User Avatar */
 .navbar-wagon .avatar {
   height: 35px;
@@ -107,4 +100,27 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+.logo {
+  width: 130px;
+  height: 60px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-left, .bottom-right{
+  position: absolute;
+}
+
+.top-left {
+  top: 0;
+  left: 0;
+}
+
+.bottom-right {
+  bottom: 0;
+  right: 0;
 }

@@ -1,3 +1,4 @@
+<div class="high-banner"></div>
 <div class="container" style="color: white;">
   <h1 class="text-center">Pick your show</h1>
   <br>
@@ -22,19 +23,22 @@
 <div class="container">
   <div class="display">
     <% unless @movies.nil? || @movies.empty? %>
-      <div><h1>Your Results</h1></div>
+      <div><h2>Your Results</h2></div>
       <%= render 'film_grid', movies: @movies %>
     <% else %>
       <% unless @local_movies.nil? || @local_movies .empty? %>
-        <div><h1>Near you</h1></div>
+        <h2 class="on-dark">Near you</h2>
+        <br>
         <%= render 'film_grid', movies: @local_movies[0..2]  %>
       <% end %>
       <% unless @fav_movies.nil? || @fav_movies .empty? %>
-        <div><h1>Favorite films</h1></div>
+        <h2 class="on-dark">Favorite films</h2>
+        <br>
         <%= render 'film_grid', movies: @fav_movies[0..2]  %>
       <% end %>
       <% unless @fav_dir_movies.nil? || @fav_dir_movies .empty? %>
-        <div><h1>From favorite directors</h1></div>
+        <h2 class="on-dark">From favorite directors</h2>
+        <br>
         <%= render 'film_grid', movies: @fav_dir_movies[0..2]  %>
       <% end %>
     <% end %>

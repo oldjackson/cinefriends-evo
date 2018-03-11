@@ -2,9 +2,9 @@
 .welcome-content{
   color: white;
   text-align: center;
-  padding: 100px;
+  padding: 100px 0;
   h1 {
-    color: white;
+    color: $dim-white;
   }
   h2 {
     margin-bottom: 40px;
@@ -14,6 +14,11 @@
   // display: flex;
   justify-content: space-between;
   margin-top: 50px;
+}
+
+.blurrer{
+  -webkit-backdrop-filter: blur(1px);
+  border-radius: 50px;
 }
 
 .card-container {
@@ -99,20 +104,21 @@
   margin-bottom: 200px;
 }
 .btn-start{
-  // color: rgb(97, 21, 33);
-  color: white;
-  background-color: black;
+  color: $dark-red;
+  // color: white;
+  background-color: $dim-white;
   padding: 20px;
   margin-top: 40px;
   font-weight: bolder;
   font-size: 20px;
   border-radius: 5px;
+  border: white;
+  &:hover {
+    // color: black;
+    background-color: white;
+    color: $dark-red;
+  }
 }
-.btn-start:hover {
-  color: black;
-  background-color: white;
-}
-
 
 .cardimage1 {
   height: 300px;

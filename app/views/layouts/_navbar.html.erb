@@ -2,8 +2,11 @@
   <!-- Logo -->
 
   <%= link_to billboard_path, class: "navbar-wagon-brand" do %>
-      <div class="logo-wrapper"><%= image_tag "claquete.png" %></div>
-      <h4>CineFriends</h4>
+      <div class="logo">
+        <%= image_tag "frameL.png", width: 30, class: "top-left" %>
+        <p><h4>CineFriends</h4></p>
+        <%= image_tag "frameR.png", width: 30, class: "bottom-right" %>
+      </div>
   <% end %>
 
   <!-- Right Navigation -->
