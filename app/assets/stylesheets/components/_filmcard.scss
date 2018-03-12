@@ -14,7 +14,9 @@
   margin-bottom: 50px;
   justify-content: space-around;
 }
-
+.grow {
+  transition: all 0.5s ease;
+}
 .grow:hover {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);

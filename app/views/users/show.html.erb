@@ -1,15 +1,19 @@
+<% gradient_str = "-webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.9) 90%, rgba(0, 0, 0, 1) 100%)"  %>
+<%= render 'layouts/banner', banner_type: 'banner', img_url: image_path("film-roll.jpeg"), gradient: gradient_str %>
+<div class="title-wrapper">
+  <h1><%= @user.first_name %>'s Profile</h1>
+</div>
 <div class="container">
   <div class="container-all">
 
     <div class="col-left">
-      <h3>Profile</h3>
       <% if @user.facebook_picture_url %>
         <div class="user-photo">
-          <%= cl_image_tag @user.facebook_picture_url, height: 200, width: 200, crop: :fill, :radius=>10 %>
+          <%= cl_image_tag @user.facebook_picture_url, height: 250, width: 250, crop: :fill%>
         </div>
       <% elsif %>
         <div class="user-photo">
-          <%= cl_image_tag @user.photo, height: 200, width: 200, crop: :fill, :radius=>10 %>
+          <%= cl_image_tag @user.photo, height: 200, width: 200, crop: :fill%>
         </div>
       <% else %>
         <div class="empty-picture"">
@@ -20,19 +24,19 @@
       <br>
 
       <div class="personal-info">
-        <div>Name: <%= @user.first_name %></div>
-        <div>City: <%= @user.city %></div>
+        <p><strong>City </strong><span class="glyphicon glyphicon-map-marker"></span></p>
+        <div><%= @user.city %></div>
       </div>
       <br>
       <div class="movie-info">
-        <p><strong>Favorite Films</strong></p>
+        <p><strong>Favorite Films </strong><span class="glyphicon glyphicon-facetime-video "></span></p>
         <% @user.favmovies.each do |favmovie| %>
           <div><%=favmovie.title %></div>
         <% end %>
       </div>
       <br>
       <div class="director-info">
-        <p><strong>Favorite Directors</strong></p>
+        <p><strong>Favorite Directors </strong><span class="glyphicon glyphicon-user"></span></p>
         <% @user.favdirectors.each do |favdirector| %>
           <div><%=favdirector.name %></div>
         <% end %>
