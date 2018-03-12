@@ -1,8 +1,13 @@
+.dashboard-container {
+  margin-top: 140px;
+  padding: 0 50px;
+}
+
 .dashboard-container, .show-container{
   display: flex;
-  img{
-    border-radius: 10px;
-  }
+  // img{
+  //   border-radius: 10px;
+  // }
 }
 
 #user-cal-container {
@@ -13,13 +18,30 @@
 }
 
 #user-container{
+  width: 25vw;
   display: flex;
-  justify-content: space-evenly;
+  // justify-content: space-bet;
   align-items: center;
-  h2{
-    margin: 0 !important;
+  // h2{
+  //   // flex: 1 0 auto;
+  //   margin: 0 !important;
+  //   text-align: center;
+  // }
+  img{
+    border-radius: 5px;
   }
   margin-bottom: 30px;
+}
+
+#greeting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 ;
+  text-align: center;
+  h2 {
+    margin: 0 !important;
+  }
 }
 
 #cal-container{
@@ -29,7 +51,7 @@
 }
 
 .show-container{
-  flex: 1 0 auto;
+  flex: 1 ;
 }
 
 .pairings, .unmatched-postings{
@@ -42,6 +64,9 @@
   margin: 15px;
   background-color: #e0e0e0;
   border-radius: 15px;
+  img{
+    border-radius: 10px;
+  }
 }
 
 .posting-info {
