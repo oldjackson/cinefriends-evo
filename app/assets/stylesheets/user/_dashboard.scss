@@ -46,8 +46,10 @@
 
 #cal-container{
   padding: 5px;
-  background-color: #c0c0c0;
+  background-color: $body-bg;
   color: black;
+  // box-shadow: 0px 0px 4px 0px $light-gray;
+  border-radius: 2px;
 }
 
 .show-container{
@@ -84,6 +86,25 @@
 }
 
 .simple-calendar {
+  color: $dim-white;
+  background-color: $body-bg;
+
+  a{
+    color: $dark-red;
+    font-weight: bold;
+  }
+  .calendar-title{
+    font-weight: bold;
+  }
+  .calendar-heading{
+    // text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  tr:nth-child(odd) > td{
+    color: black;
+  }
 
   .today {
     font-weight: bold;
