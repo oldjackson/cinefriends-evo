@@ -15,6 +15,7 @@
 
 .display h1{
   margin-bottom: 25px;
+
 }
 
 .card {
@@ -103,14 +104,9 @@
   // border-radius: 3px;
 }
 
-.btn-back:hover {
-  // color: black;
-  // background-color: rgba(125, 30, 27, 0.9);
-}
-
 .btn-search{
   color: white;
-  background-color: rgb(125, 30, 27);
+  background-color: $dark-red;
   font-size: 15px !important;
   padding: 5px !important;
 }
@@ -145,4 +141,8 @@
 .booking-form p{
   text-align: center;
   font-size: 20px;
+}
+
+.on-dark{
+  color: $dark-red !important;
 }

@@ -2,18 +2,54 @@
 .welcome-content{
   color: white;
   text-align: center;
-  padding: 100px;
+  padding: 50px 0 100px 0;
   h1 {
-    color: white;
+    color: $dim-white;
   }
   h2 {
     margin-bottom: 40px;
   }
 }
-.container {
-  // display: flex;
-  justify-content: space-between;
-  margin-top: 50px;
+
+.blurrer{
+  -webkit-backdrop-filter: blur(1px);
+  // border-radius: 50px;
+  // position: absolute;
+}
+
+.big-logo-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.big-logo{
+  width: 360px;
+  height: 150px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    font-weight: bold;
+    color: white;
+    margin: 0;
+  }
+  img{
+    height: 60px;
+  }
+  .top-left, .bottom-right{
+    position: absolute;
+  }
+
+  .top-left {
+    top: 0;
+    left: 0;
+  }
+
+  .bottom-right {
+    bottom: 0;
+    right: 0;
+  }
 }
 
 .card-container {
@@ -99,20 +135,21 @@
   margin-bottom: 200px;
 }
 .btn-start{
-  // color: rgb(97, 21, 33);
-  color: white;
-  background-color: black;
+  color: $dark-red;
+  // color: white;
+  background-color: $dim-white;
   padding: 20px;
   margin-top: 40px;
   font-weight: bolder;
   font-size: 20px;
   border-radius: 5px;
+  border: white;
+  &:hover {
+    // color: black;
+    background-color: white;
+    color: $dark-red;
+  }
 }
-.btn-start:hover {
-  color: black;
-  background-color: white;
-}
-
 
 .cardimage1 {
   height: 300px;

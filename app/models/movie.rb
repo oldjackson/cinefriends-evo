@@ -4,6 +4,7 @@ class Movie < ApplicationRecord
   has_many :postings, through: :shows, dependent: :destroy
 
   mount_uploader :poster, PhotoUploader
+  mount_uploader :frame, PhotoUploader
 
   validates :title, presence: true
 
