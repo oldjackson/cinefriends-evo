@@ -3,6 +3,7 @@
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0),0 1px 0 0 rgba(0,0,0,0);
   // background: transparent;
   background: rgba(34,34,34,0.6);
+  background: linear-gradient(180deg, rgba(34,34,34,0.9), rgba(34,34,34,0.3));
   transition: all 0.3s ease;
   height: 70px;
   padding: 0px 50px 0px 50px;
@@ -14,7 +15,7 @@
   top: 0;
   width: 100vw;
   -webkit-backdrop-filter: blur(3px);
-  border-bottom: dotted $dark-gray 0.5px;
+  // border-bottom: dotted $dark-gray 0.5px;
 }
 
 /* Logo */
@@ -111,3 +112,4 @@
   align-items: center;
   justify-content: space-between;
 }
+
