@@ -92,6 +92,9 @@
               </div>
             </div>
             <% if current_user_is_poster %>
+              <div class="div-pairing-origin">
+                <%= other_user.first_name %> replied to your post on <%= pairing.created_at.strftime("%-d %B") %> at <%= pairing.created_at.strftime("%-H:%M") %>.
+              </div>
               <% case pairing.status #"#"%>
               <% when "pending" %>
                 <div class="div-pairing-status pending">
@@ -104,14 +107,45 @@
               <% when "accepted" %>
                 <div class="div-pairing-status accepted">
                   <div>
-                    <%= pairing.status.capitalize%>
+                    <%# pairing.status.capitalize%>
+                    You accepted on <%= pairing.updated_at.strftime("%-d %B") %> at <%= pairing.updated_at.strftime("%-H:%M") %>.
                   </div>
                   <%= link_to "Cancel", "#", class: "btn-sm btn-danger" %>
+                  <%= link_to "Message", "#", class: "btn-sm btn-primary" %>
                 </div>
               <% when "declined" %>
                 <div class="div-pairing-status declined">
                   <div>
+                    <%#= pairing.status.capitalize%>
+                    You declined on <%= pairing.updated_at.strftime("%-d %B") %> at <%= pairing.updated_at.strftime("%-H:%M") %>.
+                  </div>
+                  <%= link_to "Accept", "#", class: "btn-sm btn-success" %>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="div-pairing-origin">
+                You replied to <%= other_user.first_name %>'s  post on <%= pairing.created_at.strftime("%-d %B") %> at <%= pairing.created_at.strftime("%-H:%M") %>.
+              </div>
+              <% case pairing.status %>
+              <% when "pending" %>
+                <div class="div-pairing-status pending">
+                  <!-- <div> -->
                     <%= pairing.status.capitalize%>
+                  <!-- </div>                   -->
+                </div>
+              <% when "accepted" %>
+                <div class="div-pairing-status accepted">
+                  <div>
+                    <%# pairing.status.capitalize%>
+                    <%= other_user.first_name %> accepted on <%= pairing.updated_at.strftime("%-d %B") %> at <%= pairing.updated_at.strftime("%-H:%M") %>.
+                  </div>
+                  <%= link_to "Message", "#", class: "btn-sm btn-primary" %>
+                </div>
+              <% when "declined" %>
+                <div class="div-pairing-status declined">
+                  <div>
+                    <%#= pairing.status.capitalize%>
+                    You declined on <%= pairing.updated_at.strftime("%-d %B") %> at <%= pairing.updated_at.strftime("%-H:%M") %>.
                   </div>
                   <%= link_to "Accept", "#", class: "btn-sm btn-success" %>
                 </div>
