@@ -45,8 +45,11 @@
     </div>
 
     <div class="col-right">
-
-      <h3>Previous Movies (for now is postings)</h3>
+      <h3>"<%= @user.fav_quote %>"</h3>
+      <br>
+      <h4>About <%= @user.first_name%>...</h4>
+      <p><%= @user.about_me %></p>
+      <h3><%= @user.first_name %>'s Previous Cinefriends Pairings</h3>
       <div class="posting-info">
       <% @user.postings.each do |posting| %>
         <div class="movie-poster">
