@@ -127,10 +127,5 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
   } else {
     map.fitLatLngBounds(markers);
   }
-  map.addStyle({
-    styles: styles,
-    mapTypeId: 'map_style'
-  });
-  map.setStyle('map_style');
-
 }
+
