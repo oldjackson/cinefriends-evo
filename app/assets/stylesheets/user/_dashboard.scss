@@ -53,12 +53,15 @@
 
 .posting
 {
-  padding: 15px;
+  position: relative;
+  padding-top: 1px;
+  padding-bottom: 15px;
   margin: 15px;
-  background-color: #e0e0e0;
-  border-radius: 15px;
-  img{
-    border-radius: 10px;
+  color: black;
+  background-color: $dim-white;
+  border-radius: 5px;
+  h3 {
+    margin: 0;
   }
 }
 
@@ -70,10 +73,51 @@
   display: flex;
   justify-content: space-around;
   margin-bottom: 5px;
+  position: relative;
+  padding: 10px 0;
+  width: 420px;
+}
+
+.pairing-status-frame{
+  position: absolute;
+  top: 4px;
+  bottom: 2px;
+  left: 5px;
+  right: 5px;
+  border: 3px green solid;
+  border-radius: 3px;
+}
+
+.pairing-status-label{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  div{
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border-bottom-left-radius : 2px;
+    border-bottom-right-radius : 2px;
+    margin-bottom: 2px;
+    padding: 0 3px 1px 3px;
+  }
 }
 
 .movie-container {
-  width: 250px;
+  width: 220px;
+  img {
+    border-radius: 5px;
+  }
+}
+
+.friend-container {
+  position: relative;
+  width: 180px;
 }
 
 .simple-calendar {
@@ -143,3 +187,7 @@
     color: gray;
   }
 }
+
+// .pair-user-wrapper{
+  // position: relative;
+// }
