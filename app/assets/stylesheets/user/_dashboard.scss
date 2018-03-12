@@ -1,35 +1,50 @@
+.dashboard-container {
+  margin-top: 140px;
+  padding: 0 50px;
+}
+
 .dashboard-container, .show-container{
   display: flex;
-  img{
-    border-radius: 10px;
-  }
 }
 
 #user-cal-container {
-  // width: 200px;
   height: 100vh;
   position: sticky !important; /* !important to override Gmaps inline CSS */
   top: 0 !important;
 }
 
 #user-container{
+  width: 25vw;
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
-  h2{
-    margin: 0 !important;
+
+  img{
+    border-radius: 5px;
   }
   margin-bottom: 30px;
 }
 
+#greeting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 ;
+  text-align: center;
+  h2 {
+    margin: 0 !important;
+  }
+}
+
 #cal-container{
   padding: 5px;
-  background-color: #c0c0c0;
+  background-color: $body-bg;
   color: black;
+  // box-shadow: 0px 0px 4px 0px $light-gray;
+  border-radius: 2px;
 }
 
 .show-container{
-  flex: 1 0 auto;
+  flex: 1 ;
 }
 
 .pairings, .unmatched-postings{
@@ -42,6 +57,9 @@
   margin: 15px;
   background-color: #e0e0e0;
   border-radius: 15px;
+  img{
+    border-radius: 10px;
+  }
 }
 
 .posting-info {
@@ -59,6 +77,24 @@
 }
 
 .simple-calendar {
+  color: $dim-white;
+  background-color: $body-bg;
+
+  a{
+    color: $dark-red;
+    font-weight: bold;
+  }
+  .calendar-title{
+    font-weight: bold;
+  }
+  .calendar-heading{
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  tr:nth-child(odd) > td{
+    color: black;
+  }
 
   .today {
     font-weight: bold;
