@@ -1,3 +1,6 @@
+.container{
+  margin: 0px
+}
 .container-all {
   display: flex;
 }
@@ -12,6 +15,9 @@
   // border: 1px solid brown;
 }
 
+.user-photo {
+  border-radius: 100%;
+}
 .col-right {
   margin-top: 50px;
     width: 60vw;
@@ -42,4 +48,17 @@ li {
 .btn-back:hover {
   color: black;
   background-color: rgba(125, 30, 27, 0.9);
+}
+
+.title-wrapper {
+  margin-top: 180px;
+  display: flex;
+  justify-content: center;
+  position: sticky !important; /* !important to override Gmaps inline CSS */
+  top: 0 !important;
+  z-index: 2;
+  background-color: transparent !important;
+  strong {
+    color: $dark-red;
+  }
 }
