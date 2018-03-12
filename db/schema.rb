@@ -115,6 +115,8 @@ ActiveRecord::Schema.define(version: 20180311202103) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
+    t.float "latitude"
+    t.float "longitude"
     t.string "location"
   end
 
