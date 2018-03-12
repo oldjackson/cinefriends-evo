@@ -4,4 +4,9 @@ class Pairing < ApplicationRecord
   has_many :messages
 
   validates :status, inclusion: {in: %w(pending accepted declined)}
+
+  def show_date
+    posting.show.date
+  end
+
 end

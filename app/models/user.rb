@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :favmovies, through: :favmovie_users
   has_many :messages
   has_many :postings, dependent: :destroy
+  has_many :shows, through: :postings
+  has_many :movies, through: :shows
   has_many :pairings
 
   validates :first_name, presence: true

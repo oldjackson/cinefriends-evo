@@ -1,9 +1,6 @@
 // Place all the styles related to the Cars controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body{
-  // background-color: black !important;
-}
 
 .text-center {
   margin-bottom: 20px;
@@ -16,7 +13,8 @@ body{
   padding-right: 20px;
 }
 
-.container h1{
+.display h1{
+  margin-bottom: 25px;
 
 }
 
@@ -25,9 +23,13 @@ body{
   text-decoration:none !important;
 }
 
-.full-padded {
+.vert-padded {
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+.full-padded {
+  padding: 15px;
 }
 
 // a:hover {
@@ -102,14 +104,9 @@ body{
   // border-radius: 3px;
 }
 
-.btn-back:hover {
-  // color: black;
-  // background-color: rgba(125, 30, 27, 0.9);
-}
-
 .btn-search{
   color: white;
-  background-color: rgb(125, 30, 27);
+  background-color: $dark-red;
   font-size: 15px !important;
   padding: 5px !important;
 }
@@ -144,4 +141,8 @@ body{
 .booking-form p{
   text-align: center;
   font-size: 20px;
+}
+
+.on-dark{
+  color: $dark-red !important;
 }

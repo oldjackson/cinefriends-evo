@@ -1,13 +1,17 @@
 <div class="navbar-wagon">
   <!-- Logo -->
 
-  <%= link_to image_tag("claquete.png"), @root %>
-
+  <%= link_to billboard_path, class: "navbar-wagon-brand" do %>
+      <div class="logo">
+        <%= image_tag "frame.png", height: 40 %>
+        <h4>CineFriends</h4>
+      </div>
+  <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <a href="" class="navbar-wagon-item"><i class="fa fa-search"></i></a>
+    <a href=<%= billboard_path %> class="navbar-wagon-item"><i class="fa fa-search"></i></a>
 
     <!-- Profile picture with dropdown list -->
     <div class="navbar-wagon-item">
@@ -17,7 +21,7 @@
         <% avatar_url = current_user.facebook_picture_url || current_user.photo.url(:button_thumb) || "http://placehold.it/30x30"%>
         <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">Dashboard</a></li>
+          <li><a href=<%= dashboard_path %>>Dashboard</a></li>
           <li><a href="#">Messages</a></li>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
         </ul>

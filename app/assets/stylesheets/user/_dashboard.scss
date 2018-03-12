@@ -1,0 +1,109 @@
+.dashboard-container, .show-container{
+  display: flex;
+  img{
+    border-radius: 10px;
+  }
+}
+
+#user-cal-container {
+  // width: 200px;
+  height: 100vh;
+  position: sticky !important; /* !important to override Gmaps inline CSS */
+  top: 0 !important;
+}
+
+#user-container{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  h2{
+    margin: 0 !important;
+  }
+  margin-bottom: 30px;
+}
+
+#cal-container{
+  padding: 5px;
+  background-color: #c0c0c0;
+  color: black;
+}
+
+.show-container{
+  flex: 1 0 auto;
+}
+
+.pairings, .unmatched-postings{
+  text-align: center;
+}
+
+.posting
+{
+  padding: 15px;
+  margin: 15px;
+  background-color: #e0e0e0;
+  border-radius: 15px;
+}
+
+.posting-info {
+  color: black; padding: 10px;
+}
+
+.movie-friend-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 5px;
+}
+
+.movie-container {
+  width: 250px;
+}
+
+.simple-calendar {
+
+  .today {
+    font-weight: bold;
+    background-color: yellow !important;
+    border-left: black dotted 1px;
+    border-right: black dotted 1px;
+  }
+  .past {}
+}
+
+.div-pairing-status{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  div {
+    font-size: 15px;
+  }
+  &.pending{
+    background-color: orange;
+  }
+  &.accepted{
+    background-color: #4DA04E;
+  }
+  &.declined{
+    background-color: #c0c0c0;
+    color: gray;
+  }
+  // .btn-sm{
+  //   margin: 5px;
+  // }
+}
+
+.fas.fa-square{
+  position: relative;
+  bottom: 0; right: 0;
+  &.pending{
+    color: orange;
+  }
+  &.accepted{
+    color: green;
+  }
+  &.declined{
+    color: gray;
+  }
+}
