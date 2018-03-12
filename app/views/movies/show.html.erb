@@ -41,17 +41,25 @@
           <% @postings.each do |posting| %>
             <div class="col-xs-12 col-sm-6 vert-padded">
               <div class="card-wrapper">
-                <div class="carduser">
-                  <div class="cardimageuser", style="background-image: url(<%= posting.user.photo.url %>);">
+                <div class="carduser", style="background-image: url(<%= image_path("film-strip.jpeg") %>);">
+
+                  <div class="cardimageuser grow">
+                  <%= link_to image_tag(posting.user.photo.url, style: "height: 150px; width: 150px; border-radius:100%;"), {controller: "users", action: "show", id: posting.user.id} %>
                   </div>
-                    <div class="card-info1user">
-                      <%= posting.user.first_name %>
-                    </div>
-                    <div class="card-info2user">
-                      <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == posting.show.date.year ? posting.show.date.strftime("%-d %B") : posting.show.date.strftime("%-d %B %Y")%> <span class="glyphicon glyphicon-time "></span>   <%= posting.show.time.strftime("%-H:%M") %>
-                    </div>
-                    <div class="card-info3user">
-                      <%= posting.show.theater.name %>
+
+                    <div class="card-info">
+                      <div class="card-info1user">
+                        <%= posting.user.first_name %>
+                      </div>
+                      <div class="card-info2user">
+                        <span class="glyphicon glyphicon-time "></span>   <%= posting.show.time.strftime("%-H:%M") %>
+                      </div>
+                      <div class="card-info3user">
+                        <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == posting.show.date.year ? posting.show.date.strftime("%-d %B") : posting.show.date.strftime("%-d %B %Y")%>
+                      </div>
+                      <div class="card-info4user"><span class="glyphicon glyphicon-facetime-video "></span>
+                        <%= posting.show.theater.name %>
+                      </div>
                     </div>
                     <%= link_to posting_pairings_path(posting), method: :post do %>
                       <div class="btnadduser grow"></div>
