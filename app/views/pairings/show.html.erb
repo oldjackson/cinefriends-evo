@@ -5,7 +5,7 @@
 
   <div class="col-xs-12 col-sm-6 full-padded">
     <div class="card-wrapper">
-      <div class="carduserpairing">
+      <div class="carduserpairing", style="background-image: url(<%= image_path("film-strip.jpeg") %>);">
        <div class = "cardimageuserpairing">
         <%= image_tag @pairing.posting.user.photo.url,:class => "style_image" %>
         <% profile_url = @pairing.user.photo.url || @pairing.user.facebook_picture_url %>
@@ -16,9 +16,12 @@
         <p><%= @pairing.posting.user.first_name %> & <%= @pairing.user.first_name %></p>
       </div>
       <div class="card-info2user">
-        <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == @pairing.posting.show.date.year ? @pairing.posting.show.date.strftime("%-d %B") : @pairing.posting.show.date.strftime("%-d %B %Y")%> <span class="glyphicon glyphicon-time "></span>   <%= @pairing.posting.show.time.strftime("%-H:%M") %>
+        <span class="glyphicon glyphicon-time "></span>   <%= @pairing.posting.show.time.strftime("%-H:%M") %>
       </div>
       <div class="card-info3user">
+        <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == @pairing.posting.show.date.year ? @pairing.posting.show.date.strftime("%-d %B") : @pairing.posting.show.date.strftime("%-d %B %Y")%>
+      </div>
+      <div class="card-info4user"><span class="glyphicon glyphicon-facetime-video "></span>
         <%= @pairing.posting.show.theater.name %>
       </div>
     </div>
@@ -29,11 +32,11 @@
 
 <div class="col-xs-12 col-sm-6">
   <div class="messagebox">
-    <h1>Contact your CineFriend</h1>
+    <h1>Contact <%=@pairing.posting.user.first_name %> To Arrange</h1>
 
     <%= simple_form_for [@pairing, @message] do |f| %>
     <div class="form-inputs">
-      <%= f.input :content,required: true %>
+      <%= f.input :content,required: true, prompt: 'Tell your CineFriend why you are excited to see the film and what time you should meet in front of the theater.' %>
     </div>
 
     <div class="form-actions">
