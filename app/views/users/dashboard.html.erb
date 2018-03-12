@@ -41,6 +41,7 @@
   <div class="show-container" >
     <div class="pairings">
       <h1>CineFriends appointments</h1>
+      <% #binding.pry %>
       <% @pairings.each do |pairing| %>
         <% posting =  pairing.posting %>
         <% show =  posting.show %>
@@ -50,11 +51,11 @@
           <div class="film-name">
             <h3><%= show.movie.title.upcase %></h3>
           </div>
-            <div class="pairing-status-label">
+            <!-- <div class="pairing-status-label">
               <div>Accepted</div>
-            </div>
+            </div> -->
           <div class="movie-friend-container">
-            <div class="pairing-status-frame"></div>
+            <!-- <div class="pairing-status-frame"></div> -->
             <div class="movie-container" >
               <%# link_to posting_path(posting) do %>
                 <div class="thumb-wrapper">
@@ -86,13 +87,12 @@
                     <div class="card-info4user"> <span class="glyphicon glyphicon-facetime-video"></span>
                       <%= posting.show.theater.name %>
                     </div>
+                  <!-- </div>
+                </div> -->
+              </div>
             </div>
-                <!-- </div> -->
-              <!-- </div> -->
-            </div>
-          </div>
-          <% if current_user_is_poster %>
-            <% case pairing.status #"#"%>
+            <% if current_user_is_poster %>
+              <% case pairing.status #"#"%>
               <% when "pending" %>
                 <div class="div-pairing-status pending">
                   <div>
@@ -115,9 +115,10 @@
                   </div>
                   <%= link_to "Accept", "#", class: "btn-sm btn-success" %>
                 </div>
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
+          </div>
+        <!-- </div> -->
       <% end %>
     </div>
     <div class="unmatched-postings">
