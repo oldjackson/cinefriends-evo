@@ -5,7 +5,7 @@
 <%= render 'layouts/banner', banner_type: 'high-banner', img_url: img_url, gradient: gradient_str %>
 <!-- <div class="wide-container"> -->
 
-  <div class="title-wrapper">
+  <div class="movie-title-wrapper">
     <h1>CineFriends for <span style="display:inline-block;"></span><strong><%=@movie.title %></strong></h1>
   </div>
   <div class="main-container">
@@ -40,7 +40,7 @@
         <div class="row">
           <% @postings.each do |posting| %>
             <div class="col-xs-12 col-sm-6 vert-padded">
-              <div class="card-wrapper">
+              <div class="user-card-wrapper">
                 <div class="carduser", style="background-image: url(<%= image_path("film-strip.jpeg") %>);">
 
                   <div class="cardimageuser grow">

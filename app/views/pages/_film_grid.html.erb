@@ -3,7 +3,7 @@
     <% movies.each do |movie| %>
       <div class="col-xs-6 col-sm-4">
         <%= link_to movie_path(movie) do %>
-          <div class="card-wrapper">
+          <div class="film-card-wrapper">
             <div class="cardfilm grow">
               <div class="thumb-wrapper">
                 <% if movie.poster.file.nil? %>
