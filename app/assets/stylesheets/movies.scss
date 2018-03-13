@@ -17,7 +17,7 @@
 
 .empty-poster {
   border: 1px solid black;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   p{
@@ -43,7 +43,7 @@
   font-size: 20px;
 }
 
-.title-wrapper {
+.movie-title-wrapper {
   margin-top: 180px;
   display: flex;
   justify-content: center;
@@ -55,3 +55,20 @@
     color: $dark-red;
   }
 }
+.btn-form {
+  color: black !important;
+  background-color: rgb(125, 30, 27) !important;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 3px;
+  margin-left: 340px;
+}
+
+.btn-form:hover {
+    color: black !important;
+  background-color: rgb(125, 30, 27) !important;
+}
+
+
