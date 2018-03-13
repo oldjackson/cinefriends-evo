@@ -1,7 +1,7 @@
 class PairingsController < ApplicationController
   before_action :user
   before_action :set_posting, only: [:create, :edit]
-  before_action :set_pairing, only: [:show, :decline, :accept]
+  before_action :set_pairing, only: [:show, :decline, :accept, :decline]
 
   def show
     @message = Message.new
@@ -24,6 +24,24 @@ class PairingsController < ApplicationController
     end
   end
 
+  def accept
+    @pairing.status = 'accepted'
+    if @pairing.save
+      redirect_to dashboard_path
+    else
+      redirect_to dashboard_path, alert: "The appointment could not be accepted"
+    end
+  end
+
+  def decline
+    @pairing.status ='declined'
+    if @pairing.save
+      redirect_to dashboard_path
+    else
+      redirect_to dashboard_path, alert: "The appointment could not be declined"
+    end
+  end
+
 
   private
 
@@ -39,7 +57,7 @@ class PairingsController < ApplicationController
     # binding.pry
     @pairing = Pairing.find(params[:id])
     unless @pairing.posting.user == current_user || @pairing.user == current_user
-      redirect_to dashboard_path, alert: "The pairing you are trying to alter is not about any of your posting."
+      redirect_to dashboard_path, alert: "You cannot alter this appointment."
     end
   end
 

@@ -40,7 +40,9 @@
 
   <div class="show-container" >
     <div class="pairings">
-      <h1>CineFriends appointments</h1>
+      <div class="dashboard-title-wrapper">
+        <h1>CineFriends found</h1>
+      </div>
       <% #binding.pry %>
       <% @pairings.each do |pairing| %>
         <% posting =  pairing.posting %>
@@ -99,44 +101,39 @@
               <% when "pending" %>
                 <div class="div-pairing-status pending">
                   <div>
-                    <%= pairing.status.capitalize%>
+                    Your reply is pending...
                   </div>
-                  <%= link_to "Accept", "#", class: "btn-sm btn-success" %>
-                  <%= link_to "Decline", "#", class: "btn-sm btn-danger" %>
+                  <%= link_to "Accept", accept_path(pairing), class: "btn-sm btn-success" %>
+                  <%= link_to "Decline", decline_path(pairing), class: "btn-sm btn-danger" %>
                 </div>
               <% when "accepted" %>
                 <div class="div-pairing-status accepted">
                   <div>
-                    <%# pairing.status.capitalize%>
                     You accepted on <%= pairing.updated_at.strftime("%-d %B") %> at <%= pairing.updated_at.strftime("%-H:%M") %>.
                   </div>
-                  <%= link_to "Cancel", "#", class: "btn-sm btn-danger" %>
+                  <%= link_to "Cancel", decline_path(pairing), class: "btn-sm btn-danger" %>
                   <%= link_to "Message", "#", class: "btn-sm btn-primary" %>
                 </div>
               <% when "declined" %>
                 <div class="div-pairing-status declined">
                   <div>
-                    <%#= pairing.status.capitalize%>
                     You declined on <%= pairing.updated_at.strftime("%-d %B") %> at <%= pairing.updated_at.strftime("%-H:%M") %>.
                   </div>
-                  <%= link_to "Accept", "#", class: "btn-sm btn-success" %>
+                  <%= link_to "Accept", accept_path(pairing), class: "btn-sm btn-success" %>
                 </div>
               <% end %>
             <% else %>
               <div class="div-pairing-origin">
-                You replied to <%= other_user.first_name %>'s  post on <%= pairing.created_at.strftime("%-d %B") %> at <%= pairing.created_at.strftime("%-H:%M") %>.
+                You replied to <%= other_user.first_name.possessive %> post on <%= pairing.created_at.strftime("%-d %B") %> at <%= pairing.created_at.strftime("%-H:%M") %>.
               </div>
               <% case pairing.status %>
               <% when "pending" %>
                 <div class="div-pairing-status pending">
-                  <!-- <div> -->
-                    <%= pairing.status.capitalize%>
-                  <!-- </div>                   -->
+                  Waiting for <%= other_user.first_name.possessive %> answer...
                 </div>
               <% when "accepted" %>
                 <div class="div-pairing-status accepted">
                   <div>
-                    <%# pairing.status.capitalize%>
                     <%= other_user.first_name %> accepted on <%= pairing.updated_at.strftime("%-d %B") %> at <%= pairing.updated_at.strftime("%-H:%M") %>.
                   </div>
                   <%= link_to "Message", "#", class: "btn-sm btn-primary" %>
@@ -144,10 +141,8 @@
               <% when "declined" %>
                 <div class="div-pairing-status declined">
                   <div>
-                    <%#= pairing.status.capitalize%>
-                    You declined on <%= pairing.updated_at.strftime("%-d %B") %> at <%= pairing.updated_at.strftime("%-H:%M") %>.
+                    <%= other_user.first_name %> declined on <%= pairing.updated_at.strftime("%-d %B") %> at <%= pairing.updated_at.strftime("%-H:%M") %>.
                   </div>
-                  <%= link_to "Accept", "#", class: "btn-sm btn-success" %>
                 </div>
               <% end %>
             <% end %>
@@ -156,7 +151,9 @@
       <% end %>
     </div>
     <div class="unmatched-postings">
-      <h1>Your postings</h1>
+      <div class="dashboard-title-wrapper">
+        <h1>Your postings</h1>
+      </div>
       <% @unmatched_postings.each do |posting| %>
         <% show = posting.show  %>
         <div class="posting">

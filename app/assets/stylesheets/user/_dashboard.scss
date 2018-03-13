@@ -51,6 +51,10 @@
   text-align: center;
 }
 
+.pairings{
+  margin-right: 50px;
+}
+
 .posting
 {
   position: relative;
@@ -188,6 +192,16 @@
   }
 }
 
-// .pair-user-wrapper{
-  // position: relative;
-// }
+.dashboard-title-wrapper {
+  padding: 10px 0 20px 0;
+  // margin-top: 180px;
+  // display: flex;
+  // justify-content: center;
+  position: sticky !important; /* !important to override Gmaps inline CSS */
+  top: 0 !important;
+  z-index: 2;
+  background-color: black;
+  // strong {
+  //   color: $dark-red;
+  // }
+}
