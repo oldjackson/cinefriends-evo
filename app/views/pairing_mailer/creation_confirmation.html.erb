@@ -1,0 +1,15 @@
+
+<p>Hi <%= @pairing.posting.user.first_name %>,</p>
+<p>We are excited to let you know that you have a cinema pairing waiting for your confirmation!</p>
+
+<p><%=@pairing.posting.user.first_name %> would like to join you to see:</p>
+<p>Film: <%= @pairing.posting.show.movie.title %></p>
+<p>Date: <%= Date.today.year == @pairing.posting.show.date.year ? @pairing.posting.show.date.strftime("%-d %B") : @pairing.posting.show.date.strftime("%-d %B %Y") %></p>
+<p>Time: <%= @pairing.posting.show.time.strftime("%-H:%M") %></p>
+<p>Cinema: <%= @pairing.posting.show.theater.name %></p>
+
+<%= link_to "Click to Accept", dashboard_url %>
+
+<p>See you at the movies!</p>
+
+<p>Your team at CineFriends</p>
