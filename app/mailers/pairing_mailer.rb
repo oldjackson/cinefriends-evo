@@ -6,5 +6,5 @@ class PairingMailer < ApplicationMailer
   #     to:       @pairing.posting.user.email,
   #     subject:  "You're going to the movies!"
   #   )
-  end
+  # end
 end
