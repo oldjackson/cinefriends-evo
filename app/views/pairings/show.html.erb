@@ -43,7 +43,9 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Send", class: "btn-form" %>
+      <div class="send-button">
+      <%= f.button :submit, "Send", class: "btn btn-block", style: "background:#7d1e1b; color:white; border: #7d1e1b" %>
+       </div>
     </div>
     <% end %>
     <% @messages.each do |message| %>
