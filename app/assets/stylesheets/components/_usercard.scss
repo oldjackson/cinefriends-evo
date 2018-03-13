@@ -107,10 +107,12 @@
   align-items: center;
   flex-direction: row;
    .style_image{
-    width: 200px; // how much you want
-    min-height: 200px;
+    width: 180px; // how much you want
+    min-height: 180px;
     float: left;
-    margin: 10px;
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
     border-radius:5px 5px 0px 0px;
   }
 }
@@ -128,4 +130,11 @@
    h1{
     color: white;
    }
+}
+
+.container-map{
+  display: flex;
+  margin-left: 190px;
+  align-items: center;
+  border-radius: 5px;
 }
