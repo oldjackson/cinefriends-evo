@@ -38,7 +38,7 @@ end
 
 genres = ["French Nouvelle Vague", "Italian neorealism", "Soviet Avantgarde", "B-movies", "Horror classics"]
 
-100.times do
+50.times do
   favmovies_ind = (0...movies.size).to_a.sample((1..5).to_a.sample)
   favdir_ind = (0...movies.size).to_a.sample((1..5).to_a.sample)
   favgenre_ind = (0...genres.size).to_a.sample((1..3).to_a.sample)
@@ -69,9 +69,9 @@ locations =["Av. da Liberdade 175, Lisbon","Av. Praia da Vitória, 72, Lisbon","
 end
 
 Movie.all.each do |movie|
-  30.times do
+  10.times do
     Show.create(
-      date: FactoryHelper::Date.forward(30), # random dates in the next months
+      date: FactoryHelper::Date.forward(10), # random dates in the next months
       time: round_to_5_minutes(FactoryHelper::Time.between(Date.today, Date.today, :evening)) ,
       movie: movie,
       theater: Theater.all.sample
