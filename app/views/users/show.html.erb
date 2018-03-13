@@ -8,12 +8,12 @@
 
     <div class="col-left">
       <% if @user.facebook_picture_url %>
-        <div class="user-photo">
-          <%= cl_image_tag @user.facebook_picture_url, height: 250, width: 250, crop: :fill%>
+        <div class="user-profile-photo">
+          <%= cl_image_tag @user.facebook_picture_url, height: 250, width: 250, crop: :fill, radius: 0 %>
         </div>
       <% elsif %>
-        <div class="user-photo">
-          <%= cl_image_tag @user.photo, height: 200, width: 200, crop: :fill%>
+        <div class="user-profile-photo">
+          <%= cl_image_tag @user.photo, height: 200, width: 200, crop: :fill, radius: 0%>
         </div>
       <% else %>
         <div class="empty-picture"">
@@ -45,8 +45,11 @@
     </div>
 
     <div class="col-right">
-
-      <h3>Previous Movies (for now is postings)</h3>
+      <h3>"<%= @user.fav_quote %>"</h3>
+      <br>
+      <h4>About <%= @user.first_name%>...</h4>
+      <p><%= @user.about_me %></p>
+      <h3><%= @user.first_name %>'s Previous Cinefriends Pairings</h3>
       <div class="posting-info">
       <% @user.postings.each do |posting| %>
         <div class="movie-poster">
