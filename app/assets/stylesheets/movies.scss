@@ -55,3 +55,20 @@
     color: $dark-red;
   }
 }
+.btn-form {
+  color: black !important;
+  background-color: rgb(125, 30, 27) !important;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 3px;
+  margin-left: 340px;
+}
+
+.btn-form:hover {
+    color: black !important;
+  background-color: rgb(125, 30, 27) !important;
+}
+
+
