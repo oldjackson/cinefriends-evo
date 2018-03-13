@@ -8,17 +8,19 @@ class PairingsController < ApplicationController
     @messages = @pairing.messages
     @sent_messages = @pairing.messages.where(user: current_user)
     @received_messages = @pairing.messages.where.not(user: current_user)
+    @theaters = @pairing.posting.show.theater
 
 
-    @theaters = Theater.where.not(latitude: nil, longitude: nil)
+    #@theaters =  Theater.where.not(latitude: nil, longitude: nil)
 
-    @markers = @theaters.map do |theater|
+
+    @markers = [
       {
-        lat: theater.latitude,
-        lng: theater.longitude
+        lat: @theaters.latitude,
+        lng: @theaters.longitude
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
-      }
-    end
+      }]
+
   end
 
   def new
