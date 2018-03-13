@@ -17,9 +17,7 @@ Rails.application.routes.draw do
   get "/pairings/:id/accept", to: 'pairings#accept', as: 'accept'
   get "/pairings/:id/decline", to: 'pairings#decline', as: 'decline'
 
-  resources :movies
-
-  resources :shows, only: [] do
+  resources :movies do
     resources :postings, only: [:create]
   end
 

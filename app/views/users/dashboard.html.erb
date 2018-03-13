@@ -84,7 +84,7 @@
                        <span class="glyphicon glyphicon-time "></span>   <%= posting.show.time.strftime("%-H:%M") %>
                     </div>
                     <div class="card-info3user">
-                      <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == posting.show.date.year ? posting.show.date.strftime("%-d %B") : posting.show.date.strftime("%-d %B %Y")%>
+                      <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == posting.show.date.year ? posting.show.uf_date : posting.show.uf_date_long%>
                     </div>
                     <div class="card-info4user"> <span class="glyphicon glyphicon-facetime-video"></span>
                       <%= posting.show.theater.name %>
@@ -172,7 +172,7 @@
               <div >
                 <div class="posting-info">
                   <div>
-                      <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == posting.show.date.year ? posting.show.date.strftime("%-d %B") : posting.show.date.strftime("%-d %B %Y")%> <span class="glyphicon glyphicon-time "></span>   <%= posting.show.time.strftime("%-H:%M") %>
+                      <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == posting.show.date.year ? posting.show.uf_date : posting.show.uf_date_long%> <span class="glyphicon glyphicon-time "></span>   <%= posting.show.time.strftime("%-H:%M") %>
                   </div>
                   <div>
                     <%= posting.show.theater.name.upcase %>

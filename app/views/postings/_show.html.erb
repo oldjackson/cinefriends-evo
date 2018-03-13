@@ -1,7 +1,7 @@
 <div class="my-posting">
   <div class="posting-el">
     <span class="glyphicon glyphicon-calendar "></span>
-    <%= Date.today.year == show.date.year ? show.date.strftime("%-d %B") : show.date.strftime("%-d %B %Y")%>
+    <%= Date.today.year == show.date.year ? show.uf_date : show.uf_date_long%>
   </div>
   <div class="posting-el">
     <span class="glyphicon glyphicon-facetime-video "></span>
