@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users
 
-  root to: 'pages#home'
+  root to: 'pages#billboard'
   get '/billboard', to: 'pages#billboard', as: 'billboard'
 
   resources :users
