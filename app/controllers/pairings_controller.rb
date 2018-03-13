@@ -31,6 +31,7 @@ class PairingsController < ApplicationController
     # binding.pry
     @pairing = Pairing.new(posting: @posting, user: @user)
     if @pairing.save
+      PairingMailer.creation_confirmation(@pairing).deliver_now
       redirect_to pairing_path(@pairing)
     else
       redirect_to movie_path(@posting.movie)
