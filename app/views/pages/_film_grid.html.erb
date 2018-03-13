@@ -1,35 +1,37 @@
 
   <div class="cards-container">
-    <% movies.each do |movie| %>
-      <div class="col-xs-6 col-sm-4">
-        <%= link_to movie_path(movie) do %>
-          <div class="film-card-wrapper">
-            <div class="cardfilm grow">
-              <div class="thumb-wrapper">
-                <% if movie.poster.file.nil? %>
-                <div class="empty-thumbnail">
-                  <p>-- No poster --</p>
-                </div>
-                <% else %>
-                <!-- <div class="pic-thumbnail"> -->
-                  <%= cl_image_tag movie.poster, height: 300, width: 200 %>
-                <!-- </div> -->
-                <% end %>
-              </div>
-              <div class="movie-label">
-                <div class="film-name">
-                  <h4><%= movie.title %></h4>
+    <div class="row">
+      <% movies.each do |movie| %>
+        <div class="col-xs-6 col-sm-4">
+          <%= link_to movie_path(movie) do %>
+            <div class="film-card-wrapper">
+              <div class="cardfilm grow">
+                <div class="thumb-wrapper">
+                  <% if movie.poster.file.nil? %>
+                  <div class="empty-thumbnail">
+                    <p>-- No poster --</p>
                   </div>
-                <div class="film-director"><%= "#{movie.director}" %></div>
-              </div>
-              <div class="theater-details">
-                <!-- fill up -->
+                  <% else %>
+                  <!-- <div class="pic-thumbnail"> -->
+                    <%= cl_image_tag movie.poster, height: 300, width: 200 %>
+                  <!-- </div> -->
+                  <% end %>
+                </div>
+                <div class="movie-label">
+                  <div class="film-name">
+                    <h4><%= movie.title %></h4>
+                    </div>
+                  <div class="film-director"><%= "#{movie.director}" %></div>
+                </div>
+                <div class="theater-details">
+                  <!-- fill up -->
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
 

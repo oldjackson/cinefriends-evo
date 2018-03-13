@@ -33,6 +33,8 @@ gem 'bootstrap-datepicker-rails'
 
 gem 'ui_faces'
 
+gem 'possessive'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
