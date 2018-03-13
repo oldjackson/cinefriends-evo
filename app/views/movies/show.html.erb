@@ -41,7 +41,7 @@
     <% else %>
       <div class="row">
         <% @postings.each do |posting| %>
-          <div class="col-xs-12 col-sm-6 vert-padded">
+          <div class="col-xs-12 vert-padded">
             <div class="user-card-wrapper">
               <div class="carduser", style="background-image: url(<%= image_path("film-strip.jpeg") %>);">
 
@@ -77,10 +77,18 @@
   </div>
 
   <div id="my-postings">
+    <div id="my-posting-title-wrapper">
+      <h2>Your postings</h2>
+    </div>
     <div class="posting-form">
-      <br>
-      <p>Pick a show
-            <%#= render 'bookings/form', booking: @booking, car: @car %>
+      <%= render 'postings/form', posting: @posting, shows: @movie.shows %>
+      <% if @your_postings.blank? %>
+        Post a show to find a CineFriend...
+      <% else %>
+        <% @your_postings.each do |posting| %>
+          <%= render 'postings/show', show: posting.show %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 

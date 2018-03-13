@@ -6,6 +6,8 @@ class MoviesController < ApplicationController
   end
 
   def show
+    # needed to show the posting form along with the existing user postings in the show view
+    @posting = Posting.new
     @shows = @movie.shows
     # @shows = shows.sort_by do |s|
     #   d = s.date
