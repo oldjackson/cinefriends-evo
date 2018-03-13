@@ -13,8 +13,9 @@ movies = [{title:"The Seven Samurai",director:"Akira Kurosawa", remote_poster_ur
   {title: "Doctor Zhivago", director: "David Lean", remote_poster_url: "https://i.pinimg.com/originals/5a/bd/f9/5abdf9b6b0f2c68a0598de290f91d2d0.jpg", remote_frame_url: "http://lwlcdn.lwlies.com/wp-content/uploads/2015/11/doctor-zhivago-review.jpg" },\
   {title: "The Deer Hunter", director: "Michael Cimino", remote_poster_url: "https://raginggoodfellas.files.wordpress.com/2013/11/large_the_deer_hunter.jpg", remote_frame_url: "https://nofilmschool.com/sites/default/files/styles/facebook/public/the_deer_hunter_2_christopher_walken.jpg?itok=sbROPux8" },\
   {title: "Close Encounters of the Third Kind", director: "Steven Spielberg", remote_poster_url: "https://i.pinimg.com/736x/b5/d2/02/b5d2025feca0a81a23b5094017f6fd99--epic-movie-movie-posters.jpg", remote_frame_url: "https://cdn-images-1.medium.com/max/1920/1*W4kC3tVkSYwKha41klUcRA.jpeg" },\
-  {title: "Up", director: "Pete Docter", remote_poster_url: "https://vignette.wikia.nocookie.net/transcripts/images/9/97/Disney_and_Pixar%27s_Up_-_iTunes_Movie_Poster.jpg/revision/latest?cb=20170206002656", remote_frame_url: "https://i.pinimg.com/originals/12/7c/33/127c3333cd75e6024f04d59561bfea95.jpg" }\
-  # {title: "Rocky", director: "John G. Avildsen", remote_poster_url: "https://www.posterduniya.com/wp-content/uploads/2016/10/Rocky.jpg", remote_frame_url: "" },\
+  {title: "Up", director: "Pete Docter", remote_poster_url: "https://vignette.wikia.nocookie.net/transcripts/images/9/97/Disney_and_Pixar%27s_Up_-_iTunes_Movie_Poster.jpg/revision/latest?cb=20170206002656", remote_frame_url: "https://i.pinimg.com/originals/12/7c/33/127c3333cd75e6024f04d59561bfea95.jpg" },\
+  {title: "Ramiro", director: "Manuel Mozos", remote_poster_url: "http://www.imdb.com/title/tt6112534/mediaviewer/rm4236924672?ref_=tt_ov_i", remote_frame_url: "https://images-na.ssl-images-amazon.com/images/M/MV5BYjZkN2I4NTAtYjY3ZS00MDA4LTkxMjQtZWFkMWFmZGI3ZDA4XkEyXkFqcGdeQXVyNzI5MjIyNTc@._V1_.jpg" }\
+  {title: "Beuys", director: "Andres Veiel", remote_poster_url: "https://images-na.ssl-images-amazon.com/images/M/MV5BNzYwNjcwZGUtN2Y4Yy00ZTE1LWFiZDctYjA1NDE1MmFjMmFjXkEyXkFqcGdeQXVyNDkzNTM2ODg@._V1_UY1200_CR109,0,630,1200_AL_.jpg", remote_frame_url: "https://images-na.ssl-images-amazon.com/images/M/MV5BM2U4ZWEwMjctYTk4NS00ZTRjLWI0MmUtNDZiYzBiZTgyM2MyXkEyXkFqcGdeQXVyNDkzNTM2ODg@._V1_SY1000_CR0,0,1327,1000_AL_.jpg" },\
   # {title: "Memento", director: "Christopher Nolan", remote_poster_url: "https://i0.wp.com/www.movie-poster-artwork-finder.com/posters/memento-poster-artwork-guy-pearce-carrie-anne-moss-joe-pantoliano.jpg", remote_frame_url: "" },\
   # {title: "Braveheart", director: "Mel Gibson", remote_poster_url: "https://ae01.alicdn.com/kf/HTB1fmsjHVXXXXX2XXXXq6xXFXXXM/Free-shipping22-X35-inch-Braveheart-Movie-Poster-Custom-ART-PRINT.jpg", remote_frame_url: "" },\
   # {title: "Slumdog Millionaire", director: "Danny Boyle", remote_poster_url: "http://www.freemovieposters.net/posters/slumdog_millionaire_2008_342_poster.jpg", remote_frame_url: "" },\
@@ -33,7 +34,7 @@ end
 
 genres = ["French Nouvelle Vague", "Italian neorealism", "Soviet Avantgarde", "B-movies", "Horror classics"]
 
-100.times do
+50.times do
   favmovies_ind = (0...movies.size).to_a.sample((1..5).to_a.sample)
   favdir_ind = (0...movies.size).to_a.sample((1..5).to_a.sample)
   favgenre_ind = (0...genres.size).to_a.sample((1..3).to_a.sample)
@@ -64,9 +65,9 @@ locations =["Av. da Liberdade 175, Lisbon","Av. Praia da Vitória, 72, Lisbon","
 end
 
 Movie.all.each do |movie|
-  30.times do
+  10.times do
     Show.create(
-      date: FactoryHelper::Date.forward(30), # random dates in the next months
+      date: FactoryHelper::Date.forward(10), # random dates in the next months
       time: round_to_5_minutes(FactoryHelper::Time.between(Date.today, Date.today, :evening)) ,
       movie: movie,
       theater: Theater.all.sample
