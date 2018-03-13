@@ -4,9 +4,11 @@
 
 <p>We are excited to have you join our community of cinema lovers!</p>
 
-<p>Make sure to head over to your profile and update your favorite films and directors. That way we can remind you when your favorites are showing in <%= @user.city %>.</p>
+<p>Make sure to head over to your <%= link_to "profile", dashboard_url %> and update your favorite films and directors. That way we can remind you when your favorites are showing in <%= @user.city %>.</p>
 
 <p>Also, checkout the show times of movies playing now and search for other cinema fans. Don't see anyone attending a showing? Not to worry. Create a post and we will be in touch to let you know when other cinema lovers would like to go with you.</p>
+<%= link_to "Click to Find Films", billboard_url %>
+
 <p>See you soon,</p>
 
 <p>Your team at CineFriends</p>
