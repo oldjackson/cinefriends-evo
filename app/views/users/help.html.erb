@@ -2,31 +2,22 @@
 <%= render 'layouts/banner', banner_type: 'high-banner', img_url: image_path("dash_proj.jpg"), gradient: gradient_str %>
 
 
-
-<div class="tabs">
-  <a class="tab active" data-target="#content1" href="#">Profile</a>
-  <a class="tab" data-target="#content2" href="#">Your Posts</a>
-  <a class="tab" data-target="#content3" href="#">Pending Pairings</a>
-</div>
-
-
-<div id="content1" class="tab-content">
-  <div id="greeting">
-    <div class="profile-title-wrapper">
-      <h1>Hi <%=@user.first_name %>!</h1>
-    </div>
-  </div>
-  <div id="user-container">
-    <% if @user.photo.file.nil? %>
-      <div class="empty-picture-small"">
-        <p>-- No picture --</p>
+<div class="dashboard-container">
+  <div id="user-cal-container" class="full-padded">
+    <div id="user-container">
+      <% if @user.photo.file.nil? %>
+        <div class="empty-picture-small"">
+          <p>-- No picture --</p>
+        </div>
+      <% else %>
+        <!-- <div class="user-photo text-center"> -->
+          <%= cl_image_tag @user.photo, height: 100, width: 90, crop: :fill %>
+        <!-- </div> -->
+      <% end %>
+      <div id="greeting">
+        <h2><%= "Hi #{@user.first_name}!" %></h2>
       </div>
-    <% else %>
-      <!-- <div class="user-photo text-center"> -->
-        <%= cl_image_tag @user.photo, height: 100, width: 90, crop: :fill %>
-      <!-- </div> -->
-    <% end %>
-  </div>
+    </div>
     <div id='cal-container'>
       <div class="simple-calendar">
         <%= month_calendar(attribute: :show_date, events: @pairings) do |date, pairings| %>
@@ -46,62 +37,12 @@
         <% end %>
       </div>
     </div>
-</div>
-
-
-
-<div id="content2" class="tab-content hidden">
-  <div class="unmatched-postings">
-    <div id="greeting">
-        <div class="profile-title-wrapper">
-          <h1>Your Open Postings</h1>
-        </div>
-      </div>
-    <div class="row">
-      <div class="larger-container">
-      <% @unmatched_postings.each do |posting| %>
-        <% show = posting.show  %>
-        <div class="posting">
-          <div class="movie-container" >
-            <%# link_to posting_path(posting) do %>
-              <h3><%= show.movie.title %></h3>
-              <div class="thumb-wrapper">
-                <% if show.movie.poster.nil? %>
-                  <div class="empty-thumbnail">
-                    <p>-- No picture --</p>
-                  </div>
-                <% else %>
-                  <%= cl_image_tag show.movie.poster, height: 300, width: 200 %>
-                <% end %>
-              </div>
-              <div >
-                <div class="posting-info">
-                  <div>
-                      <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == posting.show.date.year ? posting.show.date.strftime("%-d %B") : posting.show.date.strftime("%-d %B %Y") %> <span class=" glyphicon glyphicon-time "></span>   <%=  posting.show.time.strftime("%-H:%M") %>
-                  </div>
-                  <div>
-                    <span class=" glyphicon glyphicon-facetime-video "></span><%= posting.show.theater.name.upcase %>
-                  </div>
-                </div>
-              </div>
-            <%# end %>
-            <div class="div-pairing-status" >
-              <%= link_to "Edit posting", "#", class: "btn-sm" %>
-              <%= link_to "Remove posting", posting_path(posting), class: "btn-sm btn-danger", method: :delete %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
   </div>
-  </div>
-</div>
 
-
-<div id="content3" class="tab-content hidden">
-      <div class="pairings">
-      <div class="profile-title-wrapper">
-        <h1>Your Pending Pairing Requests</h1>
+  <div class="show-container" >
+    <div class="pairings">
+      <div class="dashboard-title-wrapper">
+        <h1>CineFriends found</h1>
       </div>
       <% #binding.pry %>
       <% @pairings.each do |pairing| %>
@@ -109,7 +50,7 @@
         <% show =  posting.show %>
         <% current_user_is_poster = (posting.user == @user) %>
         <% other_user = current_user_is_poster ? pairing.user : posting.user %>
-        <div class="posting-waiting">
+        <div class="posting">
           <div class="film-name">
             <h3><%= show.movie.title.upcase %></h3>
           </div>
@@ -210,37 +151,43 @@
         <!-- </div> -->
       <% end %>
     </div>
+    <div class="unmatched-postings">
+      <div class="dashboard-title-wrapper">
+        <h1>Your postings</h1>
+      </div>
+      <% @unmatched_postings.each do |posting| %>
+        <% show = posting.show  %>
+        <div class="posting">
+          <div class="movie-container" >
+            <%# link_to posting_path(posting) do %>
+              <h3><%= show.movie.title %></h3>
+              <div class="thumb-wrapper">
+                <% if show.movie.poster.nil? %>
+                  <div class="empty-thumbnail">
+                    <p>-- No picture --</p>
+                  </div>
+                <% else %>
+                  <%= cl_image_tag show.movie.poster, height: 300, width: 200 %>
+                <% end %>
+              </div>
+              <div >
+                <div class="posting-info">
+                  <div>
+                      <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == posting.show.date.year ? posting.show.date.strftime("%-d %B") : posting.show.date.strftime("%-d %B %Y")%> <span class="glyphicon glyphicon-time "></span>   <%= posting.show.time.strftime("%-H:%M") %>
+                  </div>
+                  <div>
+                    <%= posting.show.theater.name.upcase %>
+                  </div>
+                </div>
+              </div>
+            <%# end %>
+            <div class="div-pairing-status" >
+              <%= link_to "Edit posting", "#", class: "btn-sm" %>
+              <%= link_to "Remove posting", posting_path(posting), class: "btn-sm btn-danger", method: :delete %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-
-<% content_for :after_js do %>
-<script>
-  var tabs = document.querySelectorAll('.tab');
-  tabs.forEach(function(tab) {
-    tab.addEventListener('click',(event) => {
-    var selector = event.target.dataset.target;
-
-    var tabsContent = document.querySelectorAll(".tab-content");
-
-    tabsContent.forEach(function(tabContent) {
-      tabContent.classList.add('hidden');
-    });
-
-    tabs.forEach(function(tab) {
-      tab.classList.remove('active');
-    });
-
-    event.target.classList.add('active');
-
-    document.querySelector(selector).classList.remove('hidden');
-
-    })
-  })
-  // $('.tab').on('click', function(event) {
-  //   $('.tab').removeClass('active');
-  //   event.target.addClass('active');
-  //   $('.tab-content').addClass('hidden');
-  //   $(contentSelector).removeClass('hidden');
-  // })
-</script>
-<% end %>
