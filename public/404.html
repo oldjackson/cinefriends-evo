@@ -1,39 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>Error. The page does not exists</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="shortcut icon" type="image/png" href="/frame.png"/>
   <style>
   .rails-default-error-page {
-    background-color: #EFEFEF;
+    background-color:#000000;
     color: #2E2F30;
     text-align: center;
     font-family: arial, sans-serif;
     margin: 0;
+    background-image: url(https://res.cloudinary.com/ojpicsinary/image/upload/v1521038979/error_1.jpg);
+    background-size: cover !important;
+    background-repeat:no-repeat;
+    z-index: -1;
+
   }
 
   .rails-default-error-page div.dialog {
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+    z-index: -1;
     width: 95%;
     max-width: 33em;
     margin: 4em auto 0;
   }
 
   .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
+    border: 0px solid #CCC;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color:transparent;
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
-    background-color: white;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius:9px;
+    background-color: transparent;
     padding: 7px 12% 0;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+    color:#730E15;
+
   }
 
   .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
+    font-size: 150%;
+    color: #b30000;
     line-height: 1.5em;
   }
 
@@ -51,17 +64,18 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
-  </style>
+
+   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
   <div class="dialog">
     <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
+      <h1>Sorry, this page does not exists.</h1>
+<!--       <p>This page doesn't exists !</p>
+ -->    </div>
+<!--     #<p>If you are the application owner check the logs for more information.</p>
+ -->  </div>
 </body>
 </html>
