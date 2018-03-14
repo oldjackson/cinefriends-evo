@@ -8,6 +8,13 @@ function enableTheaters(date)
     theaterSelect.options[i] = null;
   }
 
+  const timeSelect = document.getElementById('show_time');
+  const timeSelectLength = timeSelect.options.length;
+  for (let i=1; i<timeSelectLength; i++ ){
+    timeSelect.options[i] = null;
+  }
+  timeSelect.disabled = true;
+
   const id = window.location.href.split('/')[4];
   const dateForm = new FormData();
   const token = document.querySelector('meta[name=csrf-token]').content;
@@ -86,6 +93,9 @@ const showPickerForm = function() {
   if (showDateField) {
     const dates = JSON.parse(showDateField.dataset.dates);
     showDateField.flatpickr({
+      altInput: true,
+      altFormat: "d M Y",
+      dateFormat: "Y-m-d",
       enable: dates,
       onChange: enableTheaters
     });

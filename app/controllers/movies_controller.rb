@@ -77,7 +77,7 @@ class MoviesController < ApplicationController
   end
 
   def filter_shows
-    binding.pry
+    # binding.pry
     if params[:date] && params[:theater_id]
       theater = Theater.find(params[:theater_id])
       shows = theater.shows.where(movie: @movie, date: params[:date])
