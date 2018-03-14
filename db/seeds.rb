@@ -1,3 +1,11 @@
+Movie.destroy_all
+Posting.destroy_all
+Show.destroy_all
+Theater.destroy_all
+User.destroy_all
+
+
+p "Clean DB"
 
 def round_to_5_minutes(t)
   rounded = Time.at((t.to_time.to_i / 300.0).round * 300)
@@ -14,7 +22,7 @@ movies = [{title:"The Seven Samurai",director:"Akira Kurosawa", remote_poster_ur
   {title: "The Deer Hunter", director: "Michael Cimino", remote_poster_url: "https://raginggoodfellas.files.wordpress.com/2013/11/large_the_deer_hunter.jpg", remote_frame_url: "https://nofilmschool.com/sites/default/files/styles/facebook/public/the_deer_hunter_2_christopher_walken.jpg?itok=sbROPux8" },\
   {title: "Close Encounters of the Third Kind", director: "Steven Spielberg", remote_poster_url: "https://i.pinimg.com/736x/b5/d2/02/b5d2025feca0a81a23b5094017f6fd99--epic-movie-movie-posters.jpg", remote_frame_url: "https://cdn-images-1.medium.com/max/1920/1*W4kC3tVkSYwKha41klUcRA.jpeg" },\
   {title: "Ramiro", director: "Manuel Mozos", remote_poster_url: "http://imagens.publico.pt/imagens.aspx/611860?tp=KM", remote_frame_url: "https://i.ytimg.com/vi/MBrlhdFR1u0/maxresdefault.jpg" },\
-  {title: "Visages Villages", director: "Agnès Varda", remote_poster_url: "https://mb.web.sapo.io/a27ff8fda4bf5721bec03e55ad72aa78e0cf2e09.jpg", remote_frame_url: "http://razaodeaspecto.com/wp-content/uploads/2018/01/B9714095563Z.1_20171211141302_000GNJAAM9O2.2-0.jpg" },\
+  {title: "Visages Villages", director: "Agnès Varda", remote_poster_url: "https://medias.unifrance.org/medias/64/203/183104/format_page/media.jpg", remote_frame_url: "http://razaodeaspecto.com/wp-content/uploads/2018/01/B9714095563Z.1_20171211141302_000GNJAAM9O2.2-0.jpg" },\
   {title: "Que Le Diable Nous Emporte ", director: "Jean-Claude Brisseau", remote_poster_url: "https://images-na.ssl-images-amazon.com/images/M/MV5BMmM0ODE2MWUtNzliMS00NWY4LWEwYTUtMzNmYTYyMzUxYjRkXkEyXkFqcGdeQXVyMTc5OTQwMzk@._V1_UY1200_CR109,0,630,1200_AL_.jpg", remote_frame_url: "http://www.cinemaldito.com/wp-content/uploads/2017/12/Que-le-diable-nous-emporte-1-e1513873876751.jpg" },\
   {title: "Lady Bird", director: "Greta Gerwig", remote_poster_url: "http://medeiafilmes.com/media/images/c071c67e2bae8829138f1de095bd791f.jpg", remote_frame_url: "http://ladybird.movie/assets/fav/share2.jpg" },\
   {title: "Jusqu'à la garde", director: "Xavier Legrand", remote_poster_url: "https://filmspot.com.pt/images/filmes/posters/big/451657_pt.jpg", remote_frame_url: "https://www.cinergie.be/images/actualite/breve/2018_02/jusqua-la-garde.jpg" },\
@@ -31,7 +39,7 @@ movies = [{title:"The Seven Samurai",director:"Akira Kurosawa", remote_poster_ur
   # {title: "Amadeus", director: "Milos Forman", remote_poster_url: "https://c1.staticflickr.com/9/8014/7271129204_e5e84c2240_b.jpg", remote_frame_url: "" },\
   # {title: "Wall-E", director:"Andrew Stanton", remote_poster_url: "http://live-timely-kxd9sfz2in.time.ly/wp-content/uploads/2017/06/walle-5543a08739869.jpg", remote_frame_url: "" }
 ]
-
+p "On to Movies"
 movies.each do |mov|
   Movie.create(title: mov[:title], director: mov[:director], remote_poster_url: mov[:remote_poster_url], remote_frame_url: mov[:remote_frame_url] )
 end
@@ -60,6 +68,7 @@ genres = ["French Nouvelle Vague", "Italian neorealism", "Soviet Avantgarde", "B
   user.save
 end
 
+p "Almost there"
 
 names = ["Sao Jorge", "Monumental", "Cinemateca", "Cinema Ideal"]
 locations =["Av. da Liberdade 175, Lisbon","Av. Praia da Vitória, 72, Lisbon","R. Barata Salgueiro 39, Lisbon","Rua do Loreto 15, Lisbon"]
@@ -83,4 +92,5 @@ end
   Posting.create(user: User.all.sample,show: Show.all.sample)
 end
 
+p "Seeded"
 
