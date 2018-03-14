@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/billboard', to: 'pages#billboard', as: 'billboard'
 
   resources :users
-  resources :postings, only: [:destroy] do
+  resources :postings, only: [:destroy, :create] do
     resources :pairings, only: [:create]
   end
   resources :pairings, only: [:show] do
@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   get "/pairings/:id/decline", to: 'pairings#decline', as: 'decline'
 
   resources :movies do
-    resources :postings, only: [:create]
     member do
       post :filter_theaters
       post :filter_shows

@@ -7,14 +7,8 @@ class MoviesController < ApplicationController
 
   def show
     # needed to show the posting form along with the existing user postings in the show view
-    @posting = Posting.new
-    # @shows = @movie.shows
-    # @shows = shows.sort_by do |s|
-    #   d = s.date
-    #   t = s.time
-    #
-    #   DateTime.new(d.year, d.month, d.day, t.hour, t.min, 0, t.zone)
-    # end
+    # @posting = Posting.new
+
     @dates = @movie.list_available_dates
 
     postings = @movie.postings.reject { |p| p.user == current_user}

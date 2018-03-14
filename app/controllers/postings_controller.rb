@@ -1,6 +1,5 @@
 class PostingsController < ApplicationController
   before_action :set_posting, only: [:destroy]
-  before_action :set_show, only: [:create]
   before_action :user
 
   # def new
@@ -8,24 +7,25 @@ class PostingsController < ApplicationController
   # end
 
   def create
-    # @posting = Posting.new(posting_params)
+    @posting = Posting.new()
     @posting.user = @user
-    @posting.show = @show
-
+    @posting.show_id = params[:show_time]
+# binding.pry
     if @posting.save
       # respond_to do |format|
-        # format.html {
-         redirect_to movie_path(@posting.show.movie), notice: "Your posting is now active"
+      #   format.html {
+         # redirect_to movie_path(@posting.show.movie), notice: "Your posting is now active!"
+         redirect_to movie_path(@posting.show.movie), notice: "Your posting is now active!"
        # }
-        # format.js  # <-- will render `app/views/reviews/create.js.erb`
-      end
+       #  format.js  # <-- will render `app/views/reviews/create.js.erb`
+      # end
     else
       # respond_to do |format|
         # format.html {
-          render 'movies/show'
+          redirect_to movie_path(@posting.show.movie), alert: @posting.errors.messages[:show][0]
         # }
         # format.js  # <-- idem
-      end
+      # end
     end
 
   end

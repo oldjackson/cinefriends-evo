@@ -10,7 +10,7 @@ function enableTheaters(date)
   for (let i=1; i<theaterSelectLength; i++ ){
     theaterSelect.options[i] = null;
   }
-debugger;
+
   const timeSelect = document.getElementById('show_time');
   const timeSelectLength = timeSelect.options.length;
   for (let i=1; i<timeSelectLength; i++ ){
@@ -142,10 +142,10 @@ const showPickerForm = function() {
     showTimeField.addEventListener('change', enableSubmit);
   }
 
-  const btnSelect = document.getElementById('new_post_btn');
-  if (btnSelect) {
-    btnSelect.addEventListener('click', clearForm);
-  }
+  // const btnSelect = document.getElementById('new_post_btn');
+  // if (btnSelect) {
+  //   btnSelect.addEventListener('click', clearForm);
+  // }
 
 };
 

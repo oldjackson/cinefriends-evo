@@ -81,7 +81,8 @@
   background-color: $dim-white;
   border-radius: 3px;
   color: black;
-  padding: 10px,
+  padding: 10px;
+  margin: 20px 0;
 }
 
 .posting-el {
@@ -105,4 +106,5 @@
   strong {
     color: $dark-red;
   }
+  padding-bottom: 20px;
 }
