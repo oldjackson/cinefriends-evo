@@ -2,12 +2,15 @@ import flatpickr from 'flatpickr';
 
 function enableTheaters(date)
 {
+  const btnSelect = document.getElementById('new_post_btn');
+  btnSelect.disabled = true;
+
   const theaterSelect = document.getElementById('show_theater');
   const theaterSelectLength = theaterSelect.options.length;
   for (let i=1; i<theaterSelectLength; i++ ){
     theaterSelect.options[i] = null;
   }
-
+debugger;
   const timeSelect = document.getElementById('show_time');
   const timeSelectLength = timeSelect.options.length;
   for (let i=1; i<timeSelectLength; i++ ){
@@ -88,6 +91,35 @@ function enableTimes(event){
   });
 }
 
+function enableSubmit(event){
+  const btnSelect = document.getElementById('new_post_btn');
+  if (btnSelect) {
+    btnSelect.disabled = false;
+  }
+}
+
+function clearForm(event){
+  const formSelect = document.getElementById('post_form');
+  if (formSelect) {
+    formSelect.reset();
+  }
+
+  const theaterSelect = document.getElementById('show_theater');
+  if (theaterSelect) {
+    theaterSelect.disabled = true;
+  }
+
+  const timeSelect = document.getElementById('show_time');
+  if (timeSelect) {
+    timeSelect.disabled = true;
+  }
+
+  const btnSelect = document.getElementById('new_post_btn');
+  if (btnSelect) {
+    btnSelect.disabled = true;
+  }
+}
+
 const showPickerForm = function() {
   const showDateField = document.getElementById("show_date");
   if (showDateField) {
@@ -104,6 +136,17 @@ const showPickerForm = function() {
   if (showTheaterField) {
     showTheaterField.addEventListener('change', enableTimes);
   }
+
+  const showTimeField = document.getElementById("show_time");
+  if (showTimeField) {
+    showTimeField.addEventListener('change', enableSubmit);
+  }
+
+  const btnSelect = document.getElementById('new_post_btn');
+  if (btnSelect) {
+    btnSelect.addEventListener('click', clearForm);
+  }
+
 };
 
 export {showPickerForm}
