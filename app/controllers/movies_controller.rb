@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy, :filter_shows]
 
   def index
     @movies = Movie.all
@@ -12,15 +12,16 @@ class MoviesController < ApplicationController
     # @shows = shows.sort_by do |s|
     #   d = s.date
     #   t = s.time
-    #   # binding.pry
+    #
     #   DateTime.new(d.year, d.month, d.day, t.hour, t.min, 0, t.zone)
     # end
+    @dates = @movie.list_available_dates
 
     postings = @movie.postings.reject { |p| p.user == current_user}
     @postings = postings.sort_by do |p|
       d = p.show.date
       t = p.show.time
-      # binding.pry
+
       DateTime.new(d.year, d.month, d.day, t.hour, t.min, 0, t.zone)
     end
 
@@ -28,7 +29,7 @@ class MoviesController < ApplicationController
     @your_postings = your_postings.sort_by do |p|
       d = p.show.date
       t = p.show.time
-      # binding.pry
+
       DateTime.new(d.year, d.month, d.day, t.hour, t.min, 0, t.zone)
     end
   end
@@ -65,6 +66,16 @@ class MoviesController < ApplicationController
     @movie.destroy
     redirect_to movies_path
   end
+
+  def filter_shows
+    if params[:date]
+      @theaters = @movie.find_theaters_by_date(params[:date].to_date)
+    end
+
+    render :filter_shows, as: :json
+
+  end
+
 
   private
 

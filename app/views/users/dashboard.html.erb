@@ -18,23 +18,7 @@
       </div>
     </div>
     <div id='cal-container'>
-      <div class="simple-calendar">
-        <%= month_calendar(attribute: :show_date, events: @pairings) do |date, pairings| %>
-
-          <%= date.day %>
-
-          <% pairings.each do |pairing| %>
-            <% case pairing.status %>
-              <% when "pending" %>
-                <i class="fas fa-square pending"></i>
-              <% when "accepted" %>
-                <i class="fas fa-square accepted"></i>
-              <% when "declined" %>
-                <i class="fas fa-square declined"></i>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
+      <%= render partial: 'calendar', locals: {pairings: @pairings} %>
     </div>
   </div>
 
@@ -43,7 +27,6 @@
       <div class="dashboard-title-wrapper">
         <h1>CineFriends found</h1>
       </div>
-      <% #binding.pry %>
       <% @pairings.each do |pairing| %>
         <% posting =  pairing.posting %>
         <% show =  posting.show %>

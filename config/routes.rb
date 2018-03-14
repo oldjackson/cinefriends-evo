@@ -19,6 +19,9 @@ Rails.application.routes.draw do
 
   resources :movies do
     resources :postings, only: [:create]
+    member do
+      post :filter_shows
+    end
   end
 
   get "/dashboard", to: 'users#dashboard'
