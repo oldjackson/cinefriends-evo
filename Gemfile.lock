@@ -38,6 +38,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
     autoprefixer-rails (8.1.0.1)
       execjs
@@ -72,7 +74,7 @@ GEM
     devise-bootstrap-views (0.0.11)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
-    erubi (1.7.0)
+    erubi (1.7.1)
     execjs (2.7.0)
     factory-helper (1.8.0)
       i18n (~> 0.7)
@@ -94,7 +96,12 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    json (2.1.0)
     jwt (1.5.6)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.6.0)
+      launchy (~> 2.2)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -138,6 +145,12 @@ GEM
       activesupport (>= 4.2)
       arel (>= 6)
     possessive (1.0.1)
+    postmark (1.10.0)
+      json
+      rake
+    postmark-rails (0.15.0)
+      actionmailer (>= 3.0.0)
+      postmark (~> 1.10.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -146,6 +159,7 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.6)
       pry (>= 0.10.4)
+    public_suffix (3.0.2)
     puma (3.11.2)
     rack (2.0.4)
     rack-proxy (0.6.4)
@@ -236,7 +250,7 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webpacker (3.3.0)
+    webpacker (3.3.1)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
       railties (>= 4.2)
@@ -261,11 +275,13 @@ DEPENDENCIES
   font-awesome-sass
   geocoder
   jbuilder (~> 2.0)
+  letter_opener
   listen (~> 3.0.5)
   omniauth-facebook
   pg (~> 0.21)
   pg_search
   possessive
+  postmark-rails
   pry-byebug
   pry-rails
   puma
