@@ -57,40 +57,11 @@
           <h1>Your Open Postings</h1>
         </div>
       </div>
+    <div class="container">
     <div class="row">
-      <div class="larger-container">
       <% @unmatched_postings.each do |posting| %>
-        <% show = posting.show  %>
-        <div class="posting">
-          <div class="movie-container" >
-            <%# link_to posting_path(posting) do %>
-              <h3><%= show.movie.title %></h3>
-              <div class="thumb-wrapper">
-                <% if show.movie.poster.nil? %>
-                  <div class="empty-thumbnail">
-                    <p>-- No picture --</p>
-                  </div>
-                <% else %>
-                  <%= cl_image_tag show.movie.poster, height: 300, width: 200 %>
-                <% end %>
-              </div>
-              <div >
-                <div class="posting-info">
-                  <div>
-                      <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == posting.show.date.year ? posting.show.date.strftime("%-d %B") : posting.show.date.strftime("%-d %B %Y") %> <span class=" glyphicon glyphicon-time "></span>   <%=  posting.show.time.strftime("%-H:%M") %>
-                  </div>
-                  <div>
-                    <span class=" glyphicon glyphicon-facetime-video "></span><%= posting.show.theater.name.upcase %>
-                  </div>
-                </div>
-              </div>
-            <%# end %>
-            <div class="div-pairing-status" >
-              <%= link_to "Edit posting", "#", class: "btn-sm" %>
-              <%= link_to "Remove posting", posting_path(posting), class: "btn-sm btn-danger", method: :delete %>
-            </div>
-          </div>
-        </div>
+        <%= render 'postings', show: posting.show, posting: posting %>
+
       <% end %>
     </div>
   </div>
@@ -100,8 +71,10 @@
 
 <div id="content3" class="tab-content hidden">
       <div class="pairings">
-      <div class="profile-title-wrapper">
-        <h1>Your Pending Pairing Requests</h1>
+      <div id="greeting">
+        <div class="profile-title-wrapper">
+          <h1>Your Pending Pairing Requests</h1>
+        </div>
       </div>
       <% #binding.pry %>
       <% @pairings.each do |pairing| %>
