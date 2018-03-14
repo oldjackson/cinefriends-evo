@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy, :filter_shows]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy, :filter_theaters, :filter_shows]
 
   def index
     @movies = Movie.all
@@ -67,9 +67,27 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
-  def filter_shows
+  def filter_theaters
     if params[:date]
       @theaters = @movie.find_theaters_by_date(params[:date].to_date)
+    end
+
+    render :filter_theaters, as: :json
+
+  end
+
+  def filter_shows
+    binding.pry
+    if params[:date] && params[:theater_id]
+      theater = Theater.find(params[:theater_id])
+      shows = theater.shows.where(movie: @movie, date: params[:date])
+
+      @shows = shows.sort_by do |s|
+        # d = s.show.date
+        t = s.time
+
+        DateTime.new(1, 1, 1, t.hour, t.min, 0, t.zone)
+      end
     end
 
     render :filter_shows, as: :json

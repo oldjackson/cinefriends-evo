@@ -2,25 +2,6 @@ import flatpickr from 'flatpickr';
 
 function enableTheaters(date)
 {
-  // function apiService(data) {
-  //   fetch(`${id}/filter_shows`, {
-  //     method: 'POST',
-  //     body: data,
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'X-Requested-With': 'XMLHttpRequest',
-  //       'X-CSRF-Token': token
-  //     },
-  //     credentials: 'same-origin'
-  //   }).then( response => response.json() )
-  //   .then((json) => {
-  //     debugger;
-  //     return json;
-  //   });theaterSelect
-  // }
-  // console.log(date);
-
-
   const theaterSelect = document.getElementById('show_theater');
   const theaterSelectLength = theaterSelect.options.length;
   for (let i=1; i<theaterSelectLength; i++ ){
@@ -33,7 +14,7 @@ function enableTheaters(date)
 
   dateForm.append('date', date);
 
-  fetch(`${id}/filter_shows`, {
+  fetch(`${id}/filter_theaters`, {
     method: 'POST',
     body: dateForm,
     headers: {
@@ -44,8 +25,6 @@ function enableTheaters(date)
     credentials: 'same-origin'
   }).then( response => response.json() )
   .then((json) => {
-    // debugger;
-    // return json;
     const theaters = json.theaters;
 
     for(var i = 0; i < theaters.length; i++) {
@@ -59,25 +38,47 @@ function enableTheaters(date)
     theaterSelect.disabled = false;
 
   });
+}
 
+function enableTimes(event){
+  const timeSelect = document.getElementById('show_time');
+  const timeSelectLength = timeSelect.options.length;
+  for (let i=1; i<timeSelectLength; i++ ){
+    timeSelect.options[i] = null;
+  }
 
-  // debugger
+  const id = window.location.href.split('/')[4];
+  const dateTheaterForm = new FormData();
+  const token = document.querySelector('meta[name=csrf-token]').content;
 
-  // $.ajax({
-  //   url: `/movies/${id}/filter_shows`,
-  //   type: "POST",
-  //   processData: false,
-  //   data: data,
-  //   headers: {
-  //     'Accept': 'application/json',
-  //     'X-Requested-With': 'XMLHttpRequest',
-  //     'X-CSRF-Token': token
-  //   },
-  //   success: function(xqhr){
-  //     debugger
-  //     console.log("Hey");
-  //   }
-  // });
+  const showDateField = document.getElementById("show_date");
+  dateTheaterForm.append('date', showDateField.value);;
+  dateTheaterForm.append('theater_id', event.target.value);
+
+  fetch(`${id}/filter_shows`, {
+    method: 'POST',
+    body: dateTheaterForm,
+    headers: {
+      'Accept': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest',
+      'X-CSRF-Token': token
+    },
+    credentials: 'same-origin'
+  }).then( response => response.json() )
+  .then((json) => {
+    const shows = json.shows;
+
+    for(var i = 0; i < shows.length; i++) {
+      var opt = shows[i];
+      var el = document.createElement("option");
+      el.textContent = opt.time;
+      el.value = opt.id;
+      timeSelect.appendChild(el);
+    }
+
+    timeSelect.disabled = false;
+
+  });
 }
 
 const showPickerForm = function() {
@@ -88,6 +89,10 @@ const showPickerForm = function() {
       enable: dates,
       onChange: enableTheaters
     });
+  }
+  const showTheaterField = document.getElementById("show_theater");
+  if (showTheaterField) {
+    showTheaterField.addEventListener('change', enableTimes);
   }
 };
 

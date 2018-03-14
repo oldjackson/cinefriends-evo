@@ -1,6 +1,7 @@
-json.theaters do
-  json.array! @theaters do |theater|
-    json.id theater.id
-    json.name theater.name
+json.shows do
+  json.array! @shows do |show|
+    json.id show.id
+    binding.pry
+    json.time show.uf_time
   end
 end

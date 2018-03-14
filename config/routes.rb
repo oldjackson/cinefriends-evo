@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :movies do
     resources :postings, only: [:create]
     member do
+      post :filter_theaters
       post :filter_shows
     end
   end
