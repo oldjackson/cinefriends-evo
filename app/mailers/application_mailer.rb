@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  # default from: 'cinemalovers@cinefriends.club'
-  # layout 'mailer'
+  default from: 'cinemalovers@cinefriends.club'
+  layout 'mailer'
 end
