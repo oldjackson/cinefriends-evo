@@ -1,8 +1,7 @@
 import "bootstrap";
 
 $(document).ready(function(){
-
-// After 3 seconds the alerts are vanishing
+  // After 3 seconds the alerts are vanishing
   setTimeout(
     function() {
       $('.alert').slideUp();
