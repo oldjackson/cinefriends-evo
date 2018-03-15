@@ -30,6 +30,7 @@
         <p>-- No picture --</p>
       </div>
     <% end %>
+    <%= link_to "Show Profile", user_path(@user), class: "btn-back" %>
   </div>
     <div id='cal-container'>
       <%= render 'calendar', pairings: @pairings %>
