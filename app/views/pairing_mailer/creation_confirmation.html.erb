@@ -10,7 +10,7 @@
 <p>Time: <%= @pairing.posting.show.time.strftime("%-H:%M") %></p>
 <p>Cinema: <%= @pairing.posting.show.theater.name %></p>
 
-<%= link_to "Click to Accept", accept_path(@pairing)%>
+<%= link_to "Click to Accept", accept_url(@pairing) %>
 <p>See you at the movies!</p>
 
 <p>Your team at CineFriends</p>

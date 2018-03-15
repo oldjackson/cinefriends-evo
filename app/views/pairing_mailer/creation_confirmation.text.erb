@@ -8,7 +8,7 @@ Date: <%= Date.today.year == @pairing.posting.show.date.year ? @pairing.posting.
 Time: <%= @pairing.posting.show.time.strftime("%-H:%M") %>
 Cinema: <%= @pairing.posting.show.theater.name %>
 
-<%= link_to "Click to Accept", accept_path(@pairing)%>
+<%= link_to "Click to Accept", accept_url(@pairing)%>
 See you at the movies!
 
 Your team at CineFriends
