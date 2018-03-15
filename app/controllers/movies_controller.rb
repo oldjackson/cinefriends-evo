@@ -71,15 +71,12 @@ class MoviesController < ApplicationController
   end
 
   def filter_shows
-    # binding.pry
     if params[:date] && params[:theater_id]
       theater = Theater.find(params[:theater_id])
       shows = theater.shows.where(movie: @movie, date: params[:date])
 
       @shows = shows.sort_by do |s|
-        # d = s.show.date
         t = s.time
-
         DateTime.new(1, 1, 1, t.hour, t.min, 0, t.zone)
       end
     end

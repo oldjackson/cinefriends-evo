@@ -65,7 +65,6 @@ class UsersController < ApplicationController
 
             DateTime.new(d.year, d.month, d.day, t.hour, t.min, 0, t.zone)
           end
-          binding
         end
       end
 
