@@ -85,7 +85,7 @@ end
 Movie.all.each do |movie|
   10.times do
     Show.create(
-      date: FactoryHelper::Date.forward(10), # random dates in the next months
+      date: FactoryHelper::Date.backward(10)+(1..20).to_a.sample, # random dates in the next months
       time: round_to_5_minutes(FactoryHelper::Time.between(Date.today, Date.today, :evening)) ,
       movie: movie,
       theater: Theater.all.sample

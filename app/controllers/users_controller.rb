@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @past_pairings = @user.pairings.select{|p| p.posting.show.date < Date.today && p.status == 'accepted'}
+    binding.pry
   end
 
   def create

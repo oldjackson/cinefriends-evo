@@ -55,7 +55,8 @@
       <p><%= @user.about_me %></p>
       <h3><%= @user.first_name %>'s Previous Cinefriends Pairings</h3>
       <div class="row">
-      <% @user.postings.each do |posting| %>
+      <% @past_pairings.each do |p| %>
+        <% posting = p.posting  %>
         <div class="col-xs-6">
           <div class="movie-poster">
             <%= cl_image_tag posting.show.movie.poster, height: 220, width: 140, crop: :fill, :gravity=>"auto" %>
