@@ -21,7 +21,7 @@
       <div class="user-profile-photo">
         <%= cl_image_tag @user.facebook_picture_url, height: 250, width: 250, crop: :fill, radius: 0 %>
       </div>
-    <% elsif %>
+    <% elsif @user.photo %>
       <div class="user-profile-photo">
         <%= cl_image_tag @user.photo, height: 200, width: 200, crop: :fill, radius: 0%>
       </div>
@@ -95,8 +95,14 @@
             <div class="friend-container">
               <!-- <div class="user-card-wrapper"> -->
                 <!-- <div class="pair-user-wrapper"> -->
-                  <div class="cardimageuser", style="background-image: url(<%= other_user.photo.url %>);">
-                  </div>
+                    <% other_user_photo_url = "" %>
+                    <% if other_user.facebook_picture_url %>
+                      <% other_user_photo_url = other_user.facebook_picture_url %>
+                    <% else %>
+                      <% other_user_photo_url = other_user.photo.url %>
+                    <% end %>
+                    <div class="cardimageuser", style="background-image: url(<%= other_user_photo_url %>);">
+                    </div>
                     <div class="card-info1user">
                       <%= other_user.first_name %>
                     </div>

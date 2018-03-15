@@ -14,7 +14,7 @@
         <div class="user-profile-photo">
           <%= cl_image_tag @user.facebook_picture_url, height: 250, width: 250, crop: :fill, radius: 0 %>
         </div>
-      <% elsif %>
+      <% elsif @user.photo%>
         <div class="user-profile-photo">
           <%= cl_image_tag @user.photo, height: 200, width: 200, crop: :fill, radius: 0%>
         </div>
