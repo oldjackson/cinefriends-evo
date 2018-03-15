@@ -28,23 +28,7 @@
     <% end %>
   </div>
     <div id='cal-container'>
-      <div class="simple-calendar">
-        <%= month_calendar(attribute: :show_date, events: @pairings) do |date, pairings| %>
-
-          <%= date.day %>
-
-          <% pairings.each do |pairing| %>
-            <% case pairing.status %>
-              <% when "pending" %>
-                <i class="fas fa-square pending"></i>
-              <% when "accepted" %>
-                <i class="fas fa-square accepted"></i>
-              <% when "declined" %>
-                <i class="fas fa-square declined"></i>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
+      <%= render 'calendar', pairings: @pairings %>
     </div>
 </div>
 
@@ -76,7 +60,6 @@
           <h1>Your Pending Pairing Requests</h1>
         </div>
       </div>
-      <% #binding.pry %>
       <% @pairings.each do |pairing| %>
         <% posting =  pairing.posting %>
         <% show =  posting.show %>
@@ -117,7 +100,7 @@
                        <span class="glyphicon glyphicon-time "></span>   <%= posting.show.time.strftime("%-H:%M") %>
                     </div>
                     <div class="card-info3user">
-                      <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == posting.show.date.year ? posting.show.date.strftime("%-d %B") : posting.show.date.strftime("%-d %B %Y")%>
+                      <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == posting.show.date.year ? posting.show.uf_date : posting.show.uf_date_long%>
                     </div>
                     <div class="card-info4user"> <span class="glyphicon glyphicon-facetime-video"></span>
                       <%= posting.show.theater.name %>
