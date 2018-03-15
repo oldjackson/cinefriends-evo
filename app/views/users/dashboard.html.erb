@@ -95,13 +95,7 @@
             <div class="friend-container">
               <!-- <div class="user-card-wrapper"> -->
                 <!-- <div class="pair-user-wrapper"> -->
-                    <% other_user_photo_url = "" %>
-                    <% if other_user.facebook_picture_url %>
-                      <% other_user_photo_url = other_user.facebook_picture_url %>
-                    <% else %>
-                      <% other_user_photo_url = other_user.photo.url %>
-                    <% end %>
-                    <div class="cardimageuser", style="background-image: url(<%= other_user_photo_url %>);">
+                    <div class="cardimageuser", style="background-image: url(<%= other_user.photo.url || other_user.facebook_picture_url %>);">
                     </div>
                     <div class="card-info1user">
                       <%= other_user.first_name %>

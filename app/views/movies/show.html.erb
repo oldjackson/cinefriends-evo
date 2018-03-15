@@ -46,7 +46,7 @@
               <div class="carduser", style="background-image: url(<%= image_path("film-strip.jpg") %>);">
 
                 <div class="cardimageuser grow">
-                  <%= link_to image_tag(posting.user.photo.url, style: "height: 150px; width: 150px; border-radius:100%;"), {controller: "users", action: "show", id: posting.user.id} %>
+                  <%= link_to image_tag(posting.user.photo.url || posting.user.facebook_picture_url, style: "height: 150px; width: 150px; border-radius:100%;"), {controller: "users", action: "show", id: posting.user.id} %>
                 </div>
 
                 <div class="card-info">
