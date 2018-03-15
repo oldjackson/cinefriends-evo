@@ -32,9 +32,10 @@
     <% end %>
     <%= link_to "Show Profile", user_path(@user), class: "btn-back" %>
   </div>
-    <div id='cal-container'>
-      <%= render 'calendar', pairings: @pairings %>
-    </div>
+
+  <div id='cal-container'>
+    <%= render 'calendar', pairings: @pairings %>
+  </div>
 </div>
 
 
@@ -42,10 +43,16 @@
 <div id="content2" class="tab-content hidden">
   <div class="unmatched-postings">
     <div id="greeting">
-        <div class="profile-title-wrapper">
-          <h1>Your Open Postings</h1>
-        </div>
+      <div class="profile-title-wrapper">
+        <h1>Your Open Postings</h1>
       </div>
+    </div>
+  <div class="large-container">
+    <div class="container">
+      <div id='cal-container'>
+        <%= render 'calendar', pairings: @pairings %>
+      </div>
+    </div>
     <div class="container">
     <div class="row">
       <% @unmatched_postings.each do |posting| %>
@@ -53,6 +60,7 @@
 
       <% end %>
     </div>
+  </div>
   </div>
   </div>
 </div>
@@ -65,6 +73,14 @@
           <h1>Your Pending Pairing Requests</h1>
         </div>
       </div>
+    <div class="large-container">
+    <div class="container">
+      <div id='cal-container'>
+        <%= render 'calendar', pairings: @pairings %>
+      </div>
+    </div>
+    <div class="container">
+    <div class="row">
       <% @pairings.each do |pairing| %>
         <% posting =  pairing.posting %>
         <% show =  posting.show %>
@@ -170,8 +186,10 @@
           </div>
         <!-- </div> -->
       <% end %>
+        </div>
+      </div>
     </div>
-
+  </div>
 </div>
 
 
