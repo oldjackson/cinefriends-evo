@@ -37,6 +37,8 @@ gem 'possessive'
 
 gem 'postmark-rails'
 
+gem 'mail_interceptor', group: [:development, :staging]
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem "letter_opener"
