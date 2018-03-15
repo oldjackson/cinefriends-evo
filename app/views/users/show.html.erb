@@ -54,13 +54,15 @@
       <h4>About <%= @user.first_name%>...</h4>
       <p><%= @user.about_me %></p>
       <h3><%= @user.first_name %>'s Previous Cinefriends Pairings</h3>
-      <div class="posting-info">
+      <div class="row">
       <% @user.postings.each do |posting| %>
-        <div class="movie-poster">
-          <%= cl_image_tag posting.show.movie.poster, height: 220, width: 140, crop: :fill, :gravity=>"auto" %>
-        <li><%=posting.show.movie.title %></li>
-        <li><%=posting.show.theater.name %></li>
-        <li><%=posting.show.date %></li>
+        <div class="col-xs-6">
+          <div class="movie-poster">
+            <%= cl_image_tag posting.show.movie.poster, height: 220, width: 140, crop: :fill, :gravity=>"auto" %>
+          <li><%=posting.show.movie.title %></li>
+          <li><%=posting.show.theater.name %></li>
+          <li><%=posting.show.date %></li>
+          </div>
         </div>
       <% end %>
       </div>
