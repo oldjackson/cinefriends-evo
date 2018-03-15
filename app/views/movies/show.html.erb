@@ -41,7 +41,7 @@
           <% @postings.each do |posting| %>
             <div class="col-xs-12 col-sm-6 vert-padded">
               <div class="user-card-wrapper">
-                <div class="carduser", style="background-image: url(<%= image_path("film-strip.jpeg") %>);">
+                <div class="carduser", style="background-image: url(<%= image_url("film-strip.jpg") %>);">
 
                   <div class="cardimageuser grow">
                   <%= link_to image_tag(posting.user.photo.url, style: "height: 150px; width: 150px; border-radius:100%;"), {controller: "users", action: "show", id: posting.user.id} %>
