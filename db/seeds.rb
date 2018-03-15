@@ -3,7 +3,9 @@ Posting.destroy_all
 Show.destroy_all
 Theater.destroy_all
 User.destroy_all
-
+Favmovie.destroy_all
+Favdirector.destroy_all
+Genre.destroy_all
 
 p "Clean DB"
 
@@ -63,9 +65,9 @@ genres = ["French Nouvelle Vague", "Italian neorealism", "Soviet Avantgarde", "B
     city: "Lisbon",
     remote_photo_url: remote_photo_url
   )
-  user.favmovies = favmovies_ind.map{ |i| Favmovie.new(title: movies[i][:title]) }
-  user.favdirectors = favdir_ind.map{ |i| Favdirector.new(name: movies[i][:director]) }
-  user.genres = favgenre_ind.map{ |i| Genre.new(name: genres[i]) }
+  user.favmovies = favmovies_ind.map { |i| Favmovie.where(title: movies[i][:title]).first_or_create }
+  user.favdirectors = favdir_ind.map{ |i| Favdirector.where(name: movies[i][:director]).first_or_create }
+  user.genres = favgenre_ind.map{ |i| Genre.where(name: genres[i]).first_or_create }
   user.save
 end
 
