@@ -93,7 +93,7 @@
   position: relative;
   padding-top: 1px;
   padding-bottom: 15px;
-  margin: 30px 15px 55px 364px;
+  margin: 30px 15px 55px 50px;
   color: black;
   background-color: white;
   // background-image: url( "assets/images/film-strip.jpg");
@@ -174,7 +174,7 @@
 .simple-calendar {
   color: $dim-white;
   background-color: $body-bg;
-  width: 40vw;
+  width: 33vw;
 
   a{
     color: $dark-red;
@@ -280,4 +280,7 @@
 
 .div-pairing-origin{
   background-color: white;
+}
+.large-container{
+  display: flex;
 }
