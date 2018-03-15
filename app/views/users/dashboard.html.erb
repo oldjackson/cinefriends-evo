@@ -26,7 +26,9 @@
         <%= cl_image_tag @user.photo, height: 100, width: 90, crop: :fill %>
       <!-- </div> -->
     <% end %>
+    <%= link_to "Edit Profile", user_path(@user), class: "btn-back" %>
   </div>
+
     <div id='cal-container'>
       <%= render 'calendar', pairings: @pairings %>
     </div>
@@ -37,10 +39,10 @@
 <div id="content2" class="tab-content hidden">
   <div class="unmatched-postings">
     <div id="greeting">
-        <div class="profile-title-wrapper">
-          <h1>Your Open Postings</h1>
-        </div>
+      <div class="profile-title-wrapper">
+        <h1>Your Open Postings</h1>
       </div>
+    </div>
     <div class="container">
     <div class="row">
       <% @unmatched_postings.each do |posting| %>
