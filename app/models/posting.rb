@@ -4,5 +4,5 @@ class Posting < ApplicationRecord
   has_many :pairings, dependent: :destroy
 
   validates :show, uniqueness: { scope: :user,
-    message: "You already posted for this show" }
+    message: "You already posted for this show." }
 end

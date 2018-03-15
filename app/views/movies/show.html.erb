@@ -85,13 +85,17 @@
         </div>
       </div>
     </div>
-    <% if @your_postings.blank? %>
-      Post a show to find a CineFriend...
-    <% else %>
-      <% @your_postings.each do |posting| %>
-        <%= render 'postings/show', show: posting.show %>
+    <div id="posting-cardlets">
+      <% if @your_postings.blank? %>
+        <div id="no-postings-teaser">
+          Post a show to find a CineFriend...
+        </div>
+      <% else %>
+        <% @your_postings.each do |posting| %>
+          <%= render 'postings/show', show: posting.show %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 
 </div>
