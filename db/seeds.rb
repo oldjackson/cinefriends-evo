@@ -1,11 +1,12 @@
-Movie.destroy_all
-Posting.destroy_all
-Show.destroy_all
-Theater.destroy_all
 User.destroy_all
 Favmovie.destroy_all
 Favdirector.destroy_all
 Genre.destroy_all
+Movie.destroy_all
+Theater.destroy_all
+Show.destroy_all
+Posting.destroy_all
+Pairing.destroy_all
 
 p "Clean DB"
 
@@ -91,8 +92,15 @@ Movie.all.each do |movie|
   end
 end
 
-150.times do
+50.times do
   Posting.create(user: User.all.sample,show: Show.all.sample)
+end
+
+30.times do
+  posting = Posting.all.sample
+  status = %w(pending accepted declined).sample
+  non_posting_users = User.all.reject{ |u| u == posting.user }
+  Pairing.create(posting: posting, user: non_posting_users.sample, status: status)
 end
 
 p "Seeded"
