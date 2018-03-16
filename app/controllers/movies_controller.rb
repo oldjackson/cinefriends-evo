@@ -11,7 +11,9 @@ class MoviesController < ApplicationController
 
     @dates = @movie.list_available_dates
 
-    postings = @movie.postings.reject { |p| p.user == current_user}
+    postings = @movie.postings.reject do |p|
+      p.user == current_user || p.show.date < Date.today
+    end
     @postings = postings.sort_by do |p|
       d = p.show.date
       t = p.show.time

@@ -14,12 +14,19 @@
               </div>
               <div >
                 <div class="posting-info">
-                  <div>
-                      <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == posting.show.date.year ? posting.show.date.strftime("%-d %B") : posting.show.date.strftime("%-d %B %Y") %> <span class=" glyphicon glyphicon-time "></span>   <%=  posting.show.time.strftime("%-H:%M") %>
-                  </div>
-                  <div>
-                    <span class=" glyphicon glyphicon-facetime-video "></span><%= posting.show.theater.name.upcase %>
-                  </div>
+                  <!-- <div> -->
+                    <div>
+                      <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == posting.show.date.year ? posting.show.uf_date : posting.show.uf_date_long %>
+                    </div>
+                    <div>
+                        <span class=" glyphicon glyphicon-time "></span>
+                        <%=  posting.show.uf_time %>
+                    </div>
+                    <div>
+                      <span class=" glyphicon glyphicon-facetime-video "></span>
+                      <%= posting.show.theater.name.upcase %>
+                    </div>
+                  <!-- </div> -->
                 </div>
               </div>
             <%# end %>

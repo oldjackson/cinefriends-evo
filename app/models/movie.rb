@@ -36,7 +36,8 @@ class Movie < ApplicationRecord
     }
 
   def list_available_dates
-    shows.map { |s| s.date }
+    future_shows = shows.reject { |s| s.date < Date.today }
+    future_shows.map { |s| s.date }
   end
 
   def find_theaters_by_date(date)
