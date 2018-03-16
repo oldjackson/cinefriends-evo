@@ -44,8 +44,9 @@
           <div><%=favdirector.name %></div>
         <% end %>
       </div>
-      <%= link_to "Edit profile", edit_user_path, class: "btn-sm-default" %>
-
+      <% if @user == current_user %>
+        <%= link_to "Edit profile", edit_user_path, class: "btn-sm-default" %>
+      <% end %>
     </div>
 
     <div class="col-right">
