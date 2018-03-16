@@ -1,9 +1,12 @@
-Movie.destroy_all
-Posting.destroy_all
-Show.destroy_all
-Theater.destroy_all
 User.destroy_all
-
+Favmovie.destroy_all
+Favdirector.destroy_all
+Genre.destroy_all
+Movie.destroy_all
+Theater.destroy_all
+Show.destroy_all
+Posting.destroy_all
+Pairing.destroy_all
 
 p "Clean DB"
 
@@ -15,7 +18,7 @@ end
 
 movies = [{title: "Que Le Diable Nous Emporte ", director: "Jean-Claude Brisseau", remote_poster_url: "https://images-na.ssl-images-amazon.com/images/M/MV5BMmM0ODE2MWUtNzliMS00NWY4LWEwYTUtMzNmYTYyMzUxYjRkXkEyXkFqcGdeQXVyMTc5OTQwMzk@._V1_UY1200_CR109,0,630,1200_AL_.jpg", remote_frame_url: "http://www.cinemaldito.com/wp-content/uploads/2017/12/Que-le-diable-nous-emporte-1-e1513873876751.jpg" },\
   {title: "Lady Bird", director: "Greta Gerwig", remote_poster_url: "http://medeiafilmes.com/media/images/c071c67e2bae8829138f1de095bd791f.jpg", remote_frame_url: "http://ladybird.movie/assets/fav/share2.jpg" },\
-  {title: "Jusqu'à la garde", director: "Xavier Legrand", remote_poster_url: "https://filmspot.com.pt/images/filmes/posters/big/451657_pt.jpg", remote_frame_url: "https://www.cinergie.be/images/actualite/breve/2018_02/jusqua-la-garde.jpg" },\
+  {title: "Jusqu'à la garde", director: "Xavier Legrand", remote_poster_url: "https://filmspot.com.pt/images/filmes/posters/big/451657_pt.jpg", remote_frame_url: "https://i.ytimg.com/vi/4HYNRiCvUBY/maxresdefault.jpg" },\
   {title:"The Seven Samurai",director:"Akira Kurosawa", remote_poster_url: "https://images-na.ssl-images-amazon.com/images/I/91OOTyd4ToL._SL1500_.jpg", remote_frame_url: "http://akirakurosawa.info/wp-content/uploads/2016/08/Seven-Samurai.jpg" },\
   {title: "Bonnie and Clyde", director: "Arthur Penn", remote_poster_url: "https://fffmoviepostermuseum.com/wp-content/uploads/2016/05/bonnie-clyde-french-movie-poster.jpg", remote_frame_url: "http://www.arte-factos.net/wp-content/uploads/2017/02/bonnieclyde1.jpg" },\
   {title: "Reservoir Dogs", director: "Quentin Tarantino", remote_poster_url: "https://sites.psu.edu/filmsforall/files/2016/11/poster-370-1dzsy8z.jpg", remote_frame_url: "http://pixel.nymag.com/imgs/daily/vulture/2015/08/27/27-reservoir-dogs.w710.h473.2x.jpg" },\
@@ -25,7 +28,8 @@ movies = [{title: "Que Le Diable Nous Emporte ", director: "Jean-Claude Brisseau
   {title: "The Deer Hunter", director: "Michael Cimino", remote_poster_url: "https://raginggoodfellas.files.wordpress.com/2013/11/large_the_deer_hunter.jpg", remote_frame_url: "https://nofilmschool.com/sites/default/files/styles/facebook/public/the_deer_hunter_2_christopher_walken.jpg?itok=sbROPux8" },\
   {title: "Close Encounters of the Third Kind", director: "Steven Spielberg", remote_poster_url: "https://i.pinimg.com/736x/b5/d2/02/b5d2025feca0a81a23b5094017f6fd99--epic-movie-movie-posters.jpg", remote_frame_url: "https://cdn-images-1.medium.com/max/1920/1*W4kC3tVkSYwKha41klUcRA.jpeg" },\
   {title: "Ramiro", director: "Manuel Mozos", remote_poster_url: "http://imagens.publico.pt/imagens.aspx/611860?tp=KM", remote_frame_url: "https://i.ytimg.com/vi/MBrlhdFR1u0/maxresdefault.jpg" },\
-  {title: "Visages Villages", director: "Agnès Varda", remote_poster_url: "https://medias.unifrance.org/medias/64/203/183104/format_page/media.jpg", remote_frame_url: "http://razaodeaspecto.com/wp-content/uploads/2018/01/B9714095563Z.1_20171211141302_000GNJAAM9O2.2-0.jpg" },\
+  {title: "Visages Villages", director: "Agnès Varda", remote_poster_url: "https://medias.unifrance.org/medias/64/203/183104/format_page/media.jpg", remote_frame_url: "http://razaodeaspecto.com/wp-content/uploads/2018/01/B9714095563Z.1_20171211141302_000GNJAAM9O2.2-0.jpg" }\
+
 
   #{title: "Up", director: "Pete Docter", remote_poster_url: "https://vignette.wikia.nocookie.net/transcripts/images/9/97/Disney_and_Pixar%27s_Up_-_iTunes_Movie_Poster.jpg/revision/latest?cb=20170206002656", remote_frame_url: "https://i.pinimg.com/originals/12/7c/33/127c3333cd75e6024f04d59561bfea95.jpg" }\
   # {title: "Rocky", director: "John G. Avildsen", remote_poster_url: "https://www.posterduniya.com/wp-content/uploads/2016/10/Rocky.jpg", remote_frame_url: "" },\
@@ -63,9 +67,9 @@ genres = ["French Nouvelle Vague", "Italian neorealism", "Soviet Avantgarde", "B
     city: "Lisbon",
     remote_photo_url: remote_photo_url
   )
-  user.favmovies = favmovies_ind.map{ |i| Favmovie.new(title: movies[i][:title]) }
-  user.favdirectors = favdir_ind.map{ |i| Favdirector.new(name: movies[i][:director]) }
-  user.genres = favgenre_ind.map{ |i| Genre.new(name: genres[i]) }
+  user.favmovies = favmovies_ind.map { |i| Favmovie.where(title: movies[i][:title]).first_or_create }
+  user.favdirectors = favdir_ind.map{ |i| Favdirector.where(name: movies[i][:director]).first_or_create }
+  user.genres = favgenre_ind.map{ |i| Genre.where(name: genres[i]).first_or_create }
   user.save
 end
 
@@ -81,7 +85,7 @@ end
 Movie.all.each do |movie|
   10.times do
     Show.create(
-      date: FactoryHelper::Date.forward(10), # random dates in the next months
+      date: FactoryHelper::Date.backward(10)+(1..20).to_a.sample, # random dates in the next months
       time: round_to_5_minutes(FactoryHelper::Time.between(Date.today, Date.today, :evening)) ,
       movie: movie,
       theater: Theater.all.sample
@@ -89,8 +93,15 @@ Movie.all.each do |movie|
   end
 end
 
-150.times do
+50.times do
   Posting.create(user: User.all.sample,show: Show.all.sample)
+end
+
+30.times do
+  posting = Posting.all.sample
+  status = %w(pending accepted declined).sample
+  non_posting_users = User.all.reject{ |u| u == posting.user }
+  Pairing.create(posting: posting, user: non_posting_users.sample, status: status)
 end
 
 p "Seeded"

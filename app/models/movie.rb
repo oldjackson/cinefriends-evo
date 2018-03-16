@@ -6,7 +6,7 @@ class Movie < ApplicationRecord
   mount_uploader :poster, PhotoUploader
   mount_uploader :frame, PhotoUploader
 
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: true
 
   include PgSearch
   pg_search_scope :search,

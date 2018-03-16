@@ -10,13 +10,12 @@
     <div class="user-card-wrapper">
       <div class="carduserpairing", style="background-image: url(<%= image_path("film-strip.jpg") %>);">
        <div class = "cardimageuserpairing">
-        <%= image_tag @pairing.posting.user.photo.url, :class => "style_image" %>
-        <% profile_url = @pairing.user.photo.url || @pairing.user.facebook_picture_url %>
-        <%= image_tag profile_url, class: "style_image"  %>
+        <%= image_tag @pairing.posting.user.photo.url || @pairing.posting.user.facebook_picture_url, class: "style_image"   %>
+        <%= image_tag @pairing.user.photo.url || @pairing.user.facebook_picture_url, class: "style_image"  %>
       </div>
 
       <div class="card-info1user">
-        <p><%= @pairing.posting.user.first_name %>& <%= @pairing.user.first_name %></p>
+        <p><%= @pairing.posting.user.first_name %> & <%= @pairing.user.first_name %></p>
       </div>
       <div class="card-info2user">
         <span class="glyphicon glyphicon-time "></span>   <%= @pairing.posting.show.time.strftime("%-H:%M") %>
