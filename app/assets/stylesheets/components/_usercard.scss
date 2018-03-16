@@ -92,28 +92,29 @@
 }
 
 .carduserpairing{
-  height: 320px;
-  width: 450px;
+  width: 100%;
   background-size: cover !important;
   background-position: center;
   position: relative;
   background-color: white;
   border-radius: 5px;
+  color: black;
+  p {
+    font-size: 1.5rem;
+  }
 }
 
 .cardimageuserpairing{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-direction: row;
    .style_image{
-    width: 180px; // how much you want
-    min-height: 180px;
-    float: left;
-    margin-top: 40px;
-    margin-left: 20px;
-    margin-right: 20px;
+    width: 140px; // how much you want
+    height: 140px;
+    margin: 2em;
     border-radius:5px 5px 0px 0px;
+    box-shadow: 0 0 1px rgba(0,0,0,.5);
   }
 }
 .grow {
@@ -134,7 +135,7 @@
 
 .container-map{
   display: flex;
-  margin-left: 190px;
+  margin-left: 160px;
   align-items: center;
   border-radius: 5px;
 }

@@ -1,33 +1,34 @@
 <% gradient_str = "-webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.9) 90%, rgba(0, 0, 0, 1) 100%)"  %>
 <%= render 'layouts/banner', banner_type: 'high-banner', img_url: image_path("arcadia.jpg"), gradient: gradient_str %>
 <div class="container">
+  <div class="row">
 
   <div class="movie-title-wrapper">
     <h1>Your Pairing For <span style="display:inline-block;"></span><strong><%=@pairing.posting.show.movie.title %></strong></h1>
   </div>
 
   <div class="col-xs-12 col-sm-6 full-padded">
-    <div class="user-card-wrapper">
+    <div class="user-card-wrapper-pairing">
       <div class="carduserpairing", style="background-image: url(<%= image_path("film-strip.jpg") %>);">
+      <h3 style="padding: 20px 0 0 20px; font-size: 3rem;"><%= @pairing.posting.user.first_name %> & <%= @pairing.user.first_name %></h3>
        <div class = "cardimageuserpairing">
         <%= image_tag @pairing.posting.user.photo.url || @pairing.posting.user.facebook_picture_url, class: "style_image"   %>
         <%= image_tag @pairing.user.photo.url || @pairing.user.facebook_picture_url, class: "style_image"  %>
       </div>
 
-      <div class="card-info1user">
-        <p><%= @pairing.posting.user.first_name %> & <%= @pairing.user.first_name %></p>
-      </div>
-      <div class="card-info2user">
-        <span class="glyphicon glyphicon-time "></span>   <%= @pairing.posting.show.time.strftime("%-H:%M") %>
-      </div>
-      <div class="card-info3user">
-        <span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == @pairing.posting.show.date.year ? @pairing.posting.show.date.strftime("%-d %B") : @pairing.posting.show.date.strftime("%-d %B %Y")%>
-      </div>
-      <div class="card-info4user"><span class="glyphicon glyphicon-facetime-video "></span>
-        <%= @pairing.posting.show.theater.name %>
-      </div>
+      <div style="text-align: right; padding-right: 20px">
+
+      <p><span class="glyphicon glyphicon-time "></span>   <%= @pairing.posting.show.time.strftime("%-H:%M") %></p>
+
+
+      <p><span class="glyphicon glyphicon-calendar "></span>  <%= Date.today.year == @pairing.posting.show.date.year ? @pairing.posting.show.date.strftime("%-d %B") : @pairing.posting.show.date.strftime("%-d %B %Y")%></p>
+
+      <p style="padding-bottom: 20px;"><span class="glyphicon glyphicon-facetime-video "></span>
+      <%= @pairing.posting.show.theater.name %></p>
+
     </div>
   </div>
+</div>
 </div>
 
 
@@ -35,7 +36,6 @@
 <div class="col-xs-12 col-sm-6">
   <div class="messagebox">
     <h4>Say hello to <%=@pairing.posting.user.first_name %></h4>
-
     <%= simple_form_for [@pairing, @message] do |f| %>
     <div class="form-inputs">
       <%= f.input :content, :label => 'Your Message', :input_html => { :rows => 5 },required: true, placeholder:"Tell your CineFriend why you are excited to see the film and what time you would lik to meet in front of the theater." %>
@@ -43,8 +43,8 @@
 
     <div class="form-actions">
       <div class="send-button">
-      <%= f.button :submit, "Send", class: "btn btn-block", style: "background:#7d1e1b; color:white; border: #7d1e1b" %>
-       </div>
+        <%= f.button :submit, "Send", class: "btn btn-block", style: "background:#7d1e1b; color:white; border: #7d1e1b" %>
+      </div>
     </div>
     <% end %>
     <% @messages.each do |message| %>
@@ -55,13 +55,19 @@
   </div>
 </div>
 </div>
-<div class="container-map">
-  <div
-    id="map"
-    style="width: 450px;
-    height: 200px;
-    display: flex"
-    data-markers="<%= @markers.to_json %>"
-  ></div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <div
+      id="map"
+      style="width: 100%;
+      height: 300px;
+      border-radius: 4px;
+      display: flex"
+      data-markers="<%= @markers.to_json %>"
+      ></div>
+    </div>
+  </div>
 </div>
 
