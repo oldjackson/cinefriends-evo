@@ -43,10 +43,10 @@
         <% @postings.each do |posting| %>
           <div class="col-xs-12 vert-padded">
             <div class="user-card-wrapper">
-              <div class="carduser", style="background-image: url(<%= image_path("film-strip.jpg") %>);">
+              <div class="carduser", style="background-image: url(<%= image_path('ticket.png') %>);">
 
                 <div class="cardimageuser grow">
-                  <%= link_to image_tag(posting.user.photo.url || posting.user.facebook_picture_url, style: "height: 150px; width: 150px; border-radius:100%;"), {controller: "users", action: "show", id: posting.user.id} %>
+                  <%= link_to image_tag(posting.user.photo.url || posting.user.facebook_picture_url, style: "height: 120px; width: 120px; border-radius:100%;"), {controller: "users", action: "show", id: posting.user.id} %>
                 </div>
 
                 <div class="card-info">
