@@ -3,7 +3,7 @@ class PairingMailer < ApplicationMailer
     @pairing = pairing
 
     mail(
-      to:       "lorenzo.fermi@bancaimi.com",
+      to:       "joao.carrelo.sanches@gmail.com",
       subject:  "You're going to the movies!"
     )
   end
