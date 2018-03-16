@@ -4,33 +4,17 @@
 
 
 <div class="tabs">
-  <a class="tab active" data-target="#content1" href="#">Profile</a>
-  <a class="tab" data-target="#content2" href="#">Your Posts</a>
-  <a class="tab" data-target="#content3" href="#">Pending Pairings</a>
+  <a class="tab active" data-target="#content1" href="#">Calendar</a>
+  <a class="tab" data-target="#content2" href="#">Pending Pairings</a>
+  <a class="tab" data-target="#content3" href="#">Posts</a>
 </div>
 
 
 <div id="content1" class="tab-content">
   <div id="greeting">
     <div class="profile-title-wrapper">
-      <h1>Hi <%=@user.first_name %>!</h1>
+      <h1>Your Calendar</h1>
     </div>
-  </div>
-  <div id="user-container">
-    <% if @user.facebook_picture_url %>
-      <div class="user-profile-photo">
-        <%= cl_image_tag @user.facebook_picture_url, height: 250, width: 250, crop: :fill, radius: 0 %>
-      </div>
-    <% elsif @user.photo %>
-      <div class="user-profile-photo">
-        <%= cl_image_tag @user.photo, height: 200, width: 200, crop: :fill, radius: 0%>
-      </div>
-    <% else %>
-      <div class="empty-picture"">
-        <p>-- No picture --</p>
-      </div>
-    <% end %>
-    <%= link_to "Show Profile", user_path(@user), class: "btn-back" %>
   </div>
 
   <div id='cal-container'>
@@ -41,44 +25,12 @@
 
 
 <div id="content2" class="tab-content hidden">
-  <div class="unmatched-postings">
-    <div id="greeting">
-      <div class="profile-title-wrapper">
-        <h1>Your Open Postings</h1>
-      </div>
-    </div>
-  <div class="large-container">
-    <div class="container">
-      <div id='cal-container'>
-        <%= render 'calendar', pairings: @pairings %>
-      </div>
-    </div>
-    <div class="container">
-    <div class="row">
-      <% @unmatched_postings.each do |posting| %>
-        <%= render 'postings', show: posting.show, posting: posting %>
-
-      <% end %>
-    </div>
-  </div>
-  </div>
-  </div>
-</div>
-
-
-<div id="content3" class="tab-content hidden">
       <div class="pairings">
       <div id="greeting">
         <div class="profile-title-wrapper">
           <h1>Your Pending Pairing Requests</h1>
         </div>
       </div>
-    <div class="large-container">
-    <div class="container">
-      <div id='cal-container'>
-        <%= render 'calendar', pairings: @pairings %>
-      </div>
-    </div>
     <div class="container">
     <div class="row">
       <% @pairings.each do |pairing| %>
@@ -187,6 +139,23 @@
         <!-- </div> -->
       <% end %>
         </div>
+      </div>
+  </div>
+</div>
+
+<div id="content3" class="tab-content hidden">
+  <div class="unmatched-postings">
+    <div id="greeting">
+      <div class="profile-title-wrapper">
+        <h1>Your Open Postings</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <% @unmatched_postings.each do |posting| %>
+          <%= render 'postings', show: posting.show, posting: posting %>
+
+        <% end %>
       </div>
     </div>
   </div>
