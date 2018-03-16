@@ -16,7 +16,7 @@ def round_to_5_minutes(t)
 end
 
 
-movies = [{title: "Que Le Diable Nous Emporte ", director: "Jean-Claude Brisseau", remote_poster_url: "https://images-na.ssl-images-amazon.com/images/M/MV5BMmM0ODE2MWUtNzliMS00NWY4LWEwYTUtMzNmYTYyMzUxYjRkXkEyXkFqcGdeQXVyMTc5OTQwMzk@._V1_UY1200_CR109,0,630,1200_AL_.jpg", remote_frame_url: "http://www.cinemaldito.com/wp-content/uploads/2017/12/Que-le-diable-nous-emporte-1-e1513873876751.jpg" },\
+movies = [{title: "Que Le Diable Nous Emporte", director: "Jean-Claude Brisseau", remote_poster_url: "https://images-na.ssl-images-amazon.com/images/M/MV5BMmM0ODE2MWUtNzliMS00NWY4LWEwYTUtMzNmYTYyMzUxYjRkXkEyXkFqcGdeQXVyMTc5OTQwMzk@._V1_UY1200_CR109,0,630,1200_AL_.jpg", remote_frame_url: "http://www.cinemaldito.com/wp-content/uploads/2017/12/Que-le-diable-nous-emporte-1-e1513873876751.jpg" },\
   {title: "Lady Bird", director: "Greta Gerwig", remote_poster_url: "http://medeiafilmes.com/media/images/c071c67e2bae8829138f1de095bd791f.jpg", remote_frame_url: "http://ladybird.movie/assets/fav/share2.jpg" },\
   {title: "Jusqu'à la garde", director: "Xavier Legrand", remote_poster_url: "https://filmspot.com.pt/images/filmes/posters/big/451657_pt.jpg", remote_frame_url: "https://i.ytimg.com/vi/4HYNRiCvUBY/maxresdefault.jpg" },\
   {title:"The Seven Samurai",director:"Akira Kurosawa", remote_poster_url: "https://images-na.ssl-images-amazon.com/images/I/91OOTyd4ToL._SL1500_.jpg", remote_frame_url: "http://akirakurosawa.info/wp-content/uploads/2016/08/Seven-Samurai.jpg" },\
@@ -88,9 +88,9 @@ ext_fav_movies = [\
   "Blade Runner",\
   "La Grande Bouffe"\
 ]
-
-favdirector_names = movies.map{ |m| m[:title]} + ext_fav_movies
-favmovies_titles = movies.map{ |m| m[:dircetor]} + ext_fav_directors
+binding.pry
+favmovies_titles = movies.map{ |m| m[:title]} + ext_fav_movies
+favdirector_names = movies.map{ |m| m[:director]} + ext_fav_directors
 
 50.times do
   favmovies_ind = (0...favmovies_titles.size).to_a.sample((1..5).to_a.sample)
