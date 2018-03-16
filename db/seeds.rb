@@ -88,7 +88,7 @@ ext_fav_movies = [\
   "Blade Runner",\
   "La Grande Bouffe"\
 ]
-binding.pry
+
 favmovies_titles = movies.map{ |m| m[:title]} + ext_fav_movies
 favdirector_names = movies.map{ |m| m[:director]} + ext_fav_directors
 
