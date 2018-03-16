@@ -51,9 +51,50 @@ end
 
 genres = ["French Nouvelle Vague", "Italian neorealism", "Soviet Avantgarde", "B-movies", "Horror classics"]
 
+ext_fav_directors = [\
+  "Orson Welles",\
+  "Federico Fellini",\
+  "François Truffaut",\
+  "Jim Jarmusch",\
+  "Sergei Eisenstein",\
+  "Werner Herzog",\
+  "Pedro Almodóvar",\
+  "Stanley Kubrick",\
+  "Ken Loach",\
+  "Luis Buñuel",\
+  "David Lynch",\
+  "Jean-Luc Godard",\
+  "Hayao Miyazaki",\
+  "Andrei Tarkovsky",\
+  "Michelangelo Antonioni",\
+  "Luchino Visconti",\
+  "Elio Petri"\
+]
+
+ext_fav_movies = [\
+  "8 1/2",\
+  "Jules and Jim",\
+  "Breathless",\
+  "Battleship Potëmkin",\
+  "Barry Lyndon",\
+  "Solyaris",\
+  "The Leopard",\
+  "Rome, Open City",\
+  "Casablanca",\
+  "Cinema Paradiso",\
+  "Investigation of a Citizen Above Suspicion",\
+  "Fitzcarraldo",\
+  "The Easy Life",\
+  "Blade Runner",\
+  "La Grande Bouffe"\
+]
+
+favdirector_names = movies.map{ |m| m[:title]} + ext_fav_movies
+favmovies_titles = movies.map{ |m| m[:dircetor]} + ext_fav_directors
+
 50.times do
-  favmovies_ind = (0...movies.size).to_a.sample((1..5).to_a.sample)
-  favdir_ind = (0...movies.size).to_a.sample((1..5).to_a.sample)
+  favmovies_ind = (0...favmovies_titles.size).to_a.sample((1..5).to_a.sample)
+  favdir_ind = (0...favdirector_names.size).to_a.sample((1..5).to_a.sample)
   favgenre_ind = (0...genres.size).to_a.sample((1..3).to_a.sample)
 
   gender = %w(m f).sample
@@ -67,8 +108,8 @@ genres = ["French Nouvelle Vague", "Italian neorealism", "Soviet Avantgarde", "B
     city: "Lisbon",
     remote_photo_url: remote_photo_url
   )
-  user.favmovies = favmovies_ind.map { |i| Favmovie.where(title: movies[i][:title]).first_or_create }
-  user.favdirectors = favdir_ind.map{ |i| Favdirector.where(name: movies[i][:director]).first_or_create }
+  user.favmovies = favmovies_ind.map { |i| Favmovie.where(title: favmovies_titles[i]).first_or_create }
+  user.favdirectors = favdir_ind.map{ |i| Favdirector.where(name: favdirector_names[i]).first_or_create }
   user.genres = favgenre_ind.map{ |i| Genre.where(name: genres[i]).first_or_create }
   user.save
 end
