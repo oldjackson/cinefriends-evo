@@ -1,15 +1,3 @@
-User.destroy_all
-Favmovie.destroy_all
-Favdirector.destroy_all
-Genre.destroy_all
-Movie.destroy_all
-Theater.destroy_all
-Show.destroy_all
-Posting.destroy_all
-Pairing.destroy_all
-
-p "Clean DB"
-
 def round_to_5_minutes(t)
   rounded = Time.at((t.to_time.to_i / 300.0).round * 300)
   t.is_a?(DateTime) ? rounded.to_datetime : rounded
@@ -24,7 +12,7 @@ movies = [{title: "Que Le Diable Nous Emporte", director: "Jean-Claude Brisseau"
   {title: "Reservoir Dogs", director: "Quentin Tarantino", remote_poster_url: "https://sites.psu.edu/filmsforall/files/2016/11/poster-370-1dzsy8z.jpg", remote_frame_url: "http://pixel.nymag.com/imgs/daily/vulture/2015/08/27/27-reservoir-dogs.w710.h473.2x.jpg" },\
   {title: "Airplane!", director: "Jim Abrahams", remote_poster_url: "https://images-na.ssl-images-amazon.com/images/I/51zWRLrTz3L._SY450_.jpg", remote_frame_url: "https://clickamericana.com/wp-content/uploads/Airplane-movie-with-the-autopilot.jpg" },\
   {title: "Pan's Labyrinth", director: "Guillermo del Toro", remote_poster_url: "https://www.dvdsreleasedates.com/posters/800/P/Pans-Labyrinth-movie-poster.jpg", remote_frame_url: "https://vignette.wikia.nocookie.net/villains/images/7/7e/TheScaryPaleManHD.jpg/revision/latest?cb=20180422234843" },\
-  {title: "Doctor Zhivago", director: "David Lean", remote_poster_url: "https://i.pinimg.com/originals/5a/bd/f9/5abdf9b6b0f2c68a0598de290f91d2d0.jpg", remote_frame_url: "http://lwlcdn.lwlies.com/wp-content/uploads/2015/11/doctor-zhivago-review.jpg" },\
+  {title: "Doctor Zhivago", director: "David Lean", remote_poster_url: "https://i.pinimg.com/originals/5a/bd/f9/5abdf9b6b0f2c68a0598de290f91d2d0.jpg", remote_frame_url:"https://a.ltrbxd.com/resized/sm/upload/ad/ky/cr/pe/doctor-zhivago-1200-1200-675-675-crop-000000.jpg" },\
   {title: "The Deer Hunter", director: "Michael Cimino", remote_poster_url: "https://raginggoodfellas.files.wordpress.com/2013/11/large_the_deer_hunter.jpg", remote_frame_url: "https://nofilmschool.com/sites/default/files/styles/facebook/public/the_deer_hunter_2_christopher_walken.jpg?itok=sbROPux8" },\
   {title: "Close Encounters of the Third Kind", director: "Steven Spielberg", remote_poster_url: "https://i.pinimg.com/736x/b5/d2/02/b5d2025feca0a81a23b5094017f6fd99--epic-movie-movie-posters.jpg", remote_frame_url: "https://cdn-images-1.medium.com/max/1920/1*W4kC3tVkSYwKha41klUcRA.jpeg" },\
   {title: "Ramiro", director: "Manuel Mozos", remote_poster_url: "http://imagens.publico.pt/imagens.aspx/611860?tp=KM", remote_frame_url: "https://i.ytimg.com/vi/MBrlhdFR1u0/maxresdefault.jpg" },\
@@ -44,8 +32,9 @@ movies = [{title: "Que Le Diable Nous Emporte", director: "Jean-Claude Brisseau"
   # {title: "Amadeus", director: "Milos Forman", remote_poster_url: "https://c1.staticflickr.com/9/8014/7271129204_e5e84c2240_b.jpg", remote_frame_url: "" },\
   # {title: "Wall-E", director:"Andrew Stanton", remote_poster_url: "http://live-timely-kxd9sfz2in.time.ly/wp-content/uploads/2017/06/walle-5543a08739869.jpg", remote_frame_url: "" }
 ]
-p "On to Movies"
+p "Seeding Movies"
 movies.each do |mov|
+  p "creating #{mov[:title]}..."
   Movie.create(title: mov[:title], director: mov[:director], remote_poster_url: mov[:remote_poster_url], remote_frame_url: mov[:remote_frame_url] )
 end
 
@@ -92,6 +81,8 @@ ext_fav_movies = [\
 favmovies_titles = movies.map{ |m| m[:title]} + ext_fav_movies
 favdirector_names = movies.map{ |m| m[:director]} + ext_fav_directors
 
+p "And now to Users"
+
 50.times do
   favmovies_ind = (0...favmovies_titles.size).to_a.sample((1..5).to_a.sample)
   favdir_ind = (0...favdirector_names.size).to_a.sample((1..5).to_a.sample)
@@ -100,18 +91,25 @@ favdirector_names = movies.map{ |m| m[:director]} + ext_fav_directors
   gender = %w(m f).sample
   first_name = gender == 'f' ? FactoryHelper::Name.female_first_name : FactoryHelper::Name.male_first_name
   remote_photo_url = gender == 'f' ? UiFaces.woman : UiFaces.man
-  user = User.new(
-    first_name: first_name,
-    last_name: FactoryHelper::Name.last_name,
-    email: "#{first_name}@#{FactoryHelper::Internet.domain_name}",
-    password: "xxxxxx",
-    city: "Lisbon",
-    remote_photo_url: remote_photo_url
-  )
-  user.favmovies = favmovies_ind.map { |i| Favmovie.where(title: favmovies_titles[i]).first_or_create }
-  user.favdirectors = favdir_ind.map{ |i| Favdirector.where(name: favdirector_names[i]).first_or_create }
-  user.genres = favgenre_ind.map{ |i| Genre.where(name: genres[i]).first_or_create }
-  user.save
+  begin
+    user = User.create(
+      first_name: first_name,
+      last_name: FactoryHelper::Name.last_name,
+      email: "#{first_name}@#{FactoryHelper::Internet.domain_name}",
+      password: "xxxxxx",
+      city: "Lisbon",
+      remote_photo_url: remote_photo_url
+    )
+    user.favmovies = favmovies_ind.map { |i| Favmovie.where(title: favmovies_titles[i]).first_or_create }
+    user.favdirectors = favdir_ind.map{ |i| Favdirector.where(name: favdirector_names[i]).first_or_create }
+    user.genres = favgenre_ind.map{ |i| Genre.where(name: genres[i]).first_or_create }
+
+    user.save
+  rescue Cloudinary::CarrierWave::UploadError
+    # UiFaces can generate forbidden urls (users without public pictures): if it's the case, just draw another one
+    remote_photo_url = gender == 'f' ? UiFaces.woman : UiFaces.man
+    retry
+  end
 end
 
 p "Almost there"
